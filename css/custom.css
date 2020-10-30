@@ -59,3 +59,26 @@
     width: 100%;
     width: 100%;
 }
+
+.text-primary{
+    color: #3693fe !important;
+}
+
+.bg-light-custom{
+    background: #f4f3f3 !important;
+}
+
+.bg-secondary-custom{
+    background: #ececec !important;
+
+}
+
+ul#footer {
+    list-style-type: none;
+}
+
+ul#footer li a{
+    color: black !important;
+    font-weight: 500;
+}
+
