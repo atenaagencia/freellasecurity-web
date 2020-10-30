@@ -18,8 +18,8 @@
 }
 
 .portfolio-caption {
-    padding: 1.5rem !important;
-    text-align: center !important;
+    padding-top: 1.5rem !important;
+    text-align: center;
     /* background-color: #fff !important; */
     /* font-style: italic; */
     font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -30,4 +30,32 @@
     font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-weight: 700;
     margin-bottom: 0;
+}
+
+.teste li a {
+    display: block;
+    margin: 10px 0;
+    position: relative;
+    padding-left: 5px;
+    padding-right: 15px;
+    padding-bottom: 0;
+    padding-top: 0;
+    color: #000;
+    font-weight: 600;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff !important;
+    background-color: #007bff;
+}
+
+.tab-pane{
+    border: 1px solid #cecece; 
+    margin-top: 1.5rem;
+}
+
+.img-fluid {
+    max-width: 100%;
+    width: 100%;
+    width: 100%;
 }
