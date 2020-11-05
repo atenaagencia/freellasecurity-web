@@ -13,24 +13,29 @@
 
  
 /* -- custom routes ----------*/
+
 Route::get('/teste', function() {
   return view('front-end.index');
 });
 
 Route::get('/teste/jobs', function() {
-  return view('front-end.jobs');
+  return view('front-end.job.jobs');
 });
 
 Route::get('/teste/job', function() {
-  return view('front-end.job');
+  return view('front-end.job.job');
 });
 
 Route::get('/teste/companies', function() {
-  return view('front-end.companies');
+  return view('front-end.companies.companies');
+});
+
+Route::get('/teste/company', function() {
+  return view('front-end.companies.company');
 });
 
 Route::get('/teste/contact', function() {
-  return view('front-end.contact');
+  return view('front-end.contact.index');
 });
 
 /* -- end of custom routes ----------*/

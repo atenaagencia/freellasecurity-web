@@ -1,6 +1,4 @@
-@extends('layouts.custom')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!-- Masthead-->
 <header class="p-5" style="background: url('https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); background-repeat: no-repeat;background-attachment: scroll;background-position: center center;background-size: cover; padding-top: 15rem !important;">
     <div class="container mx-auto">
@@ -50,13 +48,13 @@
                     <div class="container">
                         <div class="row mx-auto justify-content-center">
                             <div class="col-7 py-4 pt-0">
-                                <a href="http://trovacamporall.com" class="ratio img-responsive img-circle" style="background: url('https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');"></a>
+                                <a href="#" class="ratio img-responsive img-circle" style="background: url('https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');"></a>
                             </div>
                         </div>
                     </div>
                     <h4 class="pt-3 pb-0 text-center text-dark">Coca-Cola</h4>
                     <p class="text-center">India</p>
-                    <a href="#" class="card-title p-3 text-center text-dark">16 Current Jobs Openings</a>
+                    <a href="<?php echo e(asset('/teste/company')); ?>" class="card-title p-3 text-center text-dark">16 Current Jobs Openings</a>
                 </div><!--card's end-->
                 
                 <div class="card border-0 bg-white p-1 mb-3">
@@ -88,7 +86,7 @@
                 </div><!--card's end-->
 
                 <div class="container p-0">
-                    <button class="btn btn-primary btn-block py-3 mb-3">APPLY FOR THIS JOB</button>
+                    <button class="btn btn-dark btn-block py-3 mb-3">APPLY FOR THIS JOB</button>
                 </div>
 
             </div><!--col end-->
@@ -97,4 +95,5 @@
     </div>
     
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.custom', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
