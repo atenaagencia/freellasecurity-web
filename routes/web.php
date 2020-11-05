@@ -1,7 +1,7 @@
 <?php
 
 /*
-  |--------------------------------------------------------------------------
+  
   | Web Routes
   |--------------------------------------------------------------------------
   |
@@ -10,6 +10,32 @@
   | contains the "web" middleware group. Now create something great!
   |
  */
+
+ 
+/* -- custom routes ----------*/
+Route::get('/teste', function() {
+  return view('front-end.index');
+});
+
+Route::get('/teste/jobs', function() {
+  return view('front-end.jobs');
+});
+
+Route::get('/teste/job', function() {
+  return view('front-end.job');
+});
+
+Route::get('/teste/companies', function() {
+  return view('front-end.companies');
+});
+
+Route::get('/teste/contact', function() {
+  return view('front-end.contact');
+});
+
+/* -- end of custom routes ----------*/
+
+
 $real_path = realpath(__DIR__) . DIRECTORY_SEPARATOR . 'front_routes' . DIRECTORY_SEPARATOR;
 /* * ******** IndexController ************ */
 Route::get('/', 'IndexController@index')->name('index');
