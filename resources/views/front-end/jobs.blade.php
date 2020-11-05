@@ -7,6 +7,7 @@
         <h1 class="text-light py-2">Job Listing</h1>
     </div>
 </header>
+
 <!-- Services-->
 <section class="page-section bg-white">
     <div class="container">
@@ -184,7 +185,7 @@
                                 <p class="lead text-secondary font-weight-bold pt-1">27-09-2020</p>
                             </div>
                             <div class="col">
-                                <a href="../webfreellas/job.html" class="btn btn-dark py-2 float-right">View details</a>
+                                <a href="{{asset('teste/job')}}" class="btn btn-dark py-2 float-right">View details</a>
                             </div>
                         </div>
                     </div>
@@ -207,7 +208,7 @@
                                 <p class="lead text-secondary font-weight-bold pt-1">27-09-2020</p>
                             </div>
                             <div class="col">
-                                <a href="../webfreellas/job.html" class="btn btn-dark py-2 float-right">View details</a>
+                                <a href="{{asset('teste/job')}}" class="btn btn-dark py-2 float-right">View details</a>
                             </div>
                         </div>
                     </div>
@@ -235,7 +236,7 @@
 
             </div><!--end of col-->
         </div>
-    </div>
-    
+    </div> 
 </section>
+
 @endsection

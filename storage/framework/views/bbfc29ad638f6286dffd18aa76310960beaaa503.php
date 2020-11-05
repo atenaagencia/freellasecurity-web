@@ -159,5 +159,294 @@ if (!isset($seo)) {
         <script src="<?php echo e(asset('mail/contact_me.js')); ?>"></script>
         <!-- Core theme JS-->
         <script src="<?php echo e(asset('js/custom-scripts.js')); ?>"></script>
+
+        <script>
+            CKEDITOR.replace('summary-ckeditor',
+                {
+                    entities: false,
+                    basicEntities: false,
+                    entities_greek: false,
+                    entities_latin: false,
+                });
+        </script>
+        
+        <script src="https://www.google.com/recaptcha/api.js?" async="" defer=""></script>
+
+        <script>
+            let pusher = new Pusher('a28b149bfa9cd891c76e', {
+                cluster: 'ap2',
+                encrypted: true
+            });
+            //Also remember to change channel and event name if your's are different.
+            let channel = pusher.subscribe('employer');
+            channel.bind('employer-notification', function (employerNotification) {
+                console.log(employerNotification.content);
+                console.log(employerNotification.notificationId);
+                let dropdown_menu = $('#dropdown-menu');
+                dropdown_menu.prepend('<li class="notification"><a href="http://vps23865.publiccloud.com.br/job' + '/' + employerNotification.jobSlug + '">' + employerNotification.content + '</li>');
+            });
+        </script>
+
+        <script>
+            $(document).ready(function ($) {
+                $("form").submit(function () {
+                    $(this).find(":input").filter(function () {
+                        return !this.value;
+                    }).attr("disabled", "disabled");
+                    return true;
+                });
+                $("form").find(":input").prop("disabled", false);
+        
+                $(".view_more_ul").each(function () {
+                    if ($(this).height() > 100)
+                    {
+                        $(this).addClass('hide_vm_ul');
+                        $(this).next().removeClass('hide_vm');
+                    }
+                });
+                $('.view_more').on('click', function (e) {
+                    e.preventDefault();
+                    $(this).prev().removeClass('hide_vm_ul');
+                    $(this).addClass('hide_vm');
+                });
+        
+            });
+        </script>
+
+        <script type="text/javascript">
+            $(document).ready(function ($) {
+            $('#country_id').on('change', function (e) {
+            e.preventDefault();
+            filterStates(0);
+            });
+            $(document).on('change', '#state_id', function (e) {
+            e.preventDefault();
+            filterCities(0);
+            });
+                        filterStates(0);
+            });
+            function filterStates(state_id)
+            {
+            var country_id = $('#country_id').val();
+            if (country_id != ''){
+            $.post("http://vps23865.publiccloud.com.br/filter-states-dropdown", {country_id: country_id, state_id: state_id, _method: 'POST', _token: 'VpALzkJ1BqMza2EquDKmV5kjmVNBOff8Agl0h8CE'})
+                    .done(function (response) {
+                    $('#state_dd').html(response);
+                                        filterCities(0);
+                    });
+            }
+            }
+            function filterCities(city_id)
+            {
+            var state_id = $('#state_id').val();
+            if (state_id != ''){
+            $.post("http://vps23865.publiccloud.com.br/filter-cities-dropdown", {state_id: state_id, city_id: city_id, _method: 'POST', _token: 'VpALzkJ1BqMza2EquDKmV5kjmVNBOff8Agl0h8CE'})
+                    .done(function (response) {
+                    $('#city_dd').html(response);
+                    });
+            }
+            }
+        </script>
+
+        <script src="http://vps23865.publiccloud.com.br/js/script.js"></script>
+
+        <script type="text/JavaScript">
+            $(document).ready(function(){
+                $('#startdate').datepicker();
+                $('#enddate').datepicker();
+                $('#whichdate').datepicker("setDate", new Date());
+    
+                $(document).scrollTo('.has-error', 2000);
+                });
+                function showProcessingForm(btn_id){
+                $("#"+btn_id).val( 'Processing .....' );
+                $("#"+btn_id).attr('disabled','disabled');
+            }
+    
+            function readmore(milestoneId) {
+                 var dots = document.getElementById("dots_"+milestoneId);
+                 var moreText = document.getElementById("moredescription_"+milestoneId);
+                 var btnText = document.getElementById("readmorebtn_"+milestoneId);
+    
+                if (dots.style.display === "none") {
+                    dots.style.display = "inline";
+                    btnText.innerHTML = "Read more";
+                    moreText.style.display = "none";
+                } else {
+                    dots.style.display = "none";
+                    btnText.innerHTML = "Read less";
+                    moreText.style.display = "inline";
+                }
+            }
+    
+            function Submitmilestone(milestoneId) {
+                $('.submitmilestoneId').val(milestoneId);
+                $('#Submitmilestonemodal').modal('show');
+            }
+    
+            function getClientJobslist(clientId) {
+                $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }});
+                $.ajax({
+                method: 'POST',
+                url: 'http://vps23865.publiccloud.com.br/hired-client-jobs',
+                data: {'clientId' : clientId},
+                success: function(response){
+                    $('#jobsofclient').html('');
+                    if(response!=0){
+                       var response = JSON.parse(response);
+                       $('#jobsofclient').html('<option>Select Job</option>');
+                       $.each(response, function(index, value){
+                            $('#jobsofclient').append('<option value="'+value.id+'">'+value.title+'</option>');
+                        });
+                    } else {
+                         $('#jobsofclient').html('<option>No Jobs found</option>');
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(JSON.stringify(jqXHR));
+                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                }
+            });
+            }
+    
+            function getMilestonesList(jobId){
+                $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }});
+                $.ajax({
+                method: 'POST',
+                url: 'http://vps23865.publiccloud.com.br/single-job-milestone-list',
+                data: {'jobId' : jobId},
+                success: function(response){
+                        $('#milestonesofclient').html('');
+                    if(response!=0){
+                        response = JSON.parse(response);
+                        var i= 0 ;
+                        $.each(response, function(index, value){
+                            i = parseInt(i) + parseInt(1);
+                            $('#milestonesofclient').append('<option value="'+value.id+'">'+value.milestone_title+'</option>');
+                        });
+                    } else {
+                        $('#milestonesofclient').html('<option value="">No milestones found</option>');
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(JSON.stringify(jqXHR));
+                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                }
+              });
+            }
+    
+            function verifywork(milestoneId) {
+    
+                $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }});
+                $.ajax({
+                method: 'POST',
+                url: 'http://vps23865.publiccloud.com.br/verify-milestone-work',
+                data: {'milestoneId' : milestoneId},
+                success: function(response){
+                    var response = JSON.parse(response);
+                    if(response[0].submit_message!=null){
+                        var submit_message = response[0].submit_message;
+                    } else {
+                        var submit_message = 'No details found!!!';
+                    }
+    
+                    var milestoneId = response[0].id;
+    
+                    $('.display_submit_message').text(submit_message);
+                    $('.completemilestoneId').val(milestoneId);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(JSON.stringify(jqXHR));
+                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                }
+            });
+    
+                $('#verifyworkmodal').modal('show');
+            }
+    
+            function changeTimesheetStatus(status, timesheetId) {
+                $('.timesheetid').val(timesheetId);
+                $('.changedstatusvalue').val(status);
+                $('#changetimesheetstatusmodal').modal('show');
+            }
+    
+            function deleteMilestone(milestoneId) {
+                $('.deleteMilestoneId').val(milestoneId);
+                $('#deleteMilestoneModal').modal('show');
+            }
+    
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+            //Begin : For Web based notification with pusher
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+            var notificationsWrapper = $('.dropdown-notifications');
+            var notificationsToggle = notificationsWrapper.find('a[data-toggle]');
+            var notificationsCountElem = notificationsToggle.find('i[data-count]');
+            var notificationsCount = parseInt(notificationsCountElem.data('count'));
+            var notifications = notificationsWrapper.find('ul.dropdown-menu');
+            /*if (notificationsCount <= 0) {
+                notificationsWrapper.hide();
+            }*/
+            var notifypusher = new Pusher('d0c7990bbda7deb1300c', {
+                cluster: 'ap2',
+                encrypted: false
+            });
+            // Subscribe to the channel we specified in our Laravel Event
+            var notifyChannel = notifypusher.subscribe('job-apply-event');
+            console.log("notifications testing");
+            // Bind a function to a Event (the full Laravel class)
+            notifyChannel.bind('App\\Events\\JobApplyEvent', function(data) {
+                console.log("in"); console.log(data); console.log("#");
+                var existingNotifications = notifications.html();
+                var custom_link = window.location.origin+`/view-public-profile/`+data.send_user_id;
+                var profile_link = '';
+                if(data.send_user_profile_pic != 0 ){
+                    profile_link = window.location.origin+`/user_images/`+data.send_user_profile_pic;
+                }else{
+                    profile_link = ``;
+                }
+                var newNotificationHtml = `
+                    <li class="notification active">
+                        <div class="media" onclick="`+custom_link+`" style="cursor:pointer;">
+                          <div class="media-left">
+                            <div class="media-object">
+                              <img src="`+profile_link+`" class="img-circle" alt="image" style="width: 50px; height: 50px;">
+                            </div>
+                          </div>
+                          <div class="media-body">
+                            <strong class="notification-title">` + data.message + `</strong>
+                            <div class="notification-meta">
+                              <small class="timestamp">about a minute ago</small>
+                            </div>
+                          </div>
+                        </div>
+                    </li>
+                  `;
+                  notifications.html(newNotificationHtml + existingNotifications);
+                  notificationsCount += 1;
+                  notificationsCountElem.attr('data-count', notificationsCount);
+                  notificationsWrapper.find('.notif-count').text(notificationsCount);
+                  notificationsWrapper.show();
+              });
+    
+                /*if(notification_user_id !='' && notification_msg!=''){
+                    $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }});
+                    $.ajax({
+                        method: 'POST',
+                        url: 'http://vps23865.publiccloud.com.br/submit-notifications-details',
+                        data: {'user_id' : notification_user_id, 'message' : notification_msg}, 
+                        success: function(response){ 
+                            console.log(response);  
+                            //alert(response);  
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) { 
+                            console.log(JSON.stringify(jqXHR));
+                            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                        }
+                    });
+                }*/
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+            //End : For Web based notification with pusher
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+        </script>
     </body>
 </html>
