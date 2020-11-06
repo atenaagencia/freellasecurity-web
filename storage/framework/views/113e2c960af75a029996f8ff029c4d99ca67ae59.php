@@ -2,7 +2,7 @@
 
 <section class="py-5 text-cemter bg-dark">
     <div class="container py-5">
-        <h1 class="text-light text-center pt-3">Reset Password</h1>
+        <h1 class="text-light text-center pt-3">Reset Employer Password</h1>
     </div>
     <div class="row justify-content-center">
         <div class="col-lg-5 col-md-5 col-sm-11 mx-auto pb-3">
@@ -14,7 +14,7 @@
 
                     </div>
                     <?php endif; ?>
-                    <form class="form-horizontal" method="POST" action="<?php echo e(route('password.email')); ?>">
+                    <form class="form-horizontal" method="POST" action="<?php echo e(route('company.password.email')); ?>">
                         <?php echo e(csrf_field()); ?>
 
                         <div class="form-group<?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
@@ -30,7 +30,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-dark">
                                     <?php echo e(__('Send Password Reset Link')); ?>
 
                                 </button>

@@ -27,7 +27,7 @@
                 <div class="row justify-content-center"> 
                     <!-- Contact Info -->
                     <div class="col-md-4 py-4">
-                        <div class="card bg-light border-0 h-100">
+                        <div class="card bg-secondary-custom border-0 h-100">
                             <div class="card-body">
                                 <h4>Address:</h4>
                                 <p>Rua Prof. Aprígio Gonzaga 681, Saúde, São Paulo, SP, Brasil. CEP 04303-001</p>
@@ -36,7 +36,7 @@
                     </div>
                     <!-- Contact Info -->
                     <div class="col-md-4 py-4">
-                        <div class="card bg-light border-0 h-100">
+                        <div class="card bg-secondary-custom border-0 h-100">
                             <div class="card-body">
                                 <h4>E-mail Address:</h4>
                                 <p><a class="text-dark" href="mailto:{{ $siteSetting->mail_to_address }}">{{ $siteSetting->mail_to_address }}</a></p>
@@ -45,7 +45,7 @@
                     </div>
                     <!-- Contact Info -->
                     <div class="col-md-4 py-4">
-                        <div class="card bg-light border-0 h-100">
+                        <div class="card bg-secondary-custom border-0 h-100">
                             <div class="card-body">
                                 <h4>Phone:</h4>
                                 <p class="pb-0 m-0 p-0"><a class="text-dark" href="tel:{{ $siteSetting->site_phone_primary }}">{{ $siteSetting->site_phone_primary }}</a></p>
