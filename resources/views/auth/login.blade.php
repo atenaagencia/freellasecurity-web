@@ -16,13 +16,16 @@
 @section('content')
 
 <!-- Masthead-->
-<header class="p-2" style="background: url('https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); background-repeat: no-repeat;background-attachment: scroll;background-position: center center;background-size: cover; padding-top: 15rem !important;">
+<!-- <header class="p-2" style="background: url('https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); background-repeat: no-repeat;background-attachment: scroll;background-position: center center;background-size: cover; padding-top: 10rem !important;">
     <div class="container mx-auto">
         <h1 class="text-light pb-5">Login Page</h1>
     </div>
-</header>
+</header> -->
 
-<section class="py-5 bg-secondary-custom text-cemter">
+<section class="py-5 text-cemter" style="background: url('https://images.pexels.com/photos/4064835/pexels-photo-4064835.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')no-repeat fixed center center; background-size: cover">
+    <div class="container py-5">
+        <h1 class="text-dark text-center pt-3">Login Page</h1>
+    </div>
     <div class="row justify-content-center">
         <div class="col-lg-4 col-md-6 col-sm-12 mx-auto">
             <div class="container bg-light">
@@ -127,7 +130,7 @@
 
             </div><!--main container-->
         </div>
-    </div>
+    </div><br>
 </section>
 
 @endsection

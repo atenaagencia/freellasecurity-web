@@ -25,12 +25,6 @@ if (!isset($seo)) {
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet" />
         <link href="<?php echo e(asset('css/custom.css')); ?>" rel="stylesheet" />
-
-        <style>
-            #mainNav{
-                transition: 0 !important;
-            }
-        </style>
     </head>
 
     <body id="page-top">
@@ -49,7 +43,7 @@ if (!isset($seo)) {
                         <li class="nav-item"><a class="nav-link h5 mt-1" href="<?php echo e(asset('/teste/jobs')); ?>">Jobs</a></li>
                         <li class="nav-item"><a class="nav-link h5 mt-1" href="<?php echo e(asset('/teste/companies')); ?>">Companies</a></li>
                         <li class="nav-item"><a class="nav-link h5 mt-1" href="<?php echo e(asset('/contact-us')); ?>">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link h5 mt-1 ml-lg-3 pl-lg-3 btn btn-primary text-light font-weight-bold" href="<?php echo e(asset('/login')); ?>"><i class="fa fa-user mr-2"></i>Sign In</a></li>
+                        <li class="nav-item"><a class="nav-link h5 mt-1 ml-lg-3 pl-lg-3 btn btn-primary text-light font-weight-bold" href="<?php echo e(asset('/login')); ?>">Sign In</a></li>
                     </ul>
                 </div>          
             </div>
