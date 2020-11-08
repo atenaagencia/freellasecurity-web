@@ -1,8 +1,13 @@
 <style>
 .nav-pills .nav-link {
-    /* background: white;
-    margin: 2px; */
+    /* background: white; */
+    /* margin: 2px; */
+    /* border-radius: 30px !important; */
     padding-left: 2rem;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff !important;
+    background-color: #3693fe !important;
 }
 </style>
 <?php $__env->startSection('content'); ?>
@@ -41,13 +46,13 @@
         <div class="col-12 card rounded-0 bg-transparent border-0 p-0">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item col-md-4 col-sm-12 p-0">
-                    <a class="nav-link py-2 btn-lg text-dark font-weight-bold active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Functional area</a>
+                    <a class="nav-link py-2 btn-lg text-dark font-weight-bold active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Functional area <i class="fas m-1 fa-angle-down text-light float-right"></i></a>
                 </li>
                 <li class="nav-item col-md-4 col-sm-12 p-0">
-                    <a class="nav-link py-2 btn-lg text-dark font-weight-bold" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Cities</a>
+                    <a class="nav-link py-2 btn-lg text-dark font-weight-bold" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Cities <i class="fas m-1 fa-angle-down text-light float-right"></i></a>
                 </li>
                 <li class="nav-item col-md-4 col-sm-12 p-0">
-                    <a class="nav-link py-2 btn-lg text-dark font-weight-bold" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Industries</a>
+                    <a class="nav-link py-2 btn-lg text-dark font-weight-bold" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Industries <i class="fas m-1 fa-angle-down text-light float-right"></i></a>
                 </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
