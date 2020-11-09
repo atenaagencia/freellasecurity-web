@@ -11,6 +11,12 @@
     color: #fff !important;
     background-color: #3693fe !important;
 }
+input{
+    color: white !important;
+    font-weight: 900 !important;
+    font-size: 1.7rem !important;
+    text-align: center !important;
+}
 </style>
 @section('content')
 <header class="masthead">
