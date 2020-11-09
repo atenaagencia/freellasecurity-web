@@ -33,7 +33,7 @@
                                     <a href="" class="btn btn-block btn-dark"><i class="fa fa-star text-warning mr-2"></i>Add to Favourite</a>
                                 </div>
                                 <div class="col p-1">
-                                    <a href="" class="btn btn-block btn-danger"><i class="fas fa-exclamation-circle text-light mr-2"></i>Send a message</a>
+                                    <a href="" class="btn btn-block btn-danger"><i class="fas fa-exclamation-circle text-light mr-2"></i>Report Abuse</a>
                                 </div>
                                 <div class="col p-1">
                                     <a href="" class="btn btn-block btn-light font-weight-bold"><i class="fa fa-envelope text-dark mr-2"></i>Send a message</a>

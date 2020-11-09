@@ -1,22 +1,26 @@
-@extends('layouts.app')
+@extends('layouts.custom')
+
 @section('content')
-<!-- Header start -->
-@include('includes.header')
-<!-- Header end --> 
-<!-- Inner Page Title start -->
-@include('includes.inner_page_title', ['page_title'=>__('Contact Us')])
-<!-- Inner Page Title end -->
-<div class="inner-page">
-    <div class="container">
-        <div class="contact-wrap">
-            <div class="title"> <span>&nbsp;</span>
-                <h2>{{__('Thanks for being awesome')}}</h2>
-                <p>{{__('We have received your message and would like to thank you for writing to us. If your inquiry is urgent, please use the telephone number to talk to one of our staff members. Otherwise, we will reply by email as soon as possible')}}<br /><br />
-                    {{__('Talk to you soon')}}<br />
-                    {{ $siteSetting->site_name }}</p>
-            </div>      
-        </div>
+<!-- Masthead-->
+<header class="p-2" style="background: url('https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); background-repeat: no-repeat;background-attachment: scroll;background-position: center center;background-size: cover; padding-top: 15rem !important;">
+    <div class="container mx-auto">
+        <h1 class="text-light py-2">Contact Us</h1>
     </div>
-</div>
-@include('includes.footer')
+</header>
+
+<!-- Page Title End -->
+<section class="bg-white pt-5 pb-5">
+    <div class="col-md-7 col-sm-10 mx-auto">
+
+        <h2 class="font-weight-bold py-4">{{__('Thanks for being awesome')}}</h2>
+
+        <p class="lead py-3">{{__('We have received your message and would like to thank you for writing to us. 
+        If your inquiry is urgent, please use the telephone number to talk to one of our staff members. 
+        Otherwise, we will reply by email as soon as possible')}}</p>
+        
+        <span>{{__('Talk to you soon')}},</span><br>
+        <span class="font-weight-bold">{{ $siteSetting->site_name }}</span>
+        
+    </div>
+</section>
 @endsection
