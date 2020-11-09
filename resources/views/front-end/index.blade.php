@@ -60,46 +60,49 @@
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active p-3 bg-white border-0" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                     <ul class="row teste">
-                        <li class="col-md-4 col-sm-6"><a href="#">Software & Web Development</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Software & Web Development (8)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Business Development (6)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Clerical (5)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Bank Operation (3)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Software Engineer (2)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Admin Operation (2)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Computer Networking (2)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Admin (2)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Business Management (2)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">IT Systems Analyst (1)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Accountant (1)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Client Services & Customer Support (1)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Development (1)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Electronics Technician (1)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Administration (1)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Advertising (1)</a></li>
+                        {{-- <li class="col-md-4 col-sm-6"><a href="#">Software & Web Development</a></li> --}}
+                        @if(isset($topFunctionalAreaIds) && count($topFunctionalAreaIds)) @foreach($topFunctionalAreaIds as
+                        $functional_area_id_num_jobs)
+                        <?php
+                                                $functionalArea = App\ FunctionalArea::where('functional_area_id', '=', $functional_area_id_num_jobs->functional_area_id)->lang()->active()->first();
+                                                ?> @if(null !== $functionalArea)
+                        
+                        <li class="col-md-4 col-sm-6"><a
+                                href="{{route('job.list', ['functional_area_id[]'=>$functionalArea->functional_area_id])}}"
+                                title="{{$functionalArea->functional_area}}">{{$functionalArea->functional_area}}
+                                <span>({{$functional_area_id_num_jobs->num_jobs}})</span></a>
+                        </li>
+                        
+                        @endif @endforeach @endif
                     </ul>
                 </div>
                 <div class="tab-pane p-3 fade bg-white border-0" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                     <ul class="row teste">
-                        <li class="col-md-4 col-sm-6"><a href="#">Barrington (2)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Alabaster (1)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Milton (1)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Clarksville (1)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Kaneohe Station (1)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">El Dorado (1)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Blaine (1)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Roven'ky (1)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Aventura (1)</a></li>
+                        {{-- <li class="col-md-4 col-sm-6"><a href="#">Barrington (2)</a></li> --}}
+                        @if(isset($topCityIds) && count($topCityIds)) @foreach($topCityIds as $city_id_num_jobs)
+                        <?php
+                                                $city = App\ City::getCityById($city_id_num_jobs->city_id);
+                                                ?> @if(null !== $city)
+                        
+                        <li class="col-md-4 col-sm-6 col-xs-6"><a href="{{route('job.list', ['city_id[]'=>$city->city_id])}}"
+                                title="{{$city->city}}">{{$city->city}} <span>({{$city_id_num_jobs->num_jobs}})</span></a>
+                        </li>
+                        
+                        @endif @endforeach @endif
+
                     </ul>
                 </div>
                 <div class="tab-pane p-3 fade bg-white border-0" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                     <ul class="row teste">
-                        <li class="col-md-4 col-sm-6"><a href="#">Construction/Cement/Metals (15)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Consultants (6)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Agriculture/Fertilizer/Pesticide (4)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Fashion (1)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Electronics (1)</a></li>
-                        <li class="col-md-4 col-sm-6"><a href="#">Information Technology (1)</a></li>
+                        {{-- <li class="col-md-4 col-sm-6"><a href="#">Construction/Cement/Metals (15)</li> --}}
+                            @if(isset($topIndustryIds) && count($topIndustryIds)) @foreach($topIndustryIds as $industry_id => $num_jobs)
+                            <?php
+                                                    $industry = App\ Industry::where('industry_id', '=', $industry_id)->lang()->active()->first();
+                                                    ?> @if(null !== $industry)
+                            <li class="col-md-4 col-sm-6"><a href="{{route('job.list', ['industry_id[]'=>$industry->industry_id])}}"
+                                    title="{{$industry->industry}}">{{$industry->industry}} <span>({{$num_jobs}})</span></a>
+                            </li>
+                            @endif @endforeach @endif
                     </ul>
                 </div>
             </div>

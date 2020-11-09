@@ -113,7 +113,7 @@ class IndexController extends Controller
         }
 
         if (isset($notification)) {
-            return view('welcome')
+            return view('front-end.index')
                 ->with('topCompanyIds', $topCompanyIds)
                 ->with('topFunctionalAreaIds', $topFunctionalAreaIds)
                 ->with('topCityIds', $topCityIds)
@@ -129,7 +129,7 @@ class IndexController extends Controller
                 ->with('notificationCount', $notificationCount)
                 ->with('seo', $seo);
         } else {
-            return view('welcome')
+            return view('front-end.index')
                 ->with('topCompanyIds', $topCompanyIds)
                 ->with('topFunctionalAreaIds', $topFunctionalAreaIds)
                 ->with('topCityIds', $topCityIds)
