@@ -31,7 +31,7 @@ if (!isset($seo)) {
 
         <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light shadow-sm">
             <div class="container">
-                <a class="navbar-brand mr-0 mr-md-2" href="<?php echo e(asset('/teste')); ?>">
+                <a class="navbar-brand mr-0 mr-md-2" href="<?php echo e(asset('/')); ?>">
                     <img src="<?php echo e(asset('img/logos/main-logo.png')); ?>" alt="" width="auto" height="36">
                 </a>
                 <!-- <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="Bootstrap"><svg class="d-block" width="36" height="36" viewBox="0 0 612 612" xmlns="http://www.w3.org/2000/svg" focusable="false"><title>Bootstrap</title><path fill="currentColor" d="M510 8a94.3 94.3 0 0 1 94 94v408a94.3 94.3 0 0 1-94 94H102a94.3 94.3 0 0 1-94-94V102a94.3 94.3 0 0 1 94-94h408m0-8H102C45.9 0 0 45.9 0 102v408c0 56.1 45.9 102 102 102h408c56.1 0 102-45.9 102-102V102C612 45.9 566.1 0 510 0z"></path><path fill="currentColor" d="M196.77 471.5V154.43h124.15c54.27 0 91 31.64 91 79.1 0 33-24.17 63.72-54.71 69.21v1.76c43.07 5.49 70.75 35.82 70.75 78 0 55.81-40 89-107.45 89zm39.55-180.4h63.28c46.8 0 72.29-18.68 72.29-53 0-31.42-21.53-48.78-60-48.78h-75.57zm78.22 145.46c47.68 0 72.73-19.34 72.73-56s-25.93-55.37-76.46-55.37h-74.49v111.4z"></path></svg></a> -->
@@ -40,8 +40,8 @@ if (!isset($seo)) {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="nav navbar-nav navbar-right ml-auto">
-                        <li class="nav-item"><a class="nav-link h5 mt-1" href="<?php echo e(asset('/teste/jobs')); ?>">Jobs</a></li>
-                        <li class="nav-item"><a class="nav-link h5 mt-1" href="<?php echo e(asset('/teste/companies')); ?>">Companies</a></li>
+                        <li class="nav-item"><a class="nav-link h5 mt-1" href="<?php echo e(asset('/jobs')); ?>">Jobs</a></li>
+                        <li class="nav-item"><a class="nav-link h5 mt-1" href="<?php echo e(asset('/companies')); ?>">Companies</a></li>
                         <li class="nav-item"><a class="nav-link h5 mt-1" href="<?php echo e(asset('/contact-us')); ?>">Contact</a></li>
                         <li class="nav-item"><a class="nav-link h5 mt-1 ml-lg-3 pl-lg-3 btn btn-primary text-light font-weight-bold" href="<?php echo e(asset('/login')); ?>">Sign In</a></li>
                     </ul>
@@ -60,11 +60,19 @@ if (!isset($seo)) {
                         <h5 class="pl-0 pr-0 pb-3">Quick Links</h5>
                         <!--Quick Links menu Start-->
                         <ul class="p-0" id="footer">
-                            <li><a href="http://vps23865.publiccloud.com.br">Home</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/contact-us">Contact Us</a></li>
-                            <li class="postad"><a href="http://vps23865.publiccloud.com.br/post-job">Post a Job</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/faq">FAQs</a></li>                    
-                            <li class=""><a href="http://vps23865.publiccloud.com.br/cms/terms-of-use">Terms Of Use</a></li>
+                            
+                            <li><a href="<?php echo e(route('index')); ?>"><?php echo e(__('Home')); ?></a></li>
+                            <li><a href="<?php echo e(route('contact.us')); ?>"><?php echo e(__('Contact Us')); ?></a></li>
+                            <li class="postad"><a href="<?php echo e(route('post.job')); ?>"><?php echo e(__('Post a Job')); ?></a></li>
+                            <li><a href="<?php echo e(route('faq')); ?>"><?php echo e(__('FAQs')); ?></a></li>
+                            <?php $__currentLoopData = $show_in_footer_menu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $footer_menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php
+                            $cmsContent = App\CmsContent::getContentBySlug($footer_menu->page_slug);
+                            ?>
+                            
+                            <li class="<?php echo e(Request::url() == route('cms', $footer_menu->page_slug) ? 'active' : ''); ?>"><a
+                                    href="<?php echo e(route('cms', $footer_menu->page_slug)); ?>"><?php echo e(isset($cmsContent->page_title) ? $cmsContent->page_title : ''); ?></a></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
                     <!--Quick Links menu end-->
@@ -73,16 +81,15 @@ if (!isset($seo)) {
                         <h5 class="pl-0 pr-0 pb-3">Jobs By Functional Area</h5>
                         <!--Quick Links menu Start-->
                         <ul class="p-0" id="footer">
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?functional_area_id%5B%5D=16">Clerical</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?functional_area_id%5B%5D=14">Business Management</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?functional_area_id%5B%5D=8">Advertising</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?functional_area_id%5B%5D=1">Accountant</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?functional_area_id%5B%5D=32">Electronics Technician</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?functional_area_id%5B%5D=18">Computer Hardware</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?functional_area_id%5B%5D=6">Administration Clerical</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?functional_area_id%5B%5D=15">Business Systems Analyst</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?functional_area_id%5B%5D=19">Computer Networking</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?functional_area_id%5B%5D=23">Creative Design</a></li>
+                            
+                            <?php
+                            $functionalAreas = App\FunctionalArea::getUsingFunctionalAreas(10);
+                            ?>
+                            <?php $__currentLoopData = $functionalAreas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $functionalArea): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li><a
+                                    href="<?php echo e(route('job.list', ['functional_area_id[]'=>$functionalArea->functional_area_id])); ?>"><?php echo e($functionalArea->functional_area); ?></a>
+                            </li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
         
@@ -91,16 +98,13 @@ if (!isset($seo)) {
                         <h5 class="pl-0 pr-0 pb-3">Jobs By Industry</h5>
                         <!--Industry menu Start-->
                         <ul class="p-0" id="footer">
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?industry_id%5B%5D=28">Electronics</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?industry_id%5B%5D=17">Construction/Cement/Metals</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?industry_id%5B%5D=49">Consultants</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?industry_id%5B%5D=7">Advertising/PR</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?industry_id%5B%5D=38">Health &amp; Fitness</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?industry_id%5B%5D=1">Information Technology</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?industry_id%5B%5D=32">Fashion</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?industry_id%5B%5D=24">Travel/Tourism/Transportation</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?industry_id%5B%5D=10">Manufacturing</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?industry_id%5B%5D=13">Agriculture/Fertilizer/Pesticide</a></li>
+                            
+                            <?php
+                            $industries = App\Industry::getUsingIndustries(10);
+                            ?>
+                            <?php $__currentLoopData = $industries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $industry): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li><a href="<?php echo e(route('job.list', ['industry_id[]'=>$industry->industry_id])); ?>"><?php echo e($industry->industry); ?></a></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                         <!--Industry menu End-->
                         <div class="clear"></div>
@@ -109,21 +113,21 @@ if (!isset($seo)) {
                     <!--About Us-->
                     <div class="col-md-3 col-sm-12">
                         <h5 class="pl-0 pr-0 pb-3">Contact Us</h5>
-                        <p class="font-weight-bold">Rua Prof. Aprígio Gonzaga 681, Saúde, São Paulo, SP, Brasil. CEP 04303-001</p>
+                        <p class="font-weight-bold"><?php echo e($siteSetting->site_street_address); ?></p>
                         <div class="font-weight-bold">
-                            <a href="mailto:support@jobsportal.com" class="text-dark">support@jobsportal.com</a>
+                            <a href="mailto:<?php echo e($siteSetting->mail_to_address); ?>" class="text-dark"><?php echo e($siteSetting->mail_to_address); ?></a>
                         </div>
                         <div class="font-weight-bold">
-                            <a href="tel:+92 12 1234567" class="text-dark">+92 12 1234567</a>
+                            <a href="tel:<?php echo e($siteSetting->site_phone_primary); ?>" class="text-dark"><?php echo e($siteSetting->site_phone_primary); ?>7</a>
                         </div>
                         <!-- Social Icons -->
                         <div class="py-3">
-                            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-2x text-dark m-1 fa-facebook-square" aria-hidden="true"></i></a>
-                            <a href="https://plus.google.com/" target="_blank"><i class="fab fa-2x text-dark m-1 fa-google-plus-square" aria-hidden="true"></i></a>
-                            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-2x text-dark m-1 fa-twitter-square" aria-hidden="true"></i></a>
-                            <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-2x text-dark m-1 fa-instagram" aria-hidden="true"></i></a>
-                            <a href="https://linkedin.com/" target="_blank"><i class="fab fa-2x text-dark m-1 fa-linkedin" aria-hidden="true"></i></a>
-                            <a href="https://www.youtube.com" target="_blank"><i class="fab fa-2x text-dark m-1 fa-youtube-square" aria-hidden="true"></i></a>
+                            <a href="<?php echo e($siteSetting->facebook_address); ?>" target="_blank"><i class="fab fa-2x text-dark m-1 fa-facebook-square" aria-hidden="true"></i></a>
+                            <a href="<?php echo e($siteSetting->google_plus_address); ?>" target="_blank"><i class="fab fa-2x text-dark m-1 fa-google-plus-square" aria-hidden="true"></i></a>
+                            <a href="<?php echo e($siteSetting->twitter_address); ?>" target="_blank"><i class="fab fa-2x text-dark m-1 fa-twitter-square" aria-hidden="true"></i></a>
+                            <a href="<?php echo e($siteSetting->instagram_address); ?>" target="_blank"><i class="fab fa-2x text-dark m-1 fa-instagram" aria-hidden="true"></i></a>
+                            <a href="<?php echo e($siteSetting->linkedin_address); ?>" target="_blank"><i class="fab fa-2x text-dark m-1 fa-linkedin" aria-hidden="true"></i></a>
+                            <a href="<?php echo e($siteSetting->youtube_address); ?>" target="_blank"><i class="fab fa-2x text-dark m-1 fa-youtube-square" aria-hidden="true"></i></a>
                         </div>
                         <!-- Social Icons end --> 
         
@@ -140,10 +144,13 @@ if (!isset($seo)) {
         <footer class="footer bg-light-custom py-4">
             <div class="container">
                 <div class="row align-items-center justify-content-between">
-                    <div class="col-lg-4 text-lg-left">Copyright © Freellas Security 2020</div>
+                    <div class="col-lg-8 text-lg-left"><?php echo e(__('Copyright')); ?> &copy; <?php echo e(date('Y')); ?> <?php echo e($siteSetting->site_name); ?>. <?php echo e(__('All Rights Reserved')); ?>.
+                    <?php echo e(__('Design by')); ?>: <a class="text-dark text-bold" href="<?php echo e(url('/')); ?>http://atenaagencia.com/"
+                        target="_blank">Atena Agência - Full Service</a>
+                    </div>
                     <div class="col-lg-4 text-lg-right">
                         <a class="mr-3 text-dark" href="#!">Privacy Policy</a>
-                        <a href="#!" class="text-dark">Terms of Use</a>
+                        <a href="cms/terms-of-use" class="text-dark">Terms of Use</a>
                     </div>
                 </div>
             </div>

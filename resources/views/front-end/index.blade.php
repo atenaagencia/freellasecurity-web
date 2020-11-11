@@ -27,8 +27,10 @@ input{
 <header class="masthead">
     <div class="container">
         <div class="masthead-heading display-5 mx-auto col-10">Find the perfect freelance <b class="text-primary">security</b> services for your bussiness.</div>
+        <form action="{{route('job.seeker.list')}}" method="get">
         <input type="text" class="main-input form-control col-8 mx-auto bg-transparent py-4">
-        <a class="btn btn-primary btn-xl text-uppercase mt-5">SEARCH JOB</a>
+        <button class="btn btn-primary btn-xl text-uppercase mt-5" href="#services">SEARCH JOB</button>
+        </form>
     </div>
 </header>
 <!-- Clients-->
@@ -90,7 +92,8 @@ input{
                 <div class="tab-pane p-3 fade bg-white border-0" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                     <ul class="row teste">
                         {{-- <li class="col-md-4 col-sm-6"><a href="#">Barrington (2)</a></li> --}}
-                        @if(isset($topCityIds) && count($topCityIds)) @foreach($topCityIds as $city_id_num_jobs)
+                        @if(isset($topCityIds) && count($topCityIds))
+                        @foreach($topCityIds as $city_id_num_jobs)
                         <?php
                                                 $city = App\ City::getCityById($city_id_num_jobs->city_id);
                                                 ?> @if(null !== $city)
@@ -129,21 +132,35 @@ input{
             <!-- <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3> -->
         </div>
         <div class="row">
+            @if(isset($featuredJobs) && count($featuredJobs))
+            @foreach($featuredJobs as $featuredJob)
+            <?php $company = $featuredJob->getCompany(); ?>
+            @if(null !== $company)
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="card portfolio-item border-0">
-                    <a class="card-header portfolio-link p-0 border-0" href="{{asset('/teste/job')}}">
-                        <img class="img-fluid" src="{{asset('img/portfolio/01-thumbnail.jpg')}}" alt="" />
+                    <a class="card-header portfolio-link p-0 border-0" href="{{route('job.detail', [$featuredJob->slug])}}" title="{{$featuredJob->title}}">
+                        <img class="img-fluid" style="width: 400px; height: 300px;" src="{{asset('company_logos/'.$company->logo)}}" alt="" />
                     </a>
                     <div class="card-body portfolio-caption">
-                        <div class="portfolio-caption-heading py-1 text-left text-dark">Electrical Engineer</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">Power Wave</div>
+                        <div class="portfolio-caption-heading py-1 text-left text-dark">
+                            {{$featuredJob->title}}
+                        </div>
                         <div class="portfolio-caption-subheading text-left text-dark text-muted">
-                            <div class="badge p-2 mt-3 badge-info">Contract</div>
+                            <a class="text-dark text-muted" href="{{route('company.detail', $company->slug)}}" title="{{$company->name}}">{{$company->name}}</a>
+                        </div>
+                        <div class="portfolio-caption-subheading text-left text-dark text-muted ">
+                       
+                            <div class="badge p-2 mt-3 fulltime badge-info" title="{{$featuredJob->getJobType('job_type')}}">
+                              {{$featuredJob->getJobType('job_type')}}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
+            @endif
+            @endforeach
+            @endif
+            {{-- <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="card portfolio-item border-0">
                     <a class="card-header portfolio-link p-0 border-0" href="{{asset('/teste/job')}}">
                         <img class="img-fluid" src="{{asset('img/portfolio/02-thumbnail.jpg')}}" alt="" />
@@ -212,9 +229,9 @@ input{
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
-        <a class="btn btn-primary btn-xl text-uppercase mt-3 mb-5 float-right" href="#services">See  More</a><br><br>
+        <a class="btn btn-primary btn-xl text-uppercase mt-3 mb-5 float-right" href="{{route('job.list', ['is_featured'=>1])}}">See  More</a><br><br>
     </div>
 </section>
 
