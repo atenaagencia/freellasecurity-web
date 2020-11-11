@@ -77,13 +77,13 @@ input{
                         @if(isset($topFunctionalAreaIds) && count($topFunctionalAreaIds)) @foreach($topFunctionalAreaIds as
                         $functional_area_id_num_jobs)
                         <?php
-                                                $functionalArea = App\ FunctionalArea::where('functional_area_id', '=', $functional_area_id_num_jobs->functional_area_id)->lang()->active()->first();
-                                                ?> @if(null !== $functionalArea)
+                        $functionalArea = App\ FunctionalArea::where('functional_area_id', '=', $functional_area_id_num_jobs->functional_area_id)->lang()->active()->first();
+                        ?> @if(null !== $functionalArea)
                         
                         <li class="col-md-4 col-sm-6"><a
-                                href="{{route('job.list', ['functional_area_id[]'=>$functionalArea->functional_area_id])}}"
-                                title="{{$functionalArea->functional_area}}">{{$functionalArea->functional_area}}
-                                <span>({{$functional_area_id_num_jobs->num_jobs}})</span></a>
+                            href="{{route('job.list', ['functional_area_id[]'=>$functionalArea->functional_area_id])}}"
+                            title="{{$functionalArea->functional_area}}">{{$functionalArea->functional_area}}
+                            <span>({{$functional_area_id_num_jobs->num_jobs}})</span></a>
                         </li>
                         
                         @endif @endforeach @endif
@@ -95,8 +95,8 @@ input{
                         @if(isset($topCityIds) && count($topCityIds))
                         @foreach($topCityIds as $city_id_num_jobs)
                         <?php
-                                                $city = App\ City::getCityById($city_id_num_jobs->city_id);
-                                                ?> @if(null !== $city)
+                        $city = App\ City::getCityById($city_id_num_jobs->city_id);
+                        ?> @if(null !== $city)
                         
                         <li class="col-md-4 col-sm-6 col-xs-6"><a href="{{route('job.list', ['city_id[]'=>$city->city_id])}}"
                                 title="{{$city->city}}">{{$city->city}} <span>({{$city_id_num_jobs->num_jobs}})</span></a>
@@ -111,12 +111,14 @@ input{
                         {{-- <li class="col-md-4 col-sm-6"><a href="#">Construction/Cement/Metals (15)</li> --}}
                             @if(isset($topIndustryIds) && count($topIndustryIds)) @foreach($topIndustryIds as $industry_id => $num_jobs)
                             <?php
-                                                    $industry = App\ Industry::where('industry_id', '=', $industry_id)->lang()->active()->first();
-                                                    ?> @if(null !== $industry)
+                            $industry = App\ Industry::where('industry_id', '=', $industry_id)->lang()->active()->first();
+                            ?> @if(null !== $industry)
                             <li class="col-md-4 col-sm-6"><a href="{{route('job.list', ['industry_id[]'=>$industry->industry_id])}}"
                                     title="{{$industry->industry}}">{{$industry->industry}} <span>({{$num_jobs}})</span></a>
                             </li>
-                            @endif @endforeach @endif
+                            @endif
+                        @endforeach
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -137,7 +139,7 @@ input{
             <?php $company = $featuredJob->getCompany(); ?>
             @if(null !== $company)
             <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card portfolio-item border-0">
+                <div class="card h-100 portfolio-item border-0">
                     <a class="card-header portfolio-link p-0 border-0" href="{{route('job.detail', [$featuredJob->slug])}}" title="{{$featuredJob->title}}">
                         <img class="img-fluid" style="width: 400px; height: 300px;" src="{{asset('company_logos/'.$company->logo)}}" alt="" />
                     </a>

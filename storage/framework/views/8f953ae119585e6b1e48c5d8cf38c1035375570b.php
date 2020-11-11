@@ -25,8 +25,10 @@ input{
 <header class="masthead">
     <div class="container">
         <div class="masthead-heading display-5 mx-auto col-10">Find the perfect freelance <b class="text-primary">security</b> services for your bussiness.</div>
+        <form action="<?php echo e(route('job.seeker.list')); ?>" method="get">
         <input type="text" class="main-input form-control col-8 mx-auto bg-transparent py-4">
-        <a class="btn btn-primary btn-xl text-uppercase mt-5">SEARCH JOB</a>
+        <button class="btn btn-primary btn-xl text-uppercase mt-5" href="#services">SEARCH JOB</button>
+        </form>
     </div>
 </header>
 <!-- Clients-->
@@ -72,14 +74,14 @@ input{
                         
                         <?php if(isset($topFunctionalAreaIds) && count($topFunctionalAreaIds)): ?> <?php $__currentLoopData = $topFunctionalAreaIds; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $functional_area_id_num_jobs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php
-                                                $functionalArea = App\ FunctionalArea::where('functional_area_id', '=', $functional_area_id_num_jobs->functional_area_id)->lang()->active()->first();
-                                                ?> <?php if(null !== $functionalArea): ?>
+                        $functionalArea = App\ FunctionalArea::where('functional_area_id', '=', $functional_area_id_num_jobs->functional_area_id)->lang()->active()->first();
+                        ?> <?php if(null !== $functionalArea): ?>
                         
                         <li class="col-md-4 col-sm-6"><a
-                                href="<?php echo e(route('job.list', ['functional_area_id[]'=>$functionalArea->functional_area_id])); ?>"
-                                title="<?php echo e($functionalArea->functional_area); ?>"><?php echo e($functionalArea->functional_area); ?>
+                            href="<?php echo e(route('job.list', ['functional_area_id[]'=>$functionalArea->functional_area_id])); ?>"
+                            title="<?php echo e($functionalArea->functional_area); ?>"><?php echo e($functionalArea->functional_area); ?>
 
-                                <span>(<?php echo e($functional_area_id_num_jobs->num_jobs); ?>)</span></a>
+                            <span>(<?php echo e($functional_area_id_num_jobs->num_jobs); ?>)</span></a>
                         </li>
                         
                         <?php endif; ?> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> <?php endif; ?>
@@ -88,10 +90,11 @@ input{
                 <div class="tab-pane p-3 fade bg-white border-0" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                     <ul class="row teste">
                         
-                        <?php if(isset($topCityIds) && count($topCityIds)): ?> <?php $__currentLoopData = $topCityIds; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $city_id_num_jobs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php if(isset($topCityIds) && count($topCityIds)): ?>
+                        <?php $__currentLoopData = $topCityIds; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $city_id_num_jobs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php
-                                                $city = App\ City::getCityById($city_id_num_jobs->city_id);
-                                                ?> <?php if(null !== $city): ?>
+                        $city = App\ City::getCityById($city_id_num_jobs->city_id);
+                        ?> <?php if(null !== $city): ?>
                         
                         <li class="col-md-4 col-sm-6 col-xs-6"><a href="<?php echo e(route('job.list', ['city_id[]'=>$city->city_id])); ?>"
                                 title="<?php echo e($city->city); ?>"><?php echo e($city->city); ?> <span>(<?php echo e($city_id_num_jobs->num_jobs); ?>)</span></a>
@@ -106,12 +109,14 @@ input{
                         
                             <?php if(isset($topIndustryIds) && count($topIndustryIds)): ?> <?php $__currentLoopData = $topIndustryIds; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $industry_id => $num_jobs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <?php
-                                                    $industry = App\ Industry::where('industry_id', '=', $industry_id)->lang()->active()->first();
-                                                    ?> <?php if(null !== $industry): ?>
+                            $industry = App\ Industry::where('industry_id', '=', $industry_id)->lang()->active()->first();
+                            ?> <?php if(null !== $industry): ?>
                             <li class="col-md-4 col-sm-6"><a href="<?php echo e(route('job.list', ['industry_id[]'=>$industry->industry_id])); ?>"
                                     title="<?php echo e($industry->industry); ?>"><?php echo e($industry->industry); ?> <span>(<?php echo e($num_jobs); ?>)</span></a>
                             </li>
-                            <?php endif; ?> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> <?php endif; ?>
+                            <?php endif; ?>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
@@ -127,92 +132,39 @@ input{
             <!-- <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3> -->
         </div>
         <div class="row">
+            <?php if(isset($featuredJobs) && count($featuredJobs)): ?>
+            <?php $__currentLoopData = $featuredJobs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $featuredJob): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php $company = $featuredJob->getCompany(); ?>
+            <?php if(null !== $company): ?>
             <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card portfolio-item border-0">
-                    <a class="card-header portfolio-link p-0 border-0" href="<?php echo e(asset('/teste/job')); ?>">
-                        <img class="img-fluid" src="<?php echo e(asset('img/portfolio/01-thumbnail.jpg')); ?>" alt="" />
+                <div class="card h-100 portfolio-item border-0">
+                    <a class="card-header portfolio-link p-0 border-0" href="<?php echo e(route('job.detail', [$featuredJob->slug])); ?>" title="<?php echo e($featuredJob->title); ?>">
+                        <img class="img-fluid" style="width: 400px; height: 300px;" src="<?php echo e(asset('company_logos/'.$company->logo)); ?>" alt="" />
                     </a>
                     <div class="card-body portfolio-caption">
-                        <div class="portfolio-caption-heading py-1 text-left text-dark">Electrical Engineer</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">Power Wave</div>
+                        <div class="portfolio-caption-heading py-1 text-left text-dark">
+                            <?php echo e($featuredJob->title); ?>
+
+                        </div>
                         <div class="portfolio-caption-subheading text-left text-dark text-muted">
-                            <div class="badge p-2 mt-3 badge-info">Contract</div>
+                            <a class="text-dark text-muted" href="<?php echo e(route('company.detail', $company->slug)); ?>" title="<?php echo e($company->name); ?>"><?php echo e($company->name); ?></a>
+                        </div>
+                        <div class="portfolio-caption-subheading text-left text-dark text-muted ">
+                       
+                            <div class="badge p-2 mt-3 fulltime badge-info" title="<?php echo e($featuredJob->getJobType('job_type')); ?>">
+                              <?php echo e($featuredJob->getJobType('job_type')); ?>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card portfolio-item border-0">
-                    <a class="card-header portfolio-link p-0 border-0" href="<?php echo e(asset('/teste/job')); ?>">
-                        <img class="img-fluid" src="<?php echo e(asset('img/portfolio/02-thumbnail.jpg')); ?>" alt="" />
-                    </a>
-                    <div class="card-body portfolio-caption">
-                        <div class="portfolio-caption-heading py-1 text-left text-dark">Electrical Engineer</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">Power Wave</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">
-                            <div class="badge p-2 mt-3 badge-success">Full Time Permanent</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card portfolio-item border-0">
-                    <a class="card-header portfolio-link p-0 border-0" href="<?php echo e(asset('/teste/job')); ?>">
-                        <img class="img-fluid" src="<?php echo e(asset('img/portfolio/02-thumbnail.jpg')); ?>" alt="" />
-                    </a>
-                    <div class="card-body portfolio-caption">
-                        <div class="portfolio-caption-heading py-1 text-left text-dark">Electrical Engineer</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">Power Wave</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">
-                            <div class="badge p-2 mt-3 badge-success">Full Time Permanent</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card portfolio-item border-0">
-                    <a class="card-header portfolio-link p-0 border-0" href="<?php echo e(asset('/teste/job')); ?>">
-                        <img class="img-fluid" src="<?php echo e(asset('img/portfolio/02-thumbnail.jpg')); ?>" alt="" />
-                    </a>
-                    <div class="card-body portfolio-caption">
-                        <div class="portfolio-caption-heading py-1 text-left text-dark">Electrical Engineer</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">Power Wave</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">
-                            <div class="badge p-2 mt-3 badge-success">Full Time Permanent</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card portfolio-item border-0">
-                    <a class="card-header portfolio-link p-0 border-0" href="<?php echo e(asset('/teste/job')); ?>">
-                        <img class="img-fluid" src="<?php echo e(asset('img/portfolio/02-thumbnail.jpg')); ?>" alt="" />
-                    </a>
-                    <div class="card-body portfolio-caption">
-                        <div class="portfolio-caption-heading py-1 text-left text-dark">Electrical Engineer</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">Power Wave</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">
-                            <div class="badge p-2 mt-3 badge-success">Full Time Permanent</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card portfolio-item border-0">
-                    <a class="card-header portfolio-link p-0 border-0" href="<?php echo e(asset('/teste/job')); ?>">
-                        <img class="img-fluid" src="<?php echo e(asset('img/portfolio/03-thumbnail.jpg')); ?>" alt="" />
-                    </a>
-                    <div class="card-body portfolio-caption">
-                        <div class="portfolio-caption-heading py-1 text-left text-dark">Electrical Engineer</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">Power Wave</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">
-                            <div class="badge p-2 mt-3 badge-danger">Freelance</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php endif; ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php endif; ?>
+            
         </div>
-        <a class="btn btn-primary btn-xl text-uppercase mt-3 mb-5 float-right" href="#services">See  More</a><br><br>
+        <a class="btn btn-primary btn-xl text-uppercase mt-3 mb-5 float-right" href="<?php echo e(route('job.list', ['is_featured'=>1])); ?>">See  More</a><br><br>
     </div>
 </section>
 
