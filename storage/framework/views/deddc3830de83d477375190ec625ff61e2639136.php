@@ -1,3 +1,10 @@
+<style>
+@media (min-width: 600px) {
+    .img-fluid{
+        max-height: 240px !important;
+    }
+}
+</style>
 <?php $__env->startSection('content'); ?>
 <!-- Masthead-->
 <header class="p-5" style="background: url('https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); background-repeat: no-repeat;background-attachment: scroll;background-position: center center;background-size: cover; padding-top: 15rem !important;">
@@ -7,11 +14,53 @@
 </header>
 
 <!-- Feature Jobs-->
-<section class="page-section bg-secondary-custom" id="services">
+<section class="page-section bg-secondary-custom">
     <div class="container mb-5">
         <div class="row">
             <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card portfolio-item border rounded shadow-sm">
+                <div class="card h-100 portfolio-item border rounded shadow-sm">
+                    <a class="card-header portfolio-link p-0 border-0" href="<?php echo e(asset('/teste/company')); ?>">
+                        <img class="img-fluid" src="https://images.pexels.com/photos/442154/pexels-photo-442154.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="" />
+                    </a>
+                    <div class="card-body portfolio-caption">
+                        <div class="portfolio-caption-heading py-1 text-left">Electrical Engineer</div>
+                        <div class="portfolio-caption-subheading text-left text-muted">Your Location Address USA</div>
+                        <div class="portfolio-caption-subheading text-left text-muted">
+                            <div class="badge p-2 mt-3 badge-info">Current jobs : 1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <div class="card h-100 portfolio-item border rounded shadow-sm">
+                    <a class="card-header portfolio-link p-0 border-0" href="<?php echo e(asset('/teste/company')); ?>">
+                        <img class="img-fluid" src="https://images.pexels.com/photos/3912373/pexels-photo-3912373.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="" />
+                    </a>
+                    <div class="card-body portfolio-caption">
+                        <div class="portfolio-caption-heading py-1 text-left">Electrical Engineer</div>
+                        <div class="portfolio-caption-subheading text-left text-muted">Your Location Address USA</div>
+                        <div class="portfolio-caption-subheading text-left text-muted">
+                            <div class="badge p-2 mt-3 badge-info">Current jobs : 1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <div class="card h-100 portfolio-item border rounded shadow-sm">
+                    <a class="card-header portfolio-link p-0 border-0" href="<?php echo e(asset('/teste/company')); ?>">
+                        <img class="img-fluid" src="https://images.pexels.com/photos/3825581/pexels-photo-3825581.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" />
+                    </a>
+                    <div class="card-body portfolio-caption">
+                        <div class="portfolio-caption-heading py-1 text-left">Electrical Engineer</div>
+                        <div class="portfolio-caption-subheading text-left text-muted">Your Location Address USA</div>
+                        <div class="portfolio-caption-subheading text-left text-muted">
+                            <div class="badge p-2 mt-3 badge-info">Current jobs : 1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <div class="card h-100 portfolio-item border rounded shadow-sm">
                     <a class="card-header portfolio-link p-0 border-0" href="<?php echo e(asset('/teste/company')); ?>">
                         <img class="img-fluid" src="<?php echo e(asset('admin_assets/no-image.png')); ?>" alt="" />
                     </a>
@@ -25,7 +74,7 @@
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card portfolio-item border rounded shadow-sm">
+                <div class="card h-100 portfolio-item border rounded shadow-sm">
                     <a class="card-header portfolio-link p-0 border-0" href="<?php echo e(asset('/teste/company')); ?>">
                         <img class="img-fluid" src="<?php echo e(asset('admin_assets/no-image.png')); ?>" alt="" />
                     </a>
@@ -39,49 +88,7 @@
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card portfolio-item border rounded shadow-sm">
-                    <a class="card-header portfolio-link p-0 border-0" href="<?php echo e(asset('/teste/company')); ?>">
-                        <img class="img-fluid" src="<?php echo e(asset('admin_assets/no-image.png')); ?>" alt="" />
-                    </a>
-                    <div class="card-body portfolio-caption">
-                        <div class="portfolio-caption-heading py-1 text-left">Electrical Engineer</div>
-                        <div class="portfolio-caption-subheading text-left text-muted">Your Location Address USA</div>
-                        <div class="portfolio-caption-subheading text-left text-muted">
-                            <div class="badge p-2 mt-3 badge-info">Current jobs : 1</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card portfolio-item border rounded shadow-sm">
-                    <a class="card-header portfolio-link p-0 border-0" href="<?php echo e(asset('/teste/company')); ?>">
-                        <img class="img-fluid" src="<?php echo e(asset('admin_assets/no-image.png')); ?>" alt="" />
-                    </a>
-                    <div class="card-body portfolio-caption">
-                        <div class="portfolio-caption-heading py-1 text-left">Electrical Engineer</div>
-                        <div class="portfolio-caption-subheading text-left text-muted">Your Location Address USA</div>
-                        <div class="portfolio-caption-subheading text-left text-muted">
-                            <div class="badge p-2 mt-3 badge-info">Current jobs : 1</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card portfolio-item border rounded shadow-sm">
-                    <a class="card-header portfolio-link p-0 border-0" href="<?php echo e(asset('/teste/company')); ?>">
-                        <img class="img-fluid" src="<?php echo e(asset('admin_assets/no-image.png')); ?>" alt="" />
-                    </a>
-                    <div class="card-body portfolio-caption">
-                        <div class="portfolio-caption-heading py-1 text-left">Electrical Engineer</div>
-                        <div class="portfolio-caption-subheading text-left text-muted">Your Location Address USA</div>
-                        <div class="portfolio-caption-subheading text-left text-muted">
-                            <div class="badge p-2 mt-3 badge-info">Current jobs : 1</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card portfolio-item border rounded shadow-sm">
+                <div class="card h-100 portfolio-item border rounded shadow-sm">
                     <a class="card-header portfolio-link p-0 border-0" href="<?php echo e(asset('/teste/company')); ?>">
                         <img class="img-fluid" src="<?php echo e(asset('admin_assets/no-image.png')); ?>" alt="" />
                     </a>

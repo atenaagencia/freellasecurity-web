@@ -13,9 +13,14 @@
 }
 input{
     color: white !important;
-    font-weight: 900 !important;
+    /* font-weight: 900 !important; */
     font-size: 1.7rem !important;
     text-align: center !important;
+}
+
+::selection {
+    background: #3693fe !important;
+    text-shadow: none;
 }
 </style>
 @section('content')
@@ -23,7 +28,7 @@ input{
     <div class="container">
         <div class="masthead-heading display-5 mx-auto col-10">Find the perfect freelance <b class="text-primary">security</b> services for your bussiness.</div>
         <input type="text" class="main-input form-control col-8 mx-auto bg-transparent py-4">
-        <a class="btn btn-primary btn-xl text-uppercase mt-5" href="#services">SEARCH JOB</a>
+        <a class="btn btn-primary btn-xl text-uppercase mt-5">SEARCH JOB</a>
     </div>
 </header>
 <!-- Clients-->
