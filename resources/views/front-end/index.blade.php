@@ -1,5 +1,4 @@
 @extends('layouts.custom')
-
 <style>
 .nav-pills .nav-link {
     /* background: white; */
@@ -23,6 +22,12 @@ input{
     text-shadow: none;
 }
 
+.img-fluid#custom{
+    max-width: 75% !important;
+    width: 100% !important;
+}
+
+
 @media (max-width: 767px)
 {
     .card a.card-header>.img-fluid{
@@ -41,6 +46,7 @@ input{
     /* a.btn#see_more{
         width: 100%;
     } */
+
 }
 
 </style>
@@ -54,21 +60,23 @@ input{
         </form>
     </div>
 </header>
+
+
 <!-- Clients-->
-<div class="py-5">
+<div class="py-4">
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-6 my-3">
-                <a href="#!"><img class="img-fluid d-block mx-auto" src="{{asset('img/logos/envato.jpg')}}" alt="" /></a>
+                <a href="#!"><img id="custom" class="img-fluid d-block mx-auto" src="{{asset('company_logos/new/1.png')}}" alt="" /></a>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-6 my-3">
-                <a href="#!"><img class="img-fluid d-block mx-auto" src="{{asset('img/logos/designmodo.jpg')}}" alt="" /></a>
+                <a href="#!"><img id="custom" class="img-fluid d-block mx-auto" src="{{asset('company_logos/new/2.png')}}" alt="" /></a>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-6 my-3">
-                <a href="#!"><img class="img-fluid d-block mx-auto" src="{{asset('img/logos/themeforest.jpg')}}" alt="" /></a>
+                <a href="#!"><img id="custom" class="img-fluid d-block mx-auto" src="{{asset('company_logos/new/3.png')}}" alt="" /></a>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-6 my-3">
-                <a href="#!"><img class="img-fluid d-block mx-auto" src="{{asset('img/logos/creative-market.jpg')}}" alt="" /></a>
+                <a href="#!"><img id="custom" class="img-fluid d-block mx-auto" src="{{asset('company_logos/new/4.png')}}" alt="" /></a>
             </div>
         </div>
     </div>
