@@ -1,179 +1,222 @@
-<?php $__env->startSection('content'); ?> 
-<!-- Header start --> 
-<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> 
-<!-- Header end --> 
-<!-- Inner Page Title start --> 
-<?php echo $__env->make('includes.inner_page_title', ['page_title'=>__('Job Listing')], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> 
-<!-- Inner Page Title end -->
-<div class="listpgWraper">
+<?php $__env->startSection('content'); ?>
+<!-- Masthead-->
+<header class="p-5"
+    style="background: url('https://images.pexels.com/photos/5473298/pexels-photo-5473298.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); background-repeat: no-repeat;background-attachment: scroll;background-position: center center;background-size: cover; padding-top: 15rem !important;">
+    <div class="container mx-auto">
+        <h1 class="text-light py-2">Job Listing</h1>
+    </div>
+</header>
+
+<!-- Services-->
+<section class="page-section bg-white">
     <div class="container">
-        <?php echo $__env->make('flash::message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-        <form action="<?php echo e(route('job.list')); ?>" method="get">
-            <!-- Page Title start -->
-            <div class="pageSearch">
-                <div class="row">
-                    <div class="col-md-3">
-                        <?php if(Auth::guard('company')->check()): ?>
-                        <a href="<?php echo e(route('post.job')); ?>" class="btn"><i class="fa fa-file-text" aria-hidden="true"></i> <?php echo e(__('Post Job')); ?></a>
-                        <?php else: ?>
-                        <!--a href="<?php echo e(url('my-profile#cvs')); ?>" class="btn"><i class="fa fa-file-text" aria-hidden="true"></i> <?php echo e(__('Upload Your Resume')); ?></a-->
-                        <?php endif; ?>
+        <div class="masthead-heading display-5 text-left py-4">Browse jobs acording to your necessities</div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card border-0 bg-transparent p-lg-0 p-md-0 p-sm-2">
+                    <?php echo $__env->make('flash::message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                    <form action="<?php echo e(route('job.list')); ?>" method="get">
+                        <div class="form-row">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                                <label for="inputCity">Search for</label>
+                                <input type="text" class="form-control" id="inputCity"
+                                    placeholder="Skills or Job Title" value="<?php echo e(Request::get('search', '')); ?>">
+                            </div>
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                                <label for="inputState">Functional Area</label>
+                                <?php echo Form::select('functional_area_id[]', ['' => __('Select Functional Area')]+$functionalAreas,
+                                Request::get('functional_area_id', null), array('class'=>'form-control', 'id'=>'functional_area_id')); ?>
 
-                    </div>
-                    <div class="col-md-9">
-                        <div class="searchform">
-                            <div class="row">
-                                <div class="col-md-<?php echo e(((bool)$siteSetting->country_specific_site)? 5:3); ?>">
-                                    <input type="text" name="search" value="<?php echo e(Request::get('search', '')); ?>" class="form-control" placeholder="<?php echo e(__('Enter Skills or job title')); ?>" />
-                                </div>
-                                <div class="col-md-2"> <?php echo Form::select('functional_area_id[]', ['' => __('Select Functional Area')]+$functionalAreas, Request::get('functional_area_id', null), array('class'=>'form-control', 'id'=>'functional_area_id')); ?> </div>
+                                
+                            </div>
+                            <?php if((bool)$siteSetting->country_specific_site): ?>
+                            <?php echo Form::hidden('country_id[]', Request::get('country_id[]', $siteSetting->default_country_id),
+                            array('id'=>'country_id')); ?>
 
+                            <?php else: ?>
+                            <div class="form-group col-lg-3 col-md-12 col-sm-12">
+                                <label for="inputState">Country</label>
+                             <?php echo Form::select('country_id[]', ['' => __('Select Country')]+$countries, Request::get('country_id',
+                            $siteSetting->default_country_id), array('class'=>'form-control', 'id'=>'country_id')); ?>
 
-                                <?php if((bool)$siteSetting->country_specific_site): ?>
-                                <?php echo Form::hidden('country_id[]', Request::get('country_id[]', $siteSetting->default_country_id), array('id'=>'country_id')); ?>
+                            </div>
+                            <?php endif; ?>
+                            <div class="form-group col-lg-3 col-md-12 col-sm-12">
+                                <label for="inputState">State</label>
+                                <?php echo Form::select('state_id[]', ['' => __('Select State')], Request::get('state_id', null),
+                                array('class'=>'form-control', 'id'=>'state_id')); ?>
 
-                                <?php else: ?>
-                                <div class="col-md-2">
-                                    <?php echo Form::select('country_id[]', ['' => __('Select Country')]+$countries, Request::get('country_id', $siteSetting->default_country_id), array('class'=>'form-control', 'id'=>'country_id')); ?>
+                            
+                            </div>
+                            <div class="form-group col-lg-3 col-md-12 col-sm-12">
+                                <label for="inputState">City</label>
+                            <?php echo Form::select('city_id[]', ['' => __('Select City')], Request::get('city_id', null), array('class'=>'form-control',
+                                'id'=>'city_id')); ?>
 
-                                </div>
-                                <?php endif; ?>
-
-                                <div class="col-md-2">
-                                    <span id="state_dd">
-                                        <?php echo Form::select('state_id[]', ['' => __('Select State')], Request::get('state_id', null), array('class'=>'form-control', 'id'=>'state_id')); ?>
-
-                                    </span>
-                                </div>
-                                <div class="col-md-2">
-                                    <span id="city_dd">
-                                        <?php echo Form::select('city_id[]', ['' => __('Select City')], Request::get('city_id', null), array('class'=>'form-control', 'id'=>'city_id')); ?>
-
-                                    </span>
-                                </div>
-                                <div class="col-md-1">
-                                    <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <button type="submit" class="btn btn-block btn-dark" style="margin-top: 2rem !important;">Search</button>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
-            <!-- Page Title end -->
-        </form>
-        <form action="<?php echo e(route('job.list')); ?>" method="get">
-            <!-- Search Result and sidebar start -->
-            <div class="row"> <?php echo $__env->make('includes.job_list_side_bar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-                <div style="display:none;" class="col-md-3 col-sm-6 pull-right">
-                    <!-- Sponsord By -->
-                    <div class="sidebar">
-                        <h4 class="widget-title"><?php echo e(__('Sponsord By')); ?></h4>
-                        <div class="gad"><?php echo $siteSetting->listing_page_vertical_ad; ?></div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12"> 
-                    <!-- Search List -->
-                    <ul class="searchList">
-                        <!-- job start --> 
-                        <?php if(isset($jobs) && count($jobs)): ?>
-                        <?php $__currentLoopData = $jobs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $job): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <?php $company = $job->getCompany(); ?>
-                        <?php if(null !== $company): ?>
-                        <li>
-                            <div class="row">
-                                <div class="col-md-8 col-sm-8">
-                                    <div class="jobimg"><?php echo e($company->printCompanyImage()); ?></div>
-                                    <div class="jobinfo">
-                                        <h3><a href="<?php echo e(route('job.detail', [$job->slug])); ?>" title="<?php echo e($job->title); ?>"><?php echo e($job->title); ?></a></h3>
-                                        <div class="companyName"><a href="<?php echo e(route('company.detail', $company->slug)); ?>" title="<?php echo e($company->name); ?>"><?php echo e($company->name); ?></a></div>
-                                        <div class="location">
-                                            <label class="fulltime" title="<?php echo e($job->getJobType('job_type')); ?>"><?php echo e($job->getJobType('job_type')); ?></label>
-                                            - <span><?php echo e($job->getCity('city')); ?></span></div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="col-md-4 col-sm-4">
-                                    <div class="listbtn"><a href="<?php echo e(route('job.detail', [$job->slug])); ?>"><?php echo e(__('View Details')); ?></a></div>
-                                </div>
-                            </div>
-                            <p><?php echo e(str_limit(strip_tags($job->description), 150, '...')); ?></p>
-                        </li>
-                        <!-- job end --> 
+        </div>
+    </div>
+</section>
+
+
+<!-- Services-->
+<section class="page-section bg-secondary-custom">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 py-2">
+                <form action="<?php echo e(route('job.list')); ?>" method="get">
+                <div class="card border-0 bg-white p-1 mb-3">
+
+                    <!--jobs_title_block-->
+
+                    <h4 class="p-3">Jobs By Title</h4>
+
+                    <ul class="list-group optionlist view_more_ul hide_vm_ul">
+                        <?php if(isset($jobTitlesArray) && count($jobTitlesArray)): ?>
+                        <?php $__currentLoopData = $jobTitlesArray; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$jobTitle): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li class="list-group-item d-flex justify-content-left align-items-center">
+                            <?php
+                            $checked = (in_array($jobTitle, Request::get('job_title', array())))? 'checked="checked"':'';
+                            ?>
+                            <input type="checkbox" name="job_title[]" id="job_title_<?php echo e($key); ?>" value="<?php echo e($jobTitle); ?>" <?php echo e($checked); ?>>
+                            <label for="job_title_<?php echo e($key); ?>" class="pr-2"></label>
+                            <?php echo e($jobTitle); ?> <span class="badge badge-primary badge-pill float-right ml-auto"><?php echo e(App\Job::countNumJobs('title', $jobTitle)); ?></span> </li>
+                        
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endif; ?>
+                        
+                     
+                    </ul>
+
+                    <span class="text-primary view_more py-4 pl-4 border-top">
+                        <div class="btn btn-dark">View More</div>
+                    </span>
+
+                    <!--jobs_country_block-->
+
+                    <h4 class="p-3">Jobs By Country</h4>
+
+                    <ul class="list-group optionlist view_more_ul hide_vm_ul">
+                        <?php if(isset($countryIdsArray) && count($countryIdsArray)): ?>
+                        <?php $__currentLoopData = $countryIdsArray; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$country_id): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php
+                        $country = App\Country::where('country_id','=',$country_id)->lang()->active()->first();
+                        ?>
+                        <?php if(null !== $country): ?>
+                        <?php
+                        $checked = (in_array($country->country_id, Request::get('country_id', array())))? 'checked="checked"':'';
+                        ?>
+                        <li class="list-group-item d-flex justify-content-left align-items-center">
+                            <input type="checkbox" name="country_id[]" id="country_<?php echo e($country->country_id); ?>" value="<?php echo e($country->country_id); ?>"
+                                <?php echo e($checked); ?>>
+                            <label for="country_<?php echo e($country->country_id); ?>" class="pr-2"></label>
+                            <?php echo e($country->country); ?> <span class="badge badge-primary badge-pill float-right ml-auto"><?php echo e(App\Job::countNumJobs('country_id', $country->country_id)); ?></span> </li>
                         <?php endif; ?>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <?php endif; ?>
+                        
+                       
                     </ul>
+                    <span class="text-primary view_more py-4 pl-4 border-top">
+                        <div class="btn btn-dark">View More</div>
+                    </span>
+                </div>
+                <!--card's end-->
+                <div class="card border-0 bg-white p-1 mt-4 mb-3">
+                    <h4 class="p-3">Salary Range</h4>
+                    <div class="form-group col-12">
+                      <?php echo Form::number('salary_from', Request::get('salary_from', null), array('class'=>'form-control', 'id'=>'salary_from',
+                        'placeholder'=>__('Salary From'))); ?>
 
-                    <!-- Pagination Start -->
-                    <div class="pagiWrap">
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="showreslt">
-                                    <?php echo e(__('Showing Pages')); ?> : <?php echo e($jobs->firstItem()); ?> - <?php echo e($jobs->lastItem()); ?> <?php echo e(__('Total')); ?> <?php echo e($jobs->total()); ?>
-
-                                </div>
-                            </div>
-                            <div class="col-md-7 text-right">
-                                <?php if(isset($jobs) && count($jobs)): ?>
-                                <?php echo e($jobs->appends(request()->query())->links()); ?>
-
-                                <?php endif; ?>
-                            </div>
-                        </div>
                     </div>
-                    <!-- Pagination end --> 
-                    <div class=""><br /><?php echo $siteSetting->listing_page_horizontal_ad; ?></div>
+                    <div class="form-group col-12">
+                      <?php echo Form::number('salary_to', Request::get('salary_to', null), array('class'=>'form-control', 'id'=>'salary_to',
+                        'placeholder'=>__('Salary To'))); ?>
 
+                    </div>
+                    <div class="form-group col-12">
+                      <?php echo Form::select('salary_currency', ['' =>__('Select Salary Currency')]+$currencies, Request::get('salary_currency',
+                        $siteSetting->default_currency_code), array('class'=>'form-control', 'id'=>'salary_currency')); ?>
+
+                    </div>
+                    <div class="form-group col-12 border-top">
+                        <button type="submit" class="btn btn-block btn-dark py-2 mt-3 mb-3"><i class="fa fa-search"
+                                aria-hidden="true"></i> Search Jobs</button>
+                    </div>
                 </div>
             </div>
         </form>
+            <!--col end-->
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 py-2">
+                <!--unique card: every job have one card-->
+                <?php if(isset($jobs) && count($jobs)): ?>
+                    <?php $__currentLoopData = $jobs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $job): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $company = $job->getCompany(); ?>
+                    <?php if(null !== $company): ?>
+                <div class="card border-0 bg-white mb-5">
+                    <div class="card-header text-light bg-dark">
+                        <div class="card-title font-weight-bold h3"><?php echo e($job->title); ?></div>
+                    </div>
+                    <div class="card-body">
+                       <p class="lead"><?php echo e(str_limit(strip_tags($job->description), 150, '...')); ?></p>
+                        <div class="portfolio-caption-subheading text-left text-muted "><a href="<?php echo e(route('company.detail', $company->slug)); ?>" class="text-left text-muted" title="<?php echo e($company->name); ?>"><?php echo e($company->name); ?></a></div>
+                        <div class="portfolio-caption-subheading text-left text-muted">
+                            <div class="badge p-2 mt-3 badge-info"><label class="fulltime" title="<?php echo e($job->getJobType('job_type')); ?>"><?php echo e($job->getJobType('job_type')); ?></label>
+                            - <span><?php echo e($job->getCity('city')); ?></span></div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <div class="row justify-content-between">
+                            <div class="col">
+                                <p class="lead text-secondary font-weight-bold pt-1"><?php echo e(date('d-m-Y', strtotime($job->created_at))); ?></p>
+                            </div>
+                            <div class="col">
+                                <a href="<?php echo e(route('job.detail', [$job->slug])); ?>" class="btn btn-dark py-2 float-right">View details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php endif; ?>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <?php endif; ?>
+                <!--end of unique card-->
+                <!--unique card: every job have one card-->
+            
+                <!--end of unique card-->
+
+                <!--pagination-->
+                <div class="row justify-content-between py-3 border-top">
+                    <div class="col-md-5">
+                       <div class="showreslt">
+                            <?php echo e(__('Showing Pages')); ?> : <?php echo e($jobs->firstItem()); ?> - <?php echo e($jobs->lastItem()); ?> <?php echo e(__('Total')); ?> <?php echo e($jobs->total()); ?>
+
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                   
+                            <?php if(isset($jobs) && count($jobs)): ?>
+                            <?php echo e($jobs->appends(request()->query())->links()); ?>
+
+                            <?php endif; ?>
+                        
+                    </div>
+                    </div>
+                </div>
+                <!--end of pagination-->
+
+            </div>
+            <!--end of col-->
+        </div>
     </div>
-</div>
-<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</section>
 <?php $__env->stopSection(); ?>
-<?php $__env->startPush('styles'); ?>
-<style type="text/css">
-    .searchList li .jobimg {
-        min-height: 80px;
-    }
-    .hide_vm_ul{
-        height:100px;
-        overflow:hidden;
-    }
-    .hide_vm{
-        display:none !important;
-    }
-    .view_more{
-        cursor:pointer;
-    }
-</style>
-<?php $__env->stopPush(); ?>
-<?php $__env->startPush('scripts'); ?> 
-<script>
-    $(document).ready(function ($) {
-        $("form").submit(function () {
-            $(this).find(":input").filter(function () {
-                return !this.value;
-            }).attr("disabled", "disabled");
-            return true;
-        });
-        $("form").find(":input").prop("disabled", false);
-
-        $(".view_more_ul").each(function () {
-            if ($(this).height() > 100)
-            {
-                $(this).addClass('hide_vm_ul');
-                $(this).next().removeClass('hide_vm');
-            }
-        });
-        $('.view_more').on('click', function (e) {
-            e.preventDefault();
-            $(this).prev().removeClass('hide_vm_ul');
-            $(this).addClass('hide_vm');
-        });
-
-    });
-</script>
-<?php echo $__env->make('includes.country_state_city_js', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-<?php $__env->stopPush(); ?>
-<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.custom', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
