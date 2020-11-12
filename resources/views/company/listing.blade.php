@@ -6,6 +6,20 @@
         }
     }
 </style>
+
+@section('custom-css')
+<style>
+img{
+    max-width: 100%;
+    width: 100%;
+}
+img#teste{
+    width:auto !important;
+    height:36;
+}
+</style>
+@endsection
+
 @section('content')
 <!-- Masthead-->
 <header class="p-5"
@@ -31,7 +45,7 @@
                         <div class="portfolio-caption-subheading text-left text-muted">
                             {{$company->location}}
                         </div>
-                        <div class="portfolio-caption-subheading text-left text-muted">
+                        <div class="portfolio-caption-subheading text-left text-muted" style="position: absolute; top:0; bottom: 10;">
                             <div class="badge p-2 mt-3 badge-info">{{__('Current jobs')}} : {{$company->countNumJobs('company_id',$company->id)}}</div>
                         </div>
                     </div>
