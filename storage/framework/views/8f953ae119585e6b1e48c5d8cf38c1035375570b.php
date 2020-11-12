@@ -20,6 +20,27 @@ input{
     background: #3693fe !important;
     text-shadow: none;
 }
+
+@media (max-width: 767px)
+{
+    .card a.card-header>.img-fluid{
+        display: none !important;
+    }
+    .portfolio-caption-subheading{
+        padding-top: 3.1rem !important;
+        padding-bottom: 0 !important;
+    }
+    .portfolio-caption-subheading>.badge{
+        position: relative;
+        left: 0;
+        bottom: 0;
+        margin-bottom: 5rem !important;
+    }
+    /* a.btn#see_more{
+        width: 100%;
+    } */
+}
+
 </style>
 <?php $__env->startSection('content'); ?>
 <header class="masthead">
@@ -136,10 +157,11 @@ input{
             <?php $__currentLoopData = $featuredJobs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $featuredJob): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <?php $company = $featuredJob->getCompany(); ?>
             <?php if(null !== $company): ?>
-            <div class="col-lg-4 col-sm-6 mb-4">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div class="card h-100 portfolio-item border-0">
                     <a class="card-header portfolio-link p-0 border-0" href="<?php echo e(route('job.detail', [$featuredJob->slug])); ?>" title="<?php echo e($featuredJob->title); ?>">
-                        <img class="img-fluid" style="width: 400px; height: 300px;" src="<?php echo e(asset('company_logos/'.$company->logo)); ?>" alt="" />
+                        <!-- <img class="img-fluid" style="width: 400px; height: 300px;" src="<?php echo e(asset('company_logos/'.$company->logo)); ?>" alt="" /> -->
+                        <img class="img-fluid" src="<?php echo e(asset('company_logos/'.$company->logo)); ?>" alt="" />
                     </a>
                     <div class="card-body portfolio-caption">
                         <div class="portfolio-caption-heading py-1 text-left text-dark">
@@ -149,9 +171,8 @@ input{
                         <div class="portfolio-caption-subheading text-left text-dark text-muted">
                             <a class="text-dark text-muted" href="<?php echo e(route('company.detail', $company->slug)); ?>" title="<?php echo e($company->name); ?>"><?php echo e($company->name); ?></a>
                         </div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted ">
-                       
-                            <div class="badge p-2 mt-3 fulltime badge-info" title="<?php echo e($featuredJob->getJobType('job_type')); ?>">
+                        <div class="portfolio-caption-subheading text-left text-dark text-muted" style="position: absolute; top:0; bottom: 10;">
+                            <div class="badge p-2 mt-3 mb-3 fulltime badge-primary" title="<?php echo e($featuredJob->getJobType('job_type')); ?>">
                               <?php echo e($featuredJob->getJobType('job_type')); ?>
 
                             </div>
@@ -164,7 +185,7 @@ input{
             <?php endif; ?>
             
         </div>
-        <a class="btn btn-primary btn-xl text-uppercase mt-3 mb-5 float-right" href="<?php echo e(route('job.list', ['is_featured'=>1])); ?>">See  More</a><br><br>
+        <a class="btn btn-primary btn-xl text-uppercase mt-3 mb-5 float-right" id="see_more" href="<?php echo e(route('job.list', ['is_featured'=>1])); ?>">See  More</a><br><br>
     </div>
 </section>
 

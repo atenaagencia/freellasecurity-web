@@ -22,6 +22,27 @@ input{
     background: #3693fe !important;
     text-shadow: none;
 }
+
+@media (max-width: 767px)
+{
+    .card a.card-header>.img-fluid{
+        display: none !important;
+    }
+    .portfolio-caption-subheading{
+        padding-top: 3.1rem !important;
+        padding-bottom: 0 !important;
+    }
+    .portfolio-caption-subheading>.badge{
+        position: relative;
+        left: 0;
+        bottom: 0;
+        margin-bottom: 5rem !important;
+    }
+    /* a.btn#see_more{
+        width: 100%;
+    } */
+}
+
 </style>
 @section('content')
 <header class="masthead">
@@ -138,10 +159,11 @@ input{
             @foreach($featuredJobs as $featuredJob)
             <?php $company = $featuredJob->getCompany(); ?>
             @if(null !== $company)
-            <div class="col-lg-4 col-sm-6 mb-4">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div class="card h-100 portfolio-item border-0">
                     <a class="card-header portfolio-link p-0 border-0" href="{{route('job.detail', [$featuredJob->slug])}}" title="{{$featuredJob->title}}">
-                        <img class="img-fluid" style="width: 400px; height: 300px;" src="{{asset('company_logos/'.$company->logo)}}" alt="" />
+                        <!-- <img class="img-fluid" style="width: 400px; height: 300px;" src="{{asset('company_logos/'.$company->logo)}}" alt="" /> -->
+                        <img class="img-fluid" src="{{asset('company_logos/'.$company->logo)}}" alt="" />
                     </a>
                     <div class="card-body portfolio-caption">
                         <div class="portfolio-caption-heading py-1 text-left text-dark">
@@ -150,9 +172,8 @@ input{
                         <div class="portfolio-caption-subheading text-left text-dark text-muted">
                             <a class="text-dark text-muted" href="{{route('company.detail', $company->slug)}}" title="{{$company->name}}">{{$company->name}}</a>
                         </div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted ">
-                       
-                            <div class="badge p-2 mt-3 fulltime badge-info" title="{{$featuredJob->getJobType('job_type')}}">
+                        <div class="portfolio-caption-subheading text-left text-dark text-muted" style="position: absolute; top:0; bottom: 10;">
+                            <div class="badge p-2 mt-3 mb-3 fulltime badge-primary" title="{{$featuredJob->getJobType('job_type')}}">
                               {{$featuredJob->getJobType('job_type')}}
                             </div>
                         </div>
@@ -233,7 +254,7 @@ input{
                 </div>
             </div> --}}
         </div>
-        <a class="btn btn-primary btn-xl text-uppercase mt-3 mb-5 float-right" href="{{route('job.list', ['is_featured'=>1])}}">See  More</a><br><br>
+        <a class="btn btn-primary btn-xl text-uppercase mt-3 mb-5 float-right" id="see_more" href="{{route('job.list', ['is_featured'=>1])}}">See  More</a><br><br>
     </div>
 </section>
 
