@@ -1,5 +1,18 @@
 @extends('layouts.custom')
 
+@section('custom-css')
+<style>
+img{
+    max-width: 100%;
+    width: 100%;
+}
+img#teste{
+    width:auto !important;
+    height:36;
+}
+</style>
+@endsection
+
 @section('content')
 <!-- Masthead-->
 
@@ -7,8 +20,7 @@
 $company = $job->getCompany();
 @endphp
 
-<header class="p-5"
-    style="background: url('https://images.pexels.com/photos/4064840/pexels-photo-4064840.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); background-repeat: no-repeat;background-attachment: scroll;background-position: center center;background-size: cover; padding-top: 15rem !important;">
+<header class="p-5" style="background: url('https://images.pexels.com/photos/4064840/pexels-photo-4064840.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); background-repeat: no-repeat;background-attachment: scroll;background-position: center center;background-size: cover; padding-top: 15rem !important;">
     <div class="container mx-auto">
         <h1 class="text-light py-2">Job Detail</h1>
     </div>
@@ -53,13 +65,11 @@ $company = $job->getCompany();
                 <div class="card border-0 bg-white p-1 mb-3">
                     <div class="container">
                         <div class="row mx-auto justify-content-center">
-                            <div class="col-7 py-4 pt-0">
-
-                                <a href="{{route('company.detail',$company->slug)}}"class="ratio img-responsive img-circle">
-                              {{$company->printCompanyImage()}}
+                            <div class="col-md-12 text-center py-3">
+                                <a href="{{route('company.detail',$company->slug)}}" class="m-0">
+                                    <figure class="img-responsive img-fluid">{{$company->printCompanyImage()}}</figure>
                                 </a>
-                                {{-- <a href="{{route('company.detail',$company->slug)}}"class="ratio img-responsive img-circle"
-                                    style="background: url('https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');"></a> --}}
+                                <!-- <a href="{{route('company.detail',$company->slug)}}" class="ratio img-responsive img-circle"></a> -->
                             </div>
                         </div>
                     </div>
