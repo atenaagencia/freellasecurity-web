@@ -1,351 +1,201 @@
 <?php $__env->startSection('content'); ?>
-<!-- Header start -->
-<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-<!-- Header end -->
-<!-- Inner Page Title start -->
-<?php echo $__env->make('includes.inner_page_title', ['page_title'=>__('Company Detail')], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-<!-- Inner Page Title end -->
-<div class="listpgWraper">
+<!-- Masthead-->
+<header class="p-5"
+    style="background: url('https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); background-repeat: no-repeat;background-attachment: scroll;background-position: center center;background-size: cover; padding-top: 15rem !important;">
+    <div class="container mx-auto">
+        <h1 class="text-light py-2">Company Detail</h1>
+    </div>
+</header>
+
+<!-- Services-->
+<section class="page-section bg-secondary-custom">
     <div class="container">
-        <?php echo $__env->make('flash::message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-        <!-- Job Header start -->
-        <div class="job-header">
-            <div class="jobinfo">
-                <div class="row">
-                    <div class="col-md-8 col-sm-8">
-                        <!-- Candidate Info -->
-                        <div class="candidateinfo">
-                            <div class="userPic"><a
-                                    href="<?php echo e(route('company.detail',$company->slug)); ?>"><?php echo e($company->printCompanyImage()); ?></a>
-                            </div>
-                            <div class="title"><?php echo e($company->name); ?></div>
-                            <div class="desi"><?php echo e($company->getIndustry('industry')); ?></div>
-                            <div class="loctext"><i class="fa fa-history" aria-hidden="true"></i>
-                                <?php echo e(__('Member Since')); ?>, <?php echo e($company->created_at->format('M d, Y')); ?></div>
-                            <div class="loctext"><i class="fa fa-map-marker" aria-hidden="true"></i>
-                                <?php echo e($company->location); ?></div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                    <div style="display:none;" class="col-md-4 col-sm-4">
-                        <!-- Candidate Contact -->
-                        <div class="candidateinfo">
-                            <?php if(!empty($company->phone)): ?>
-                            <div class="loctext"><i class="fa fa-phone" aria-hidden="true"></i> <a
-                                    href="tel:<?php echo e($company->phone); ?>"><?php echo e($company->phone); ?></a></div>
-                            <?php endif; ?>
-                            <?php if(!empty($company->email)): ?>
-                            <div class="loctext"><i class="fa fa-envelope" aria-hidden="true"></i> <a
-                                    href="mailto:<?php echo e($company->email); ?>"><?php echo e($company->email); ?></a></div>
-                            <?php endif; ?>
-                            <?php if(!empty($company->website)): ?>
-                            <div class="loctext"><i class="fa fa-globe" aria-hidden="true"></i> <a
-                                    href="<?php echo e($company->website); ?>" target="_blank"><?php echo e($company->website); ?></a></div>
-                            <?php endif; ?>
-                            <div class="cadsocial"> <?php echo $company->getSocialNetworkHtml(); ?> </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Buttons -->
-            <div class="jobButtons"> <?php if(Auth::check() && Auth::user()->isFavouriteCompany($company->slug)): ?> <a
-                    href="<?php echo e(route('remove.from.favourite.company', $company->slug)); ?>" class="btn"><i
-                        class="fa fa-floppy-o" aria-hidden="true"></i> <?php echo e(__('Favourite Company')); ?> </a> <?php else: ?> <a
-                    href="<?php echo e(route('add.to.favourite.company', $company->slug)); ?>" class="btn"><i class="fa fa-floppy-o"
-                        aria-hidden="true"></i> <?php echo e(__('Add to Favourite')); ?></a> <?php endif; ?> <a
-                    href="<?php echo e(route('report.abuse.company', $company->slug)); ?>" class="btn report"><i
-                        class="fa fa-exclamation-triangle" aria-hidden="true"></i> <?php echo e(__('Report Abuse')); ?></a> <a
-                    href="javascript:;" onclick="send_message()" class="btn"><i class="fa fa-envelope"
-                        aria-hidden="true"></i> <?php echo e(__('Send Message')); ?></a> </div>
-        </div>
-
-        <!-- Job Detail start -->
         <div class="row">
-            <div class="col-md-8">
-                <!-- About Employee start -->
-                <div class="job-header">
-                    <div class="contentbox">
-                        <h3><?php echo e(__('About Company')); ?></h3>
-                        <p><?php echo $company->description; ?></p>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 py-2">
+                <div class="card border-0 bg-white mb-3">
+                    <div class="card-header text-dark bg-transparent border-0">
+
+                        <!-- company's name -->
+
+                        <div class="card-title font-weight-bold h3 py-3"><?php echo e($company->name); ?> - <small><?php echo e($company->getIndustry('industry')); ?></small></div>
+
+                        <!-- end company's name -->
+
+                        <div class="container rounded bg-secondary-custom p-2">
+                            <div class="row justify-content-between">
+                                <a class="nav-link"><?php echo e(__('Member Since')); ?>, <?php echo e($company->created_at->format('M d, Y')); ?></a>
+                                <a class="nav-link"><i class="fas fa-map-marker text-primary mr-3"></i><?php echo e($company->location); ?></a>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <div class="row justify-content-between py-2">
+                                <div class="col p-1">
+                                    <a href="" class="btn btn-block btn-dark"><i
+                                            class="fa fa-star text-warning mr-2"></i>Add to Favourite</a>
+                                </div>
+                                <div class="col p-1">
+                                    <a href="" class="btn btn-block btn-danger"><i
+                                            class="fas fa-exclamation-circle text-light mr-2"></i>Report Abuse</a>
+                                </div>
+                                <div class="col p-1">
+                                    <a href="" class="btn btn-block btn-light font-weight-bold"><i
+                                            class="fa fa-envelope text-dark mr-2"></i>Send a message</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="job-header">
-                    <div class="contentbox">
-                        <h3 style="padding-bottom: 20px;"><?php echo e(__('Work history and feedback')); ?></h3>
-                        <div class="" id="projects_div">
-                            <?php $__currentLoopData = $projectFeedback; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $o): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php if($o->jobApply['isCandidateContractStatus'] == "close" && $o->jobApply['isEmployeerContractStatus'] == "close"): ?>
+                    <div class="card-body p-4">
+                        <h4 class="py-3">About Company</h4>
+                        <p class="lead">
+                           <?php echo $company->description; ?>
+
+                        </p>
+                        <hr>
+                        <h4 class="py-3">Work history and feedback</h4>
+                        <div class="lead">
+                           <?php $__currentLoopData = $projectFeedback; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $o): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php if($o->jobApply['isCandidateContractStatus'] == "close" && $o->jobApply['isEmployeerContractStatus'] == "close"): ?>
+                            <div class="project-review">
+                                <h4><?php echo e($o->jobDetails->title); ?></h4>
+                                <div class="rating">
+                                    <div class="row">
+                                        <div class="col-lg-1">
+                                            <div class="rateyo" data-rateyo-rating="<?php echo e($o->rating); ?>" data-rateyo-num-stars="5"
+                                                data-rateyo-score="3">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <span style="padding: 0;margin-top: -5px; margin-right: 3px; font-weight: bold;">
+                                                <?php if(strpos($o->rating, ".")): ?>
+                                                <?php echo e($o->rating); ?>0
+                                                <?php else: ?>
+                                                <?php echo e($o->rating); ?>.00
+                                                <?php endif; ?>
+                                            </span>
+                                            <span><?php echo e(\Carbon\Carbon::parse($o->created_at)->format('M Y')); ?></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p style="padding: 5px 0;">
+                                    <?php echo e($o->feedback); ?>
+
+                                </p>
+                            </div>
+                            <hr>
+                            <?php elseif($o->jobApply['isCandidateContractStatus'] == "close"
+                            && $o->jobApply['isEmployeerContractStatus'] == "open" ||
+                            $o->jobApply['isCandidateContractStatus'] == "open"
+                            && $o->jobApply['isEmployeerContractStatus'] == "close"): ?>
+                            
+                            <?php if($o->jobApply['CandidateCloseContract'] <= Carbon\Carbon::now()->subDays(90)): ?>
                                 <div class="project-review">
                                     <h4><?php echo e($o->jobDetails->title); ?></h4>
                                     <div class="rating">
                                         <div class="row">
-                                            <div class="col-lg-1">
-                                                <div class="rateyo" data-rateyo-rating="<?php echo e($o->rating); ?>"
-                                                     data-rateyo-num-stars="5" data-rateyo-score="3">
-                                                </div>
-                                            </div>
                                             <div class="col-lg-3">
-                                                <span style="padding: 0;margin-top: -5px; margin-right: 3px; font-weight: bold;">
-                                                    <?php if(strpos($o->rating, ".")): ?>
-                                                        <?php echo e($o->rating); ?>0
-                                                    <?php else: ?>
-                                                        <?php echo e($o->rating); ?>.00
-                                                    <?php endif; ?>
-                                                </span>
-                                                <span><?php echo e(\Carbon\Carbon::parse($o->created_at)->format('M Y')); ?></span>
+                                                <span><?php echo e(\Carbon\Carbon::parse($o->CandidateCloseContract)->format('M Y')); ?></span>
                                             </div>
                                         </div>
                                     </div>
                                     <p style="padding: 5px 0;">
-                                        <?php echo e($o->feedback); ?>
-
+                                        No feedback given
                                     </p>
                                 </div>
                                 <hr>
-                                <?php elseif($o->jobApply['isCandidateContractStatus'] == "close"
-                                         && $o->jobApply['isEmployeerContractStatus'] == "open" ||
-                                          $o->jobApply['isCandidateContractStatus'] == "open"
-                                         && $o->jobApply['isEmployeerContractStatus'] == "close"): ?>
-
-                                    <?php if($o->jobApply['CandidateCloseContract'] <= Carbon\Carbon::now()->subDays(90)): ?>
-                                        <div class="project-review">
-                                            <h4><?php echo e($o->jobDetails->title); ?></h4>
-                                            <div class="rating">
-                                                <div class="row">
-                                                    <div class="col-lg-3">
-                                                        <span><?php echo e(\Carbon\Carbon::parse($o->CandidateCloseContract)->format('M Y')); ?></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p style="padding: 5px 0;">
-                                                No feedback given
-                                            </p>
-                                        </div>
-                                        <hr>
-                                    <?php endif; ?>
+                                <?php endif; ?>
                                 <?php endif; ?>
                                 
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <!--end of card-->
+
+                <div class="card-title font-weight-bold h3 py-4">Jobs Openings</div>
+                <?php if(isset($company->jobs) && count($company->jobs)): ?>
+                    <?php $__currentLoopData = $company->jobs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $companyJob): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <!--unique card: every job have one card-->
+                <div class="card border-0 bg-white mb-5">
+                    <div class="card-header text-light bg-dark">
+                        <div class="card-title font-weight-bold h3"><a class="text-white" href="<?php echo e(route('job.detail', [$companyJob->slug])); ?>" title="<?php echo e($companyJob->title); ?>"><?php echo e($companyJob->title); ?></a></div>
+                    </div>
+                    <div class="card-body">
+                        <p class="lead"><?php echo e(str_limit(strip_tags($companyJob->description), 150, '...')); ?></p>
+                        <div class="portfolio-caption-subheading text-left text-muted">
+                            <a class="text-dark" href="<?php echo e(route('company.detail', $company->slug)); ?>" title="<?php echo e($company->name); ?>"><?php echo e($company->name); ?></a>
+                        </div>
+                        <div class="portfolio-caption-subheading text-left text-muted">
+                            <div class="badge p-2 mt-3 badge-success"><label class="fulltime" title="<?php echo e($companyJob->getJobType('job_type')); ?>"><?php echo e($companyJob->getJobType('job_type')); ?></label></div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <div class="row justify-content-between">
+                            <div class="col">
+                                <p class="lead text-secondary font-weight-bold pt-1">
+                                    <?php echo e($companyJob->created_at->format('M-d-Y')); ?>
+
+                                </p>
+                            </div>
+                            <div class="col">
+                                <a href="<?php echo e(route('job.detail', [$companyJob->slug])); ?>" class="btn btn-dark py-2 float-right">View details</a>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!--end of unique card-->
 
-                <!-- Opening Jobs start -->
-                <div class="relatedJobs">
-                    <h3><?php echo e(__('Job Openings')); ?></h3>
-                    <ul class="searchList">
-                        <?php if(isset($company->jobs) && count($company->jobs)): ?>
-                        <?php $__currentLoopData = $company->jobs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $companyJob): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <!--Job start-->
-                        <li>
-                            <div class="row">
-                                <div class="col-md-8 col-sm-8">
-                                    <div class="jobimg"><a href="<?php echo e(route('job.detail', [$companyJob->slug])); ?>"
-                                            title="<?php echo e($companyJob->title); ?>"> <?php echo e($company->printCompanyImage()); ?> </a></div>
-                                    <div class="jobinfo">
-                                        <h3><a href="<?php echo e(route('job.detail', [$companyJob->slug])); ?>"
-                                                title="<?php echo e($companyJob->title); ?>"><?php echo e($companyJob->title); ?></a></h3>
-                                        <div class="companyName"><a href="<?php echo e(route('company.detail', $company->slug)); ?>"
-                                                title="<?php echo e($company->name); ?>"><?php echo e($company->name); ?></a></div>
-                                        <div class="location">
-                                            <label class="fulltime"
-                                                title="<?php echo e($companyJob->getJobType('job_type')); ?>"><?php echo e($companyJob->getJobType('job_type')); ?></label>
-                                            <label class="partTime"
-                                                title="<?php echo e($companyJob->getJobShift('job_shift')); ?>"><?php echo e($companyJob->getJobShift('job_shift')); ?></label>
-                                            - <span><?php echo e($companyJob->getCity('city')); ?></span></div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="col-md-4 col-sm-4">
-                                    <div class="listbtn"><a
-                                            href="<?php echo e(route('job.detail', [$companyJob->slug])); ?>"><?php echo e(__('View Detail')); ?></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p><?php echo e(str_limit(strip_tags($companyJob->description), 150, '...')); ?></p>
-                        </li>
-                        <!--Job end-->
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        <?php endif; ?>
-
-                        <!-- Job end -->
-                    </ul>
-                </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <?php endif; ?>
             </div>
-            <div class="col-md-4">
-                <!-- Company Detail start -->
-                <div class="job-header">
-                    <div class="jobdetail">
-                        <h3><?php echo e(__('Company Detail')); ?></h3>
-                        <ul class="jbdetail">
-                            <li class="row">
-                                <div class="col-md-6 col-xs-6"><?php echo e(__('Is Email Verified')); ?></div>
-                                <div class="col-md-6 col-xs-6"><span><?php echo e(((bool)$company->verified)? 'Yes':'No'); ?></span>
+            <!--end of col-->
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 py-2">
+                <!--card unique-->
+                <div class="card border-0 bg-white p-1 mb-3">
+                    <div class="container p-3">
+                        <h4 class="pb-0 pt-1 text-dark">Company Detail</h4>
+                        <hr>
+                        <ul class="p-0 pt-2">
+                            <li class="row justify-content-between">
+                                <div class="col"><span>Is Email Verified</span></div>
+                                <div class="col">
+                                    <?php echo e(((bool)$company->verified)? 'Yes':'No'); ?>
+
                                 </div>
                             </li>
                             <li class="row">
-                                <div class="col-md-6 col-xs-6"><?php echo e(__('Total Employees')); ?></div>
-                                <div class="col-md-6 col-xs-6"><span><?php echo e($company->no_of_employees); ?></span></div>
+                                <div class="col"><span>Total Employees</span></div>
+                                <div class="col">
+                                    <?php echo e($company->no_of_employees); ?>
+
+                                </div>
                             </li>
                             <li class="row">
-                                <div class="col-md-6 col-xs-6"><?php echo e(__('Established In')); ?></div>
-                                <div class="col-md-6 col-xs-6"><span><?php echo e($company->established_in); ?></span></div>
+                                <div class="col"><span>Established In</span></div>
+                                <div class="col"><span><?php echo e($company->established_in); ?></span></div>
                             </li>
                             <li class="row">
-                                <div class="col-md-6 col-xs-6"><?php echo e(__('Current jobs')); ?></div>
-                                <div class="col-md-6 col-xs-6">
-                                    <span><?php echo e($company->countNumJobs('company_id',$company->id)); ?></span></div>
+                                <div class="col"><span>Current jobs</span></div>
+                                <div class="col"><span><?php echo e($company->countNumJobs('company_id',$company->id)); ?></span></div>
                             </li>
                         </ul>
                     </div>
                 </div>
+                <!--card's end-->
 
-                <!-- Google Map start -->
-                <div class="job-header">
-                    <div class="jobdetail"><?php echo $company->map; ?></div>
+                <div class="container p-0">
+                    <!-- Google Map start -->
+                    
                 </div>
+
             </div>
+            <!--col end-->
+
         </div>
     </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="sendmessage" role="dialog">
-    <div class="modal-dialog">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <form action="" id="send-form">
-                <?php echo csrf_field(); ?>
-                <input type="hidden" name="company_id" id="company_id" value="<?php echo e($company->id); ?>">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Send Message</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <textarea class="form-control" name="message" id="message" cols="10" rows="7"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
-        </div>
-
-    </div>
-</div>
-<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</section>
 <?php $__env->stopSection(); ?>
-<?php $__env->startPush('styles'); ?>
-<style type="text/css">
-.formrow iframe {
-    height: 78px;
-}
-</style>
-<?php $__env->stopPush(); ?>
-<?php $__env->startPush('scripts'); ?>
-<script type="text/javascript">
-$(document).ready(function() {
-    $(function () {
-        $(".rateyo").rateYo({
-            readOnly: true,
-            starWidth: "10px",
-        }).on("rateyo.change", function (e, data) {
-            var rating = data.rating;
-        });
-    });
-    $(document).on('click', '#send_company_message', function() {
-        var postData = $('#send-company-message-form').serialize();
-        $.ajax({
-            type: 'POST',
-            url: "<?php echo e(route('contact.company.message.send')); ?>",
-            data: postData,
-            //dataType: 'json',
-            success: function(data) {
-                response = JSON.parse(data);
-                var res = response.success;
-                if (res == 'success') {
-                    var errorString = '<div role="alert" class="alert alert-success">' +
-                        response.message + '</div>';
-                    $('#alert_messages').html(errorString);
-                    $('#send-company-message-form').hide('slow');
-                    $(document).scrollTo('.alert', 2000);
-                } else {
-                    var errorString = '<div class="alert alert-danger" role="alert"><ul>';
-                    response = JSON.parse(data);
-                    $.each(response, function(index, value) {
-                        errorString += '<li>' + value + '</li>';
-                    });
-                    errorString += '</ul></div>';
-                    $('#alert_messages').html(errorString);
-                    $(document).scrollTo('.alert', 2000);
-                }
-            },
-        });
-    });
-});
-
-function send_message() {
-    const el = document.createElement('div')
-    el.innerHTML =
-        "Please <a class='btn' href='<?php echo e(route('login')); ?>' onclick='set_session()'>log in</a> as a Canidate and try again."
-    <?php if(Auth::check()): ?>
-    $('#sendmessage').modal('show');
-    <?php else: ?>
-    swal({
-        title: "You are not Loged in",
-        content: el,
-        icon: "error",
-        button: "OK",
-    });
-    <?php endif; ?>
-}
-if ($("#send-form").length > 0) {
-    $("#send-form").validate({
-        validateHiddenInputs: true,
-        ignore: "",
-
-        rules: {
-            message: {
-                required: true,
-                maxlength: 5000
-            },
-        },
-        messages: {
-
-            message: {
-                required: "Message is required",
-            }
-
-        },
-        submitHandler: function(form) {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            <?php if(null !== (Auth::user())): ?>
-            $.ajax({
-                url: "<?php echo e(route('submit-message')); ?>",
-                type: "POST",
-                data: $('#send-form').serialize(),
-                success: function(response) {
-                    $("#send-form").trigger("reset");
-                    $('#sendmessage').modal('hide');
-                    swal({
-                        title: "Success",
-                        text: response["msg"],
-                        icon: "success",
-                        button: "OK",
-                    });
-                }
-            });
-            <?php endif; ?>
-        }
-    })
-}
-</script>
-<?php $__env->stopPush(); ?>
-<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.custom', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
