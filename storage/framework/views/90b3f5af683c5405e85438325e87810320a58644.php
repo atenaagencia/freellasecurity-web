@@ -1,6 +1,4 @@
-@extends('layouts.custom')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!-- Masthead-->
 <header class="p-5"
     style="background: url('https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); background-repeat: no-repeat;background-attachment: scroll;background-position: center center;background-size: cover; padding-top: 15rem !important;">
@@ -19,14 +17,14 @@
 
                         <!-- company's name -->
 
-                        <div class="card-title font-weight-bold h3 py-3">{{$company->name}} - <small>{{$company->getIndustry('industry')}}</small></div>
+                        <div class="card-title font-weight-bold h3 py-3"><?php echo e($company->name); ?> - <small><?php echo e($company->getIndustry('industry')); ?></small></div>
 
                         <!-- end company's name -->
 
                         <div class="container rounded bg-secondary-custom p-2">
                             <div class="row justify-content-between">
-                                <a class="nav-link">{{__('Member Since')}}, {{$company->created_at->format('M d, Y')}}</a>
-                                <a class="nav-link"><i class="fas fa-map-marker text-primary mr-3"></i>{{$company->location}}</a>
+                                <a class="nav-link"><?php echo e(__('Member Since')); ?>, <?php echo e($company->created_at->format('M d, Y')); ?></a>
+                                <a class="nav-link"><i class="fas fa-map-marker text-primary mr-3"></i><?php echo e($company->location); ?></a>
                             </div>
                         </div>
 
@@ -50,55 +48,53 @@
                     <div class="card-body p-4">
                         <h4 class="py-3">About Company</h4>
                         <p class="lead">
-                           {!! $company->description !!}
+                           <?php echo $company->description; ?>
+
                         </p>
                         <hr>
                         <h4 class="py-3">Work history and feedback</h4>
                         <div class="lead">
-                           @foreach($projectFeedback as $o)
-                            @if($o->jobApply['isCandidateContractStatus'] == "close" && $o->jobApply['isEmployeerContractStatus'] == "close")
+                           <?php $__currentLoopData = $projectFeedback; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $o): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php if($o->jobApply['isCandidateContractStatus'] == "close" && $o->jobApply['isEmployeerContractStatus'] == "close"): ?>
                             <div class="project-review">
-                                <h4>{{ $o->jobDetails->title }}</h4>
+                                <h4><?php echo e($o->jobDetails->title); ?></h4>
                                 <div class="rating">
                                     <div class="row">
                                         <div class="col-lg-1">
-                                            <div class="rateyo" data-rateyo-rating="{{ $o->rating }}" data-rateyo-num-stars="5"
+                                            <div class="rateyo" data-rateyo-rating="<?php echo e($o->rating); ?>" data-rateyo-num-stars="5"
                                                 data-rateyo-score="3">
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
                                             <span style="padding: 0;margin-top: -5px; margin-right: 3px; font-weight: bold;">
-                                                @if(strpos($o->rating, "."))
-                                                {{$o->rating}}0
-                                                @else
-                                                {{$o->rating}}.00
-                                                @endif
+                                                <?php if(strpos($o->rating, ".")): ?>
+                                                <?php echo e($o->rating); ?>0
+                                                <?php else: ?>
+                                                <?php echo e($o->rating); ?>.00
+                                                <?php endif; ?>
                                             </span>
-                                            <span>{{\Carbon\Carbon::parse($o->created_at)->format('M Y')}}</span>
+                                            <span><?php echo e(\Carbon\Carbon::parse($o->created_at)->format('M Y')); ?></span>
                                         </div>
                                     </div>
                                 </div>
                                 <p style="padding: 5px 0;">
-                                    {{ $o->feedback }}
+                                    <?php echo e($o->feedback); ?>
+
                                 </p>
                             </div>
                             <hr>
-                            @elseif($o->jobApply['isCandidateContractStatus'] == "close"
+                            <?php elseif($o->jobApply['isCandidateContractStatus'] == "close"
                             && $o->jobApply['isEmployeerContractStatus'] == "open" ||
                             $o->jobApply['isCandidateContractStatus'] == "open"
-                            && $o->jobApply['isEmployeerContractStatus'] == "close")
-                            {{--                                    @php--}}
-                            {{--                                        $date = \Carbon\Carbon::parse($o->jobApply['CandidateCloseContract']);--}}
-                            {{--                                        $now = \Carbon\Carbon::now();--}}
-                            {{--                                        echo $diff = $date->diffInDays($now);--}}
-                            {{--                                    @endphp--}}
-                            @if($o->jobApply['CandidateCloseContract'] <= Carbon\Carbon::now()->subDays(90))
+                            && $o->jobApply['isEmployeerContractStatus'] == "close"): ?>
+                            
+                            <?php if($o->jobApply['CandidateCloseContract'] <= Carbon\Carbon::now()->subDays(90)): ?>
                                 <div class="project-review">
-                                    <h4>{{ $o->jobDetails->title }}</h4>
+                                    <h4><?php echo e($o->jobDetails->title); ?></h4>
                                     <div class="rating">
                                         <div class="row">
                                             <div class="col-lg-3">
-                                                <span>{{\Carbon\Carbon::parse($o->CandidateCloseContract)->format('M Y')}}</span>
+                                                <span><?php echo e(\Carbon\Carbon::parse($o->CandidateCloseContract)->format('M Y')); ?></span>
                                             </div>
                                         </div>
                                     </div>
@@ -107,17 +103,10 @@
                                     </p>
                                 </div>
                                 <hr>
-                                @endif
-                                @endif
-                                {{--<div class="project-review">
-                                                                <h4>{{ $o->jobDetails->title }}</h4>
-                                <div class="rateyo" data-rateyo-rating="{{ $o->rating }}" data-rateyo-num-stars="5" data-rateyo-score="3">
-                                </div>
-                                <p class="">
-                                    {{ $o->feedback }}
-                                </p>
-                                </div>--}}
-                                @endforeach
+                                <?php endif; ?>
+                                <?php endif; ?>
+                                
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                         <hr>
                     </div>
@@ -125,39 +114,40 @@
                 <!--end of card-->
 
                 <div class="card-title font-weight-bold h3 py-4">Jobs Openings</div>
-                @if(isset($company->jobs) && count($company->jobs))
-                    @foreach($company->jobs as $companyJob)
+                <?php if(isset($company->jobs) && count($company->jobs)): ?>
+                    <?php $__currentLoopData = $company->jobs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $companyJob): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <!--unique card: every job have one card-->
                 <div class="card border-0 bg-white mb-5">
                     <div class="card-header text-light bg-dark">
-                        <div class="card-title font-weight-bold h3"><a class="text-white" href="{{route('job.detail', [$companyJob->slug])}}" title="{{$companyJob->title}}">{{$companyJob->title}}</a></div>
+                        <div class="card-title font-weight-bold h3"><a class="text-white" href="<?php echo e(route('job.detail', [$companyJob->slug])); ?>" title="<?php echo e($companyJob->title); ?>"><?php echo e($companyJob->title); ?></a></div>
                     </div>
                     <div class="card-body">
-                        <p class="lead">{{str_limit(strip_tags($companyJob->description), 150, '...')}}</p>
+                        <p class="lead"><?php echo e(str_limit(strip_tags($companyJob->description), 150, '...')); ?></p>
                         <div class="portfolio-caption-subheading text-left text-muted">
-                            <a class="text-dark" href="{{route('company.detail', $company->slug)}}" title="{{$company->name}}">{{$company->name}}</a>
+                            <a class="text-dark" href="<?php echo e(route('company.detail', $company->slug)); ?>" title="<?php echo e($company->name); ?>"><?php echo e($company->name); ?></a>
                         </div>
                         <div class="portfolio-caption-subheading text-left text-muted">
-                            <div class="badge p-2 mt-3 badge-success"><label class="fulltime" title="{{$companyJob->getJobType('job_type')}}">{{$companyJob->getJobType('job_type')}}</label></div>
+                            <div class="badge p-2 mt-3 badge-success"><label class="fulltime" title="<?php echo e($companyJob->getJobType('job_type')); ?>"><?php echo e($companyJob->getJobType('job_type')); ?></label></div>
                         </div>
                     </div>
                     <div class="card-footer bg-transparent">
                         <div class="row justify-content-between">
                             <div class="col">
                                 <p class="lead text-secondary font-weight-bold pt-1">
-                                    {{$companyJob->created_at->format('M-d-Y')}}
+                                    <?php echo e($companyJob->created_at->format('M-d-Y')); ?>
+
                                 </p>
                             </div>
                             <div class="col">
-                                <a href="{{route('job.detail', [$companyJob->slug])}}" class="btn btn-dark py-2 float-right">View details</a>
+                                <a href="<?php echo e(route('job.detail', [$companyJob->slug])); ?>" class="btn btn-dark py-2 float-right">View details</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!--end of unique card-->
 
-                @endforeach
-                @endif
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <?php endif; ?>
             </div>
             <!--end of col-->
 
@@ -171,22 +161,24 @@
                             <li class="row justify-content-between">
                                 <div class="col"><span>Is Email Verified</span></div>
                                 <div class="col">
-                                    {{((bool)$company->verified)? 'Yes':'No'}}
+                                    <?php echo e(((bool)$company->verified)? 'Yes':'No'); ?>
+
                                 </div>
                             </li>
                             <li class="row">
                                 <div class="col"><span>Total Employees</span></div>
                                 <div class="col">
-                                    {{$company->no_of_employees}}
+                                    <?php echo e($company->no_of_employees); ?>
+
                                 </div>
                             </li>
                             <li class="row">
                                 <div class="col"><span>Established In</span></div>
-                                <div class="col"><span>{{$company->established_in}}</span></div>
+                                <div class="col"><span><?php echo e($company->established_in); ?></span></div>
                             </li>
                             <li class="row">
                                 <div class="col"><span>Current jobs</span></div>
-                                <div class="col"><span>{{$company->countNumJobs('company_id',$company->id)}}</span></div>
+                                <div class="col"><span><?php echo e($company->countNumJobs('company_id',$company->id)); ?></span></div>
                             </li>
                         </ul>
                     </div>
@@ -195,7 +187,7 @@
 
                 <div class="container p-0">
                     <!-- Google Map start -->
-                    {{--{!!$company->map!!}--}}
+                    
                 </div>
 
             </div>
@@ -205,4 +197,5 @@
     </div>
 
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.custom', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
