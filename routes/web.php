@@ -15,7 +15,7 @@
 /* -- custom routes ----------*/
 
 Route::get('/teste', function() {
-  return view('front-end.index');
+  return view('front-end.teste');
 });
 
 Route::get('/teste/jobs', function() {

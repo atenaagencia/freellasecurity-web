@@ -1,4 +1,16 @@
+<link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/slick.css')); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/slick-theme.css')); ?>">
+
 <style>
+.slider {
+    width: 50%;
+    height: 200px;
+    margin: 100px auto;
+    margin-top: 20px !important;
+}
+.slick-prev, .slick-next {
+    display: none !important;
+}
 .nav-pills .nav-link {
     /* background: white; */
     /* margin: 2px; */
@@ -21,11 +33,6 @@ input{
     text-shadow: none;
 }
 
-.img-fluid#custom{
-    max-width: 75% !important;
-    width: 100% !important;
-}
-
 
 @media (max-width: 767px)
 {
@@ -42,9 +49,6 @@ input{
         bottom: 0;
         margin-bottom: 5rem !important;
     }
-    /* a.btn#see_more{
-        width: 100%;
-    } */
 
 }
 
@@ -60,9 +64,36 @@ input{
     </div>
 </header>
 
+<!-- Clients-->
+<div class="container center slider">
+    <div>
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/1.png')); ?>" alt="" />
+    </div>
+    <div>
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/2.png')); ?>" alt="" />
+    </div>
+    <div>
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/3.png')); ?>" alt="" />
+    </div>
+    <div>
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/4.png')); ?>" alt="" />
+    </div>
+    <div>
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/1.png')); ?>" alt="" />
+    </div>
+    <div>
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/2.png')); ?>" alt="" />
+    </div>
+    <div>
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/3.png')); ?>" alt="" />
+    </div>
+    <div>
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/4.png')); ?>" alt="" />
+    </div>
+</div>
 
 <!-- Clients-->
-<div class="py-4">
+<!-- <div class="py-4">
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-6 my-3">
@@ -79,7 +110,7 @@ input{
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Services-->
 <section class="page-section bg-light-custom" id="services">
     <div class="container">
@@ -239,8 +270,51 @@ input{
         </div>
     </div>
 </section>
+
+
+<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src="<?php echo e(asset('js/slick.js')); ?>" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    
+$('.center').slick({
+  dots: true,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+	
+</script>
 <?php $__env->stopSection(); ?>
-
-
     
 <?php echo $__env->make('layouts.custom', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
