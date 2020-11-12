@@ -21,9 +21,16 @@ if (!isset($seo)) {
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.css"/>
+
+        <!-- <link rel="stylesheet" type="text/css" href="{{asset('css/slick-theme.css')}}"> -->
+        
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
         <link href="{{asset('css/custom.css')}}" rel="stylesheet" />
+
     </head>
 
     <body id="page-top">
@@ -180,14 +187,33 @@ if (!isset($seo)) {
         
         <!-- Bootstrap core JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        
         <!-- Third party plugin JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.js"></script>
+
+        
         <!-- Contact form JS-->
         <script src="{{asset('mail/jqBootstrapValidation.js')}}"></script>
         <script src="{{asset('mail/contact_me.js')}}"></script>
         <!-- Core theme JS-->
         <script src="{{asset('js/custom-scripts.js')}}"></script>
+
+               
+       <script type="text/javascript">
+            $(document).ready(function(){
+                $('.carousel').slick({
+                    dots: true,
+                    infinite: true,
+                    slidesToShow: 4,
+                    slidesToScroll: 4
+                });
+            });
+        </script>
 
         <script>
             CKEDITOR.replace('summary-ckeditor',
