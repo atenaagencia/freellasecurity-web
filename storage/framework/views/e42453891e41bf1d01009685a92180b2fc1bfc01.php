@@ -4,7 +4,6 @@ img{
     max-width: 100%;
     width: 100%;
 }
-
 img#teste{
     width:auto !important;
     height:36;

@@ -91,7 +91,11 @@ if (!isset($seo)) {
                         <li class="nav-item"><a class="nav-link h5 mt-1" href="<?php echo e(asset('/jobs')); ?>">Jobs</a></li>
                         <li class="nav-item"><a class="nav-link h5 mt-1" href="<?php echo e(asset('/companies')); ?>">Companies</a></li>
                         <li class="nav-item"><a class="nav-link h5 mt-1" href="<?php echo e(asset('/contact-us')); ?>">Contact</a></li>
+                        <?php if(Auth::check()): ?>
+                        <li class="nav-item"><a class="nav-link h5 mt-1 ml-lg-3 pl-lg-3 btn btn-primary text-light font-weight-bold" href="<?php echo e(asset('/home')); ?>">Ir para Início</a></li>
+                        <?php else: ?>
                         <li class="nav-item"><a class="nav-link h5 mt-1 ml-lg-3 pl-lg-3 btn btn-primary text-light font-weight-bold" href="<?php echo e(asset('/login')); ?>">Sign In</a></li>
+                        <?php endif; ?>
                     </ul>
                 </div>          
             </div>
@@ -162,12 +166,12 @@ if (!isset($seo)) {
                     <!--About Us-->
                     <div class="col-md-3 col-sm-12">
                         <h5 class="pl-0 pr-0 pb-3">Contact Us</h5>
-                        <p class="font-weight-bold"><?php echo e($siteSetting->site_street_address); ?></p>
+                        <p class="font-weight-bold"><i class="fa fa-map mr-2"></i><?php echo e($siteSetting->site_street_address); ?></p>
                         <div class="font-weight-bold">
-                            <a href="mailto:<?php echo e($siteSetting->mail_to_address); ?>" class="text-dark"><?php echo e($siteSetting->mail_to_address); ?></a>
+                            <a href="mailto:<?php echo e($siteSetting->mail_to_address); ?>" class="text-dark font-weight-bold"><i class="fa fa-envelope mr-2"></i><?php echo e($siteSetting->mail_to_address); ?></a>
                         </div>
                         <div class="font-weight-bold">
-                            <a href="tel:<?php echo e($siteSetting->site_phone_primary); ?>" class="text-dark"><?php echo e($siteSetting->site_phone_primary); ?>7</a>
+                            <a href="tel:<?php echo e($siteSetting->site_phone_primary); ?>" class="text-dark font-weight-bold"><i class="fa fa-phone mr-2"></i><?php echo e($siteSetting->site_phone_primary); ?>7</a>
                         </div>
                         <!-- Social Icons -->
                         <div class="py-3">
