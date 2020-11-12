@@ -1,80 +1,59 @@
-@extends('layouts.app')
-@section('content') 
-<!-- Header start --> 
-@include('includes.header') 
-<!-- Header end --> 
-<!-- Inner Page Title start --> 
-@include('includes.inner_page_title', ['page_title'=>__('All Companies')]) 
-<!-- Inner Page Title end -->
-
-<div class="listpgWraper">
-<div class="container">
-    <ul class="row compnaieslist">
-        @if($companies)
-        @foreach($companies as $company)
-        <li class="col-md-3 col-sm-6">
-            <div class="compint">
-            <div class="imgwrap"><a href="{{route('company.detail',$company->slug)}}">{{$company->printCompanyImage()}}</a></div>
-            <h3><a href="{{route('company.detail',$company->slug)}}">{{$company->name}}</a></h3>
-            <div class="loctext"><i class="fa fa-map-marker" aria-hidden="true"></i> {{$company->location}}</div>
-            <div class="curentopen"><i class="fa fa-black-tie" aria-hidden="true"></i> {{__('Current jobs')}} : {{$company->countNumJobs('company_id',$company->id)}}</div>
-            </div>
-        </li>
-        @endforeach
-        @endif
-
-    </ul>
-    <div class="pagiWrap">
-       {{ $companies->links() }}
-        
-    </div>
-</div>
-</div>
-
-@include('includes.footer')
-@endsection
-@push('styles')
-<style type="text/css">
-    .formrow iframe {
-        height: 78px;
+@extends('layouts.custom')
+<style>
+    @media (min-width: 600px) {
+        .img-fluid {
+            max-height: 240px !important;
+        }
     }
 </style>
-@endpush
-@push('scripts') 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(document).on('click', '#send_company_message', function () {
-            var postData = $('#send-company-message-form').serialize();
-            $.ajax({
-                type: 'POST',
-                url: "{{ route('contact.company.message.send') }}",
-                data: postData,
-                //dataType: 'json',
-                success: function (data)
-                {
-                    response = JSON.parse(data);
-                    var res = response.success;
-                    if (res == 'success')
-                    {
-                        var errorString = '<div role="alert" class="alert alert-success">' + response.message + '</div>';
-                        $('#alert_messages').html(errorString);
-                        $('#send-company-message-form').hide('slow');
-                        $(document).scrollTo('.alert', 2000);
-                    } else
-                    {
-                        var errorString = '<div class="alert alert-danger" role="alert"><ul>';
-                        response = JSON.parse(data);
-                        $.each(response, function (index, value)
-                        {
-                            errorString += '<li>' + value + '</li>';
-                        });
-                        errorString += '</ul></div>';
-                        $('#alert_messages').html(errorString);
-                        $(document).scrollTo('.alert', 2000);
-                    }
-                },
-            });
-        });
-    });
-</script> 
-@endpush
+@section('content')
+<!-- Masthead-->
+<header class="p-5"
+    style="background: url('https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); background-repeat: no-repeat;background-attachment: scroll;background-position: center center;background-size: cover; padding-top: 15rem !important;">
+    <div class="container mx-auto">
+        <h1 class="text-light py-2">Companies List</h1>
+    </div>
+</header>
+
+<!-- Feature Jobs-->
+<section class="page-section bg-secondary-custom">
+    <div class="container mb-5">
+        <div class="row">
+            @if($companies)
+            @foreach($companies as $company)
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <div class="card h-100 portfolio-item border rounded shadow-sm">
+                    <a class="card-header portfolio-link p-0 border-0" href="{{route('company.detail',$company->slug)}}">{{$company->printCompanyImage()}}</a>
+                    <div class="card-body portfolio-caption">
+                        <div class="portfolio-caption-heading py-1 text-left">
+                            <a class="text-dark" href="{{route('company.detail',$company->slug)}}">{{$company->name}}</a>
+                        </div>
+                        <div class="portfolio-caption-subheading text-left text-muted">
+                            {{$company->location}}
+                        </div>
+                        <div class="portfolio-caption-subheading text-left text-muted">
+                            <div class="badge p-2 mt-3 badge-info">{{__('Current jobs')}} : {{$company->countNumJobs('company_id',$company->id)}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            @endif
+          
+        </div>
+        <!--pagination-->
+        <div class="row justify-content-between py-4">
+            {{-- <div class="col-md-5">
+                <div class="showreslt">
+                    Showing Pages : 11 - 20 Total 43
+                </div>
+            </div> --}}
+            <div class="col-md-12 pagiWrap">
+           {{ $companies->links() }}
+            </div>
+        </div>
+        <!--end of pagination-->
+    </div>
+    <!--row-->
+</section>
+@endsection

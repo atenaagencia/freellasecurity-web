@@ -69,7 +69,7 @@ class Job extends Model
             $jobSkills = $this->jobSkills;
             foreach ($jobSkills as $jobSkillManager) {
                 $skill = $jobSkillManager->getJobSkill();
-                $str .= '<li><a href="' . route('job.list', ['job_skill_id[]' => $skill->job_skill_id]) . '">' . $skill->job_skill . '</a></li>';
+                $str .= '<li class="nav-item"><a class="btn btn-outline-dark m-2 nav-link" href="' . route('job.list', ['job_skill_id[]' => $skill->job_skill_id]) . '">' . $skill->job_skill . '</a></li>';
             }
         }
         return $str;
