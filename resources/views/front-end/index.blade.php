@@ -288,7 +288,12 @@ input{
                 </div>
             </div> --}}
         </div>
-        <a class="btn btn-primary btn-xl text-uppercase mt-3 mb-5 float-right" id="see_more" href="{{route('job.list', ['is_featured'=>1])}}">See  More</a><br><br>
+        <div class="container mt-5 py-3 border-top">
+            <div class="row">
+                <h4 class="text-secondary">Would you like to see more job openings?</h4>
+                <a class="btn btn-primary btn-xl text-uppercase ml-auto" id="see_more" href="{{route('job.list', ['is_featured'=>1])}}">See  More</a><br><br>
+            </div>
+        </div>
     </div>
 </section>
 
