@@ -4,10 +4,10 @@
 
 <style>
 .slider {
-    width: 50%;
-    height: 200px;
+    width: 100%;
+    height: 150px;
     margin: 100px auto;
-    margin-top: 20px !important;
+    margin-top: 30px !important;
 }
 .slick-prev, .slick-next {
     display: none !important;
@@ -34,6 +34,11 @@ input{
     text-shadow: none;
 }
 
+@media screen and (max-width: 600px){
+    .slider {
+        width: 90% !important;
+    }
+}
 
 @media (max-width: 767px)
 {
@@ -50,7 +55,17 @@ input{
         bottom: 0;
         margin-bottom: 5rem !important;
     }
+    .slider {
+        width: 75% !important;
+    }
 
+}
+
+@media (max-width: 1366px)
+{
+    .slider {
+        width: 70% !important;
+    }  
 }
 
 </style>
@@ -93,26 +108,6 @@ input{
     </div>
 </div>
 
-<!-- Clients-->
-<!-- <div class="py-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-6 my-3">
-                <a href="#!"><img id="custom" class="img-fluid d-block mx-auto" src="{{asset('company_logos/new/1.png')}}" alt="" /></a>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-6 my-3">
-                <a href="#!"><img id="custom" class="img-fluid d-block mx-auto" src="{{asset('company_logos/new/2.png')}}" alt="" /></a>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-6 my-3">
-                <a href="#!"><img id="custom" class="img-fluid d-block mx-auto" src="{{asset('company_logos/new/3.png')}}" alt="" /></a>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-6 my-3">
-                <a href="#!"><img id="custom" class="img-fluid d-block mx-auto" src="{{asset('company_logos/new/4.png')}}" alt="" /></a>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- Services-->
 <section class="page-section bg-light-custom" id="services">
     <div class="container">
         <div class="text-center">
@@ -348,10 +343,10 @@ $('.center').slick({
   dots: true,
   infinite: true,
   speed: 300,
-  slidesToShow: 4,
-  slidesToScroll: 4,
+  slidesToShow: 5,
+  slidesToScroll: 5,
   autoplay: true,
-  autoplaySpeed: 2000,
+  autoplaySpeed: 4000,
   responsive: [
     {
       breakpoint: 1024,

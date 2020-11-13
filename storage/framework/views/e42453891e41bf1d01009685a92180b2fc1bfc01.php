@@ -2,7 +2,7 @@
 <style>
 img{
     max-width: 100%;
-    width: 100%;
+    width: 50%;
 }
 img#teste{
     width:auto !important;
@@ -62,10 +62,10 @@ $company = $job->getCompany();
             <!--end of col-->
 
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 py-2">
-                <div class="card border-0 bg-white p-1 mb-3">
-                    <div class="container">
+                <div class="card border-0 bg-white p-0 mb-3">
+                    <div class="container p-0 img-responsive">
                         <div class="row mx-auto justify-content-center">
-                            <div class="col-md-12 text-center py-3">
+                            <div class="col-md-12 text-center pt-3">
                                 <a href="<?php echo e(route('company.detail',$company->slug)); ?>" class="m-0">
                                     <figure class="img-responsive img-fluid"><?php echo e($company->printCompanyImage()); ?></figure>
                                 </a>
@@ -73,9 +73,9 @@ $company = $job->getCompany();
                             </div>
                         </div>
                     </div>
-                    <h4 class="pt-3 pb-0 text-center text-dark"><?php echo e($company->name); ?></h4>
-                    <p class="text-center"><?php echo e($company->getLocation()); ?></p>
-                    <a href="<?php echo e(route('company.detail',$company->slug)); ?>" class="card-title p-3 text-center text-dark">
+                    <h4 class="pt-1 pb-0 text-center text-dark"><?php echo e($company->name); ?></h4>
+                    <p class="text-center"><?php echo e($company->getLocation()); ?></p><hr>
+                    <a href="<?php echo e(route('company.detail',$company->slug)); ?>" class="card-title pb-3 text-center text-dark">
                       <?php echo e(App\Company::countNumJobs('company_id', $company->id)); ?> <?php echo e(__('Current Jobs Openings')); ?>
 
                     </a>
@@ -96,7 +96,7 @@ $company = $job->getCompany();
                             <li class="row">
                                 <div class="col">Company</div>
                                 <div class="col">
-                                  <a class="text-dark" href="<?php echo e(route('company.detail', $company->id)); ?>"><?php echo e($company->name); ?></a>
+                                  <a class="text-dark" href="<?php echo e(route('company.detail', $company->slug)); ?>"><?php echo e($company->name); ?></a>
                                 </div>
                             </li>
                             <li class="row">
