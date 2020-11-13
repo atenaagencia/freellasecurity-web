@@ -127,7 +127,7 @@ input{
                 </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active p-3 bg-white border-0" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div class="tab-pane fade show active p-3 bg-white border shadow-sm" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                     <ul class="row teste">
                         {{-- <li class="col-md-4 col-sm-6"><a href="#">Software & Web Development</a></li> --}}
                         @if(isset($topFunctionalAreaIds) && count($topFunctionalAreaIds)) @foreach($topFunctionalAreaIds as
@@ -145,7 +145,7 @@ input{
                         @endif @endforeach @endif
                     </ul>
                 </div>
-                <div class="tab-pane p-3 fade bg-white border-0" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <div class="tab-pane p-3 fade bg-white border shadow-sm" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                     <ul class="row teste">
                         {{-- <li class="col-md-4 col-sm-6"><a href="#">Barrington (2)</a></li> --}}
                         @if(isset($topCityIds) && count($topCityIds))
@@ -162,7 +162,7 @@ input{
 
                     </ul>
                 </div>
-                <div class="tab-pane p-3 fade bg-white border-0" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <div class="tab-pane p-3 fade bg-white border shadow-sm" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                     <ul class="row teste">
                         {{-- <li class="col-md-4 col-sm-6"><a href="#">Construction/Cement/Metals (15)</li> --}}
                             @if(isset($topIndustryIds) && count($topIndustryIds)) @foreach($topIndustryIds as $industry_id => $num_jobs)

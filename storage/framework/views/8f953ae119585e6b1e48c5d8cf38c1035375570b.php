@@ -126,7 +126,7 @@ input{
                 </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active p-3 bg-white border-0" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div class="tab-pane fade show active p-3 bg-white border shadow-sm" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                     <ul class="row teste">
                         
                         <?php if(isset($topFunctionalAreaIds) && count($topFunctionalAreaIds)): ?> <?php $__currentLoopData = $topFunctionalAreaIds; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $functional_area_id_num_jobs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -144,7 +144,7 @@ input{
                         <?php endif; ?> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> <?php endif; ?>
                     </ul>
                 </div>
-                <div class="tab-pane p-3 fade bg-white border-0" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <div class="tab-pane p-3 fade bg-white border shadow-sm" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                     <ul class="row teste">
                         
                         <?php if(isset($topCityIds) && count($topCityIds)): ?>
@@ -161,7 +161,7 @@ input{
 
                     </ul>
                 </div>
-                <div class="tab-pane p-3 fade bg-white border-0" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <div class="tab-pane p-3 fade bg-white border shadow-sm" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                     <ul class="row teste">
                         
                             <?php if(isset($topIndustryIds) && count($topIndustryIds)): ?> <?php $__currentLoopData = $topIndustryIds; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $industry_id => $num_jobs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
