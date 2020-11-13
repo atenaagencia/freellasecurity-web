@@ -168,24 +168,24 @@
                     @php $company = $job->getCompany(); @endphp
                     @if(null !== $company)
                 <div class="card border-0 bg-white mb-5">
-                    <div class="card-header text-light bg-dark">
-                        <div class="card-title font-weight-bold h3">{{$job->title}}</div>
+                    <div class="card-header border-bottom-0 text-dark pb-0">
+                        <div class="card-title h5">{{$job->title}}</div>
                     </div>
                     <div class="card-body">
-                       <p class="lead">{{str_limit(strip_tags($job->description), 150, '...')}}</p>
+                       <p class="text-justify text-mutted">{{str_limit(strip_tags($job->description), 150, '...')}}</p>
                         <div class="portfolio-caption-subheading text-left text-muted "><a href="{{route('company.detail', $company->slug)}}" class="text-left text-muted" title="{{$company->name}}">{{$company->name}}</a></div>
                         <div class="portfolio-caption-subheading text-left text-muted">
-                            <div class="badge p-2 mt-3 badge-info"><label class="fulltime" title="{{$job->getJobType('job_type')}}">{{$job->getJobType('job_type')}}</label>
+                            <div class="badge pt-2 pb-0 mt-3 badge-secondary font-weight-normal"><label class="fulltime" title="{{$job->getJobType('job_type')}}">{{$job->getJobType('job_type')}}</label>
                             - <span>{{$job->getCity('city')}}</span></div>
                         </div>
                     </div>
-                    <div class="card-footer bg-transparent">
-                        <div class="row justify-content-between">
+                    <div class="card-footer bg-white border-secondary-custom pb-0 pt-2">
+                        <div class="row justify-content-between p-0">
                             <div class="col">
-                                <p class="lead text-secondary font-weight-bold pt-1">{{date('d-m-Y', strtotime($job->created_at))}}</p>
+                                <p class="text-secondary font-weight-bold pt-1">{{date('d-m-Y', strtotime($job->created_at))}}</p>
                             </div>
                             <div class="col">
-                                <a href="{{route('job.detail', [$job->slug])}}" class="btn btn-dark py-2 float-right">View details</a>
+                                <a href="{{route('job.detail', [$job->slug])}}" class="btn btn-success float-right">View details</a>
                             </div>
                         </div>
                     </div>

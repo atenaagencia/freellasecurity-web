@@ -32,6 +32,7 @@ input{
 ::selection {
     background: #3693fe !important;
     text-shadow: none;
+    color: white !important;
 }
 
 @media screen and (max-width: 600px){

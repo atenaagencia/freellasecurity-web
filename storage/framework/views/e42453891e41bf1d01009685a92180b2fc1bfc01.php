@@ -32,23 +32,23 @@ $company = $job->getCompany();
                 <div class="card border-0 bg-white h-100">
                     <div class="card-header text-dark bg-transparent border-0">
                         <div class="card-title font-weight-bold h3 py-3"><?php echo e($job->title); ?></div>
-                        <div class="container rounded bg-secondary-custom p-2">
-                            <div class="row justify-content-between">
+                        <div class="container rounded bg-secondary-custom p-2 pb-0">
+                            <div class="row justify-content-between pb-0">
                                 <a class="nav-link">Date Posted: <?php echo e(date('d-m-Y', strtotime($job->created_at))); ?></a>
-                                <a class="nav-link h4"><?php if(!(bool)$job->hide_salary): ?>
+                                <a class="nav-link h5 pb-0"><?php if(!(bool)$job->hide_salary): ?>
                                 <div class="salary"><?php echo e(__('Project Cost')); ?>: <strong><?php echo e($job->salary_from.' '.$job->salary_currency); ?></strong></div>
                                 <?php endif; ?></a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body p-4">
-                        <h4 class="py-3">Job description</h4>
+                        <h5 class="py-3 text-dark">Job description</h5>
                         <p class="lead">
                          <?php echo $job->description; ?>
 
                         </p>
                         <hr>
-                        <h4 class="py-3">Skills Required</h4>
+                        <h5 class="py-3 text-dark">Skills Required</h5>
                         <ul class="nav d-flex d-inline-block">
                            <?php echo $job->getJobSkillsList(); ?>
 
@@ -113,7 +113,7 @@ $company = $job->getCompany();
                 <!--card's end-->
 
                 <div class="container p-0">
-                    <button class="btn btn-dark btn-block py-3 mb-3">APPLY FOR THIS JOB</button>
+                    <button class="btn btn-dark btn-block py-3 mb-3">Apply for this job</button>
                 </div>
 
             </div>

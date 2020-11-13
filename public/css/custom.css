@@ -1,4 +1,7 @@
 
+.bg-primary{
+    background-color: #3693fe !important;
+}
 .masthead-heading{
     font-size: 3rem !important;
     font-weight: 700;
@@ -69,8 +72,12 @@
 
 .bg-secondary-custom{
     background: #ececec !important;
-
 }
+
+.bg-light-custom{
+    background: #D9D7D7 !important;
+}
+
 
 ul#footer {
     list-style-type: none;
