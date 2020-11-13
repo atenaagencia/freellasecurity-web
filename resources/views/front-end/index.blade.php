@@ -183,7 +183,7 @@ input{
 </section>
 
 <!-- Feature Jobs-->
-<section class="page-section bg-secondary-custom" id="services">
+<section class="page-section bg-white" id="services">
     <div class="container mb-5">
         <div class="text-left py-3">
             <div class="masthead-heading display-5 text-left text-dark">Feature Jobs</div>
@@ -200,7 +200,7 @@ input{
                         <!-- <img class="img-fluid" style="width: 400px; height: 300px;" src="{{asset('company_logos/'.$company->logo)}}" alt="" /> -->
                         <img class="img-fluid" src="{{asset('company_logos/'.$company->logo)}}" alt="" />
                     </a>
-                    <div class="card-body portfolio-caption">
+                    <div class="card-body bg-white border shadow-sm portfolio-caption">
                         <div class="portfolio-caption-heading py-1 text-left text-dark">
                             {{$featuredJob->title}}
                         </div>
@@ -218,76 +218,6 @@ input{
             @endif
             @endforeach
             @endif
-            {{-- <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card portfolio-item border-0">
-                    <a class="card-header portfolio-link p-0 border-0" href="{{asset('/teste/job')}}">
-                        <img class="img-fluid" src="{{asset('img/portfolio/02-thumbnail.jpg')}}" alt="" />
-                    </a>
-                    <div class="card-body portfolio-caption">
-                        <div class="portfolio-caption-heading py-1 text-left text-dark">Electrical Engineer</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">Power Wave</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">
-                            <div class="badge p-2 mt-3 badge-success">Full Time Permanent</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card portfolio-item border-0">
-                    <a class="card-header portfolio-link p-0 border-0" href="{{asset('/teste/job')}}">
-                        <img class="img-fluid" src="{{asset('img/portfolio/02-thumbnail.jpg')}}" alt="" />
-                    </a>
-                    <div class="card-body portfolio-caption">
-                        <div class="portfolio-caption-heading py-1 text-left text-dark">Electrical Engineer</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">Power Wave</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">
-                            <div class="badge p-2 mt-3 badge-success">Full Time Permanent</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card portfolio-item border-0">
-                    <a class="card-header portfolio-link p-0 border-0" href="{{asset('/teste/job')}}">
-                        <img class="img-fluid" src="{{asset('img/portfolio/02-thumbnail.jpg')}}" alt="" />
-                    </a>
-                    <div class="card-body portfolio-caption">
-                        <div class="portfolio-caption-heading py-1 text-left text-dark">Electrical Engineer</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">Power Wave</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">
-                            <div class="badge p-2 mt-3 badge-success">Full Time Permanent</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card portfolio-item border-0">
-                    <a class="card-header portfolio-link p-0 border-0" href="{{asset('/teste/job')}}">
-                        <img class="img-fluid" src="{{asset('img/portfolio/02-thumbnail.jpg')}}" alt="" />
-                    </a>
-                    <div class="card-body portfolio-caption">
-                        <div class="portfolio-caption-heading py-1 text-left text-dark">Electrical Engineer</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">Power Wave</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">
-                            <div class="badge p-2 mt-3 badge-success">Full Time Permanent</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card portfolio-item border-0">
-                    <a class="card-header portfolio-link p-0 border-0" href="{{asset('/teste/job')}}">
-                        <img class="img-fluid" src="{{asset('img/portfolio/03-thumbnail.jpg')}}" alt="" />
-                    </a>
-                    <div class="card-body portfolio-caption">
-                        <div class="portfolio-caption-heading py-1 text-left text-dark">Electrical Engineer</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">Power Wave</div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">
-                            <div class="badge p-2 mt-3 badge-danger">Freelance</div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
         </div>
         <div class="container mt-5 py-3 border-top">
             <div class="row">
@@ -299,7 +229,7 @@ input{
 </section>
 
 <!-- Feature Jobs-->
-<section class="page-section bg-white" id="how">
+<section class="page-section border-top bg-white" id="how">
     <div class="container">
         <div class="text-left py-3">
             <div class="masthead-heading display-5 text-left text-dark">How it Works</div>

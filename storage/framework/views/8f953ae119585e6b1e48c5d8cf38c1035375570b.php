@@ -182,7 +182,7 @@ input{
 </section>
 
 <!-- Feature Jobs-->
-<section class="page-section bg-secondary-custom" id="services">
+<section class="page-section bg-white" id="services">
     <div class="container mb-5">
         <div class="text-left py-3">
             <div class="masthead-heading display-5 text-left text-dark">Feature Jobs</div>
@@ -199,7 +199,7 @@ input{
                         <!-- <img class="img-fluid" style="width: 400px; height: 300px;" src="<?php echo e(asset('company_logos/'.$company->logo)); ?>" alt="" /> -->
                         <img class="img-fluid" src="<?php echo e(asset('company_logos/'.$company->logo)); ?>" alt="" />
                     </a>
-                    <div class="card-body portfolio-caption">
+                    <div class="card-body bg-white border shadow-sm portfolio-caption">
                         <div class="portfolio-caption-heading py-1 text-left text-dark">
                             <?php echo e($featuredJob->title); ?>
 
@@ -219,7 +219,6 @@ input{
             <?php endif; ?>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <?php endif; ?>
-            
         </div>
         <div class="container mt-5 py-3 border-top">
             <div class="row">
@@ -231,7 +230,7 @@ input{
 </section>
 
 <!-- Feature Jobs-->
-<section class="page-section bg-white" id="how">
+<section class="page-section border-top bg-white" id="how">
     <div class="container">
         <div class="text-left py-3">
             <div class="masthead-heading display-5 text-left text-dark">How it Works</div>
