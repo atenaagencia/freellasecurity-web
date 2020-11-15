@@ -198,10 +198,10 @@ ul{
             <?php $company = $featuredJob->getCompany(); ?>
             @if(null !== $company)
             <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-                <div class="card portfolio-item">
+                <div class="card portfolio-item rounded-0 shadow-sm">
                     <div class="row justify-content-left">
                         <div class="col-12">
-                            <div class="card-header border-0">
+                            <div class="card-header border-0 rounded-0" style="border-top: 3px solid #3693fe !important">
                                 <div class="portfolio-caption-heading py-1">
                                     <a href="{{route('job.detail', [$featuredJob->slug])}}" title="{{$featuredJob->title}}" class="text-left text-dark">{{$featuredJob->title}}</a>
                                 </div>
@@ -217,7 +217,7 @@ ul{
                                 </div>
                                 <div class="portfolio-caption-subheading text-dark text-muted pt-3">
                                     <span class="mr-2">Client:</span><a class="text-dark text-muted" href="{{route('company.detail', $company->slug)}}" title="{{$company->name}}">{{$company->name}}</a>
-                                    <div class="badge p-2 fulltime badge-primary float-right" title="{{$featuredJob->getJobType('job_type')}}">
+                                    <div class="badge p-2 fulltime badge-secondary float-right" title="{{$featuredJob->getJobType('job_type')}}">
                                     {{$featuredJob->getJobType('job_type')}}
                                     </div>
                                 </div>

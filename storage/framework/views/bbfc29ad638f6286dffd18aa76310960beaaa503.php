@@ -117,7 +117,7 @@ if (!isset($seo)) {
                             <li><a href="<?php echo e(route('index')); ?>"><?php echo e(__('Home')); ?></a></li>
                             <li><a href="<?php echo e(route('contact.us')); ?>"><?php echo e(__('Contact Us')); ?></a></li>
                             <li class="postad"><a href="<?php echo e(route('post.job')); ?>"><?php echo e(__('Post a Job')); ?></a></li>
-                            <li><a href="<?php echo e(route('faq')); ?>"><?php echo e(__('FAQs')); ?></a></li>
+                            <!-- <li><a href="<?php echo e(route('faq')); ?>"><?php echo e(__('FAQs')); ?></a></li> -->
                             <?php $__currentLoopData = $show_in_footer_menu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $footer_menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <?php
                             $cmsContent = App\CmsContent::getContentBySlug($footer_menu->page_slug);
