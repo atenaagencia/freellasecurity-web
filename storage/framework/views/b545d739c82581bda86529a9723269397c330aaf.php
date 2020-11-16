@@ -1,39 +1,30 @@
-<?php $__env->startSection('content'); ?> 
-<!-- Header start --> 
-<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> 
-<!-- Header end --> 
-<!-- Inner Page Title start --> 
-<?php echo $__env->make('includes.inner_page_title', ['page_title'=>__('Dashboard')], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> 
-<!-- Inner Page Title end -->
-<div class="listpgWraper">
-    <div class="container"><?php echo $__env->make('flash::message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-        <div class="row"> <?php echo $__env->make('includes.user_dashboard_menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-            <div class="col-md-9 col-sm-8"> <?php echo $__env->make('includes.user_dashboard_stats', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-                <?php if((bool)config('jobseeker.is_jobseeker_package_active')): ?>
-                <?php        
-                $packages = App\Package::where('package_for', 'like', 'job_seeker')->get();
-                $package = Auth::user()->getPackage();
-                if(null !== $package){
-                $packages = App\Package::where('package_for', 'like', 'job_seeker')->where('id', '<>', $package->id)->where('package_price', '>=', $package->package_price)->get();
-                }
-                ?>
-
-                <?php if(null !== $package): ?>
-                <?php echo $__env->make('includes.user_package_msg', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-                <?php echo $__env->make('includes.user_packages_upgrade', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-                <?php else: ?>
-
-                <?php if(null !== $packages): ?>
-                <?php echo $__env->make('includes.user_packages_new', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-                <?php endif; ?>
-                <?php endif; ?>
-                <?php endif; ?> </div>
+<?php $__env->startSection('title-page'); ?>
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+</div>
+<?php $__env->stopSection(); ?>  
+                  
+<?php $__env->startSection('content'); ?>
+<div class="row">
+    <!-- Area Chart -->
+    <div class="col-12">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Lorem Ipsum</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem aut consequatur molestiae reprehenderit? Facilis animi commodi expedita, illo debitis odit deleniti, excepturi optio perspiciatis pariatur quo, voluptate omnis doloremque in!
+                
+            </div>
         </div>
     </div>
 </div>
-<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <?php $__env->stopSection(); ?>
+
 <?php $__env->startPush('scripts'); ?>
-<?php echo $__env->make('includes.immediate_available_btn', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php echo $__env->make('includes.immediate_available_btn', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <?php $__env->stopPush(); ?>
-<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.user', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
