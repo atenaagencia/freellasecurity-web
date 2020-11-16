@@ -25,6 +25,7 @@ if (!isset($seo)) {
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
         <link href="{{asset('css/custom.css')}}" rel="stylesheet" />
+        <link href="{{asset('css/responsivity.css')}}" rel="stylesheet" />
 
         <link rel="stylesheet" type="text/css" href="{{asset('css/slick.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/slick-theme.css')}}">
@@ -103,12 +104,12 @@ if (!isset($seo)) {
         @yield('custom-css')
         @yield('content')
         
-        <div class="py-4 bg-light-custom p-5"> 
+        <div class="py-4 bg-light-custom p-5" id="footer-link"> 
             <div class="container">
                 <div class="row"> 
         
                     <!--Quick Links-->
-                    <div class="col-md-3 col-sm-6 pr-4">
+                    <div class="col-md-2 col-sm-6 pr-4">
                         <h5 class="pl-0 pr-0 pb-3">Quick Links</h5>
                         <!--Quick Links menu Start-->
                         <ul class="p-0" id="footer">
@@ -137,16 +138,6 @@ if (!isset($seo)) {
                         <h5 class="pl-0 pr-0 pb-3">Jobs By Functional Area</h5>
                         <!--Quick Links menu Start-->
                         <ul class="p-0" id="footer">
-                            {{-- <li><a href="http://vps23865.publiccloud.com.br/jobs?functional_area_id%5B%5D=16">Clerical</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?functional_area_id%5B%5D=14">Business Management</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?functional_area_id%5B%5D=8">Advertising</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?functional_area_id%5B%5D=1">Accountant</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?functional_area_id%5B%5D=32">Electronics Technician</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?functional_area_id%5B%5D=18">Computer Hardware</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?functional_area_id%5B%5D=6">Administration Clerical</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?functional_area_id%5B%5D=15">Business Systems Analyst</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?functional_area_id%5B%5D=19">Computer Networking</a></li>
-                            <li><a href="http://vps23865.publiccloud.com.br/jobs?functional_area_id%5B%5D=23">Creative Design</a></li> --}}
                             @php
                             $functionalAreas = App\FunctionalArea::getUsingFunctionalAreas(10);
                             @endphp
@@ -159,7 +150,7 @@ if (!isset($seo)) {
                     </div>
         
                     <!--Jobs By Industry-->
-                    <div class="col-md-3 col-sm-6 pr-4">
+                    <div class="col-md-4 col-sm-6 pr-4">
                         <h5 class="pl-0 pr-0 pb-3">Jobs By Industry</h5>
                         <!--Industry menu Start-->
                         <ul class="p-0" id="footer">

@@ -26,6 +26,7 @@ if (!isset($seo)) {
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet" />
         <link href="<?php echo e(asset('css/custom.css')); ?>" rel="stylesheet" />
+        <link href="<?php echo e(asset('css/responsivity.css')); ?>" rel="stylesheet" />
 
         <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/slick.css')); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/slick-theme.css')); ?>">
@@ -104,12 +105,12 @@ if (!isset($seo)) {
         <?php echo $__env->yieldContent('custom-css'); ?>
         <?php echo $__env->yieldContent('content'); ?>
         
-        <div class="py-4 bg-light-custom p-5"> 
+        <div class="py-4 bg-light-custom p-5" id="footer-link"> 
             <div class="container">
                 <div class="row"> 
         
                     <!--Quick Links-->
-                    <div class="col-md-3 col-sm-6 pr-4">
+                    <div class="col-md-2 col-sm-6 pr-4">
                         <h5 class="pl-0 pr-0 pb-3">Quick Links</h5>
                         <!--Quick Links menu Start-->
                         <ul class="p-0" id="footer">
@@ -134,7 +135,6 @@ if (!isset($seo)) {
                         <h5 class="pl-0 pr-0 pb-3">Jobs By Functional Area</h5>
                         <!--Quick Links menu Start-->
                         <ul class="p-0" id="footer">
-                            
                             <?php
                             $functionalAreas = App\FunctionalArea::getUsingFunctionalAreas(10);
                             ?>
@@ -147,7 +147,7 @@ if (!isset($seo)) {
                     </div>
         
                     <!--Jobs By Industry-->
-                    <div class="col-md-3 col-sm-6 pr-4">
+                    <div class="col-md-4 col-sm-6 pr-4">
                         <h5 class="pl-0 pr-0 pb-3">Jobs By Industry</h5>
                         <!--Industry menu Start-->
                         <ul class="p-0" id="footer">

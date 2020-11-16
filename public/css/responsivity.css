@@ -1,0 +1,33 @@
+
+@media screen and (max-width: 665px){
+    .masthead-heading {
+        font-size: 2rem !important;
+        font-weight: 700;
+        line-height: 3.25rem;
+        margin-bottom: 2rem;
+    }
+}
+
+@media screen and (max-width: 767px){
+    
+    /*from first page*/
+
+    a.btn#see_more{
+        display: block;
+        width: 100%;
+        margin-top: 3rem;
+    }
+
+    /*from companies*/
+
+    a.card-header.portfolio-link{
+        display: none !important;
+    }
+
+}
+@media (max-width: 1197px){
+    #footer-link{
+        padding: 1.5rem !important;
+    }
+
+}
