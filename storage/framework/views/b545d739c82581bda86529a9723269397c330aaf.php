@@ -1,8 +1,11 @@
 <?php $__env->startSection('title-page'); ?>
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4 border-bottom">
-    <h1 class="h3 font-weight-bold text-dark">Dashboard</h1>
+    <h1 class="h3 font-weight-bold text-dark">Candidate Dashboard</h1>
     <div class="row">
+        <a class="nav-link p-3" title='My Account Balance'>
+            <i class="fas fa-2x fa-wallet mr-1"></i>(usd)<h4 class="text-dark">$ 0,00</h4> 
+        </a>
         <a class="nav-link p-3" title="Profile Views">
             <i class="fa fa-2x fa-eye mr-1"></i><h4 class="text-dark">20</h4>  
         </a>
