@@ -1,4 +1,16 @@
+<link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/slick.css')); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/slick-theme.css')); ?>">
+
 <style>
+.slider {
+    width: 100%;
+    height: 150px;
+    margin: 100px auto;
+    margin-top: 30px !important;
+}
+.slick-prev, .slick-next {
+    display: none !important;
+}
 .nav-pills .nav-link {
     /* background: white; */
     /* margin: 2px; */
@@ -16,9 +28,19 @@ input{
     text-align: center !important;
 }
 
+ul{
+    list-style: none !important;
+}
 ::selection {
     background: #3693fe !important;
     text-shadow: none;
+    color: white !important;
+}
+
+@media  screen and (max-width: 600px){
+    .slider {
+        width: 90% !important;
+    }
 }
 
 @media (max-width: 767px)
@@ -27,52 +49,69 @@ input{
         display: none !important;
     }
     .portfolio-caption-subheading{
-        padding-top: 3.1rem !important;
+        /* padding-top: 3.1rem !important; */
         padding-bottom: 0 !important;
     }
     .portfolio-caption-subheading>.badge{
         position: relative;
         left: 0;
         bottom: 0;
-        margin-bottom: 5rem !important;
+        /* margin-bottom: 5rem !important; */
     }
-    /* a.btn#see_more{
-        width: 100%;
-    } */
+    .slider {
+        width: 75% !important;
+    }
+
+}
+
+@media (max-width: 1366px)
+{
+    .slider {
+        width: 70% !important;
+    }  
 }
 
 </style>
 <?php $__env->startSection('content'); ?>
 <header class="masthead">
     <div class="container">
-        <div class="masthead-heading display-5 mx-auto col-10">Find the perfect freelance <b class="text-primary">security</b> services for your bussiness.</div>
+        <div class="masthead-heading display-5 mx-auto col-10">Find the perfect freelance security services for your bussiness.</div>
         <form action="<?php echo e(route('job.seeker.list')); ?>" method="get">
-        <input type="text" class="main-input form-control col-8 mx-auto bg-transparent py-4">
+        <input type="text" class="main-input form-control col-7 mx-auto bg-transparent py-4">
         <button class="btn btn-primary btn-xl text-uppercase mt-5" href="#services">SEARCH JOB</button>
         </form>
     </div>
 </header>
+
 <!-- Clients-->
-<div class="py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-6 my-3">
-                <a href="#!"><img class="img-fluid d-block mx-auto" src="<?php echo e(asset('img/logos/envato.jpg')); ?>" alt="" /></a>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-6 my-3">
-                <a href="#!"><img class="img-fluid d-block mx-auto" src="<?php echo e(asset('img/logos/designmodo.jpg')); ?>" alt="" /></a>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-6 my-3">
-                <a href="#!"><img class="img-fluid d-block mx-auto" src="<?php echo e(asset('img/logos/themeforest.jpg')); ?>" alt="" /></a>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-6 my-3">
-                <a href="#!"><img class="img-fluid d-block mx-auto" src="<?php echo e(asset('img/logos/creative-market.jpg')); ?>" alt="" /></a>
-            </div>
-        </div>
+<div class="container center slider">
+    <div>
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/1.png')); ?>" alt="" />
+    </div>
+    <div>
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/2.png')); ?>" alt="" />
+    </div>
+    <div>
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/3.png')); ?>" alt="" />
+    </div>
+    <div>
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/4.png')); ?>" alt="" />
+    </div>
+    <div>
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/1.png')); ?>" alt="" />
+    </div>
+    <div>
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/2.png')); ?>" alt="" />
+    </div>
+    <div>
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/3.png')); ?>" alt="" />
+    </div>
+    <div>
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/4.png')); ?>" alt="" />
     </div>
 </div>
-<!-- Services-->
-<section class="page-section bg-light-custom" id="services">
+
+<section class="page-section bg-secondary-custom" id="services">
     <div class="container">
         <div class="text-center">
             <div class="masthead-heading display-5 text-left text-dark py-4">Browse jobs acording to your necessities</div>
@@ -80,13 +119,13 @@ input{
         <div class="col-12 card rounded-0 bg-transparent border-0 p-0">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item col-md-4 col-sm-12 p-0">
-                    <a class="nav-link py-2 btn-lg text-dark font-weight-bold active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Functional area <i class="fas m-1 fa-angle-down text-light float-right"></i></a>
+                    <a class="nav-link py-2 btn-lg text-dark font-weight-bold active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Functional area <i class="fas m-1 fa-angle-down float-right"></i></a>
                 </li>
                 <li class="nav-item col-md-4 col-sm-12 p-0">
-                    <a class="nav-link py-2 btn-lg text-dark font-weight-bold" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Cities <i class="fas m-1 fa-angle-down text-light float-right"></i></a>
+                    <a class="nav-link py-2 btn-lg text-dark font-weight-bold" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Cities <i class="fas m-1 fa-angle-down float-right"></i></a>
                 </li>
                 <li class="nav-item col-md-4 col-sm-12 p-0">
-                    <a class="nav-link py-2 btn-lg text-dark font-weight-bold" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Industries <i class="fas m-1 fa-angle-down text-light float-right"></i></a>
+                    <a class="nav-link py-2 btn-lg text-dark font-weight-bold" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Industries <i class="fas m-1 fa-angle-down float-right"></i></a>
                 </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
@@ -146,7 +185,7 @@ input{
 </section>
 
 <!-- Feature Jobs-->
-<section class="page-section bg-secondary-custom" id="services">
+<section class="page-section bg-white" id="services">
     <div class="container mb-5">
         <div class="text-left py-3">
             <div class="masthead-heading display-5 text-left text-dark">Feature Jobs</div>
@@ -157,13 +196,42 @@ input{
             <?php $__currentLoopData = $featuredJobs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $featuredJob): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <?php $company = $featuredJob->getCompany(); ?>
             <?php if(null !== $company): ?>
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="card h-100 portfolio-item border-0">
-                    <a class="card-header portfolio-link p-0 border-0" href="<?php echo e(route('job.detail', [$featuredJob->slug])); ?>" title="<?php echo e($featuredJob->title); ?>">
-                        <!-- <img class="img-fluid" style="width: 400px; height: 300px;" src="<?php echo e(asset('company_logos/'.$company->logo)); ?>" alt="" /> -->
+            <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                <div class="card portfolio-item rounded-0 shadow-sm">
+                    <div class="row justify-content-left">
+                        <div class="col-12">
+                            <div class="card-header border-0 rounded-0" style="border-top: 3px solid #3693fe !important">
+                                <div class="portfolio-caption-heading py-1">
+                                    <a href="<?php echo e(route('job.detail', [$featuredJob->slug])); ?>" title="<?php echo e($featuredJob->title); ?>" class="text-left text-dark"><?php echo e($featuredJob->title); ?></a>
+                                </div>
+                            </div>
+                            <div class="card-body bg-white portfolio-caption text-justify">
+                                <div class="portfolio-caption-subheading">
+                                    <b>Skills required:</b>
+                                    <ul class="nav d-flex d-inline-block">
+                                        <li class=""><a class="text-dark mr-1" href="http://localhost:8000/jobs?job_skill_id%5B%5D=5">#Communication Skills</a></li>
+                                        <li class=""><a class="text-dark mr-1" href="http://localhost:8000/jobs?job_skill_id%5B%5D=12">#Marketing</a></li>
+                                        <li class=""><a class="text-dark mr-1" href="http://localhost:8000/jobs?job_skill_id%5B%5D=17">#Sales</a></li>
+                                    </ul>
+                                </div>
+                                <div class="portfolio-caption-subheading text-dark text-muted pt-3">
+                                    <span class="mr-2">Client:</span><a class="text-dark text-muted" href="<?php echo e(route('company.detail', $company->slug)); ?>" title="<?php echo e($company->name); ?>"><?php echo e($company->name); ?></a>
+                                    <div class="badge p-2 fulltime badge-secondary float-right" title="<?php echo e($featuredJob->getJobType('job_type')); ?>">
+                                    <?php echo e($featuredJob->getJobType('job_type')); ?>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100 portfolio-item border shadow-sm">
+                    <a class="card-header portfolio-link p-0" href="<?php echo e(route('job.detail', [$featuredJob->slug])); ?>" title="<?php echo e($featuredJob->title); ?>">
                         <img class="img-fluid" src="<?php echo e(asset('company_logos/'.$company->logo)); ?>" alt="" />
                     </a>
-                    <div class="card-body portfolio-caption">
+                    <div class="card-body bg-white portfolio-caption">
                         <div class="portfolio-caption-heading py-1 text-left text-dark">
                             <?php echo e($featuredJob->title); ?>
 
@@ -179,18 +247,22 @@ input{
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <?php endif; ?>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <?php endif; ?>
-            
         </div>
-        <a class="btn btn-primary btn-xl text-uppercase mt-3 mb-5 float-right" id="see_more" href="<?php echo e(route('job.list', ['is_featured'=>1])); ?>">See  More</a><br><br>
+        <div class="container mt-5 py-3 border-top">
+            <div class="row">
+                <h4 class="text-secondary">Would you like to see more job openings?</h4>
+                <a class="btn btn-primary btn-xl text-uppercase ml-auto" id="see_more" href="<?php echo e(route('job.list', ['is_featured'=>1])); ?>">See  More</a><br><br>
+            </div>
+        </div>
     </div>
 </section>
 
 <!-- Feature Jobs-->
-<section class="page-section bg-white" id="how">
+<section class="page-section border-top bg-white" id="how">
     <div class="container">
         <div class="text-left py-3">
             <div class="masthead-heading display-5 text-left text-dark">How it Works</div>
@@ -230,8 +302,51 @@ input{
         </div>
     </div>
 </section>
+
+
+<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src="<?php echo e(asset('js/slick.js')); ?>" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    
+$('.center').slick({
+  dots: true,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 5,
+  slidesToScroll: 5,
+  autoplay: true,
+  autoplaySpeed: 4000,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+	
+</script>
 <?php $__env->stopSection(); ?>
-
-
     
 <?php echo $__env->make('layouts.custom', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

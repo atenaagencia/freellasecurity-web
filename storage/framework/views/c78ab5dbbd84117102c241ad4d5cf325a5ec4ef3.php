@@ -1,20 +1,24 @@
 <div class="header">
     <div class="container">
         <div class="row">
-            <div class="col-md-2 col-sm-3 col-xs-12"><a href="<?php echo e(url('/')); ?>" class="logo"><img
-                            src="<?php echo e(asset('/')); ?>sitesetting_images/thumb/<?php echo e($siteSetting->site_logo); ?>"
-                            alt="<?php echo e($siteSetting->site_name); ?>"/></a>
+            <div class="col-md-2 col-sm-3 col-xs-12">
+                <a href="<?php echo e(url('/')); ?>" class="logo" style="padding-top: 0.5rem !important">
+                    <img id="teste" src="<?php echo e(asset('img/logos/main-logo.png')); ?>" alt="" width="auto" height="36">
+                </a>
+                <!-- <img src="<?php echo e(asset('/')); ?>sitesetting_images/thumb/<?php echo e($siteSetting->site_logo); ?>" alt="<?php echo e($siteSetting->site_name); ?>"/></a> -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
-                                class="icon-bar"></span> <span class="icon-bar"></span></button>
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
                 <div class="clearfix"></div>
             </div>
             <div class="col-md-10 col-sm-12 col-xs-12">
-
                 <!-- Nav start -->
-                <div class="navbar navbar-default" role="navigation">
+                <div class="navbar navbar-default" role="navigation" style="padding: 0.7rem !important">
                     <div class="navbar-collapse collapse" id="nav-main">
                         <ul class="nav navbar-nav">
                             <li class="<?php echo e(Request::url() == route('index') ? 'active' : ''); ?>"><a
