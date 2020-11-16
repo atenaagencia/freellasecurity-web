@@ -86,33 +86,6 @@ if (!isset($seo)) {
 
                 <!-- Heading -->
                 <div class="sidebar-heading">
-                    Profile
-                </div>
-
-                
-                <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="{{ route('my.profile') }}" data-toggle="collapse" data-target="#collapseTwo"
-                        aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="fas fa-fw fa-user"></i>
-                        <span>My Profile</span>
-                    </a>
-                </li>
-
-                <!-- Nav Item - Utilities Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="{{ route('view.public.profile', Auth::user()->id) }}" data-toggle="collapse" data-target="#collapseUtilities"
-                        aria-expanded="true" aria-controls="collapseUtilities">
-                        <i class="fas fa-fw fa-eye"></i>
-                        <span>View Public Profile</span>
-                    </a>
-                </li>
-
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-
-                <!-- Heading -->
-                <div class="sidebar-heading">
                     Jobs
                 </div>
 
