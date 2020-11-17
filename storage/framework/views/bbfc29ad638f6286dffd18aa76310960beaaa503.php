@@ -93,7 +93,7 @@ if (!isset($seo)) {
                         <li class="nav-item"><a class="nav-link h5 mt-1" href="<?php echo e(asset('/companies')); ?>">Companies</a></li>
                         <li class="nav-item"><a class="nav-link h5 mt-1" href="<?php echo e(asset('/contact-us')); ?>">Contact</a></li>
                         <?php if(Auth::check()): ?>
-                        <li class="nav-item"><a class="nav-link h5 mt-1 ml-lg-3 pl-lg-3 btn btn-primary text-light font-weight-bold" href="<?php echo e(asset('/home')); ?>">Ir para Início</a></li>
+                        <li class="nav-item"><a class="nav-link h5 mt-1 ml-lg-3 pl-lg-3 btn btn-primary text-light font-weight-bold" href="<?php echo e(asset('/home')); ?>">Go to Dashboard</a></li>
                         <?php else: ?>
                         <li class="nav-item"><a class="nav-link h5 mt-1 ml-lg-3 pl-lg-3 btn btn-primary text-light font-weight-bold" href="<?php echo e(asset('/login')); ?>">Sign In</a></li>
                         <?php endif; ?>

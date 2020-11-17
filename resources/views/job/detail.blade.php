@@ -31,7 +31,7 @@ $company = $job->getCompany();
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 py-2">
-                <div class="card border-0 bg-white h-100">
+                <div class="card h-100 border-0 bg-white">
                     <div class="card-header text-dark bg-transparent border-0">
                         <div class="card-title font-weight-bold h3 py-3">{{$job->title}}</div>
                         <div class="container rounded bg-secondary-custom p-2 pb-0">
@@ -51,10 +51,23 @@ $company = $job->getCompany();
                         <hr>
                         <h5 class="py-3 text-dark">Skills Required</h5>
                         <ul class="nav d-flex d-inline-block">
-                           {!!$job->getJobSkillsList()!!}
-                       
+                        {!!$job->getJobSkillsList()!!}
                         </ul>
                         <hr>
+                        <div class="container mt-3 p-0">
+                            <h5 class="py-3 text-dark">Actions</h5>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <a href="#" class="m-1 btn btn-block p-2 btn-success"><i class="fa fa-location-arrow mr-1"></i>Apply Now</a>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <a href="#" class="m-1 btn btn-block p-2 btn-outline-dark"><i class="fa fa-star mr-1"></i>Add to Favourite</a>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <a href="#" class="m-1 btn btn-block p-2 btn-outline-danger"><i class="fa fa-exclamation-triangle mr-1"></i>Reporte Abuse</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!--end of card-->
@@ -81,7 +94,7 @@ $company = $job->getCompany();
                 </div>
                 <!--card's end-->
 
-                <div class="card border-0 bg-white p-1 mb-3">
+                <div class="card border-0 bg-white p-1">
                     <div class="container p-3">
                         <h4 class="pb-0 pt-1 text-dark">Job Detail</h4>
                         <hr>
@@ -110,10 +123,6 @@ $company = $job->getCompany();
                     </div>
                 </div>
                 <!--card's end-->
-
-                <div class="container p-0">
-                    <button class="btn btn-dark btn-block py-3 mb-3">Apply for this job</button>
-                </div>
 
             </div>
             <!--col end-->
