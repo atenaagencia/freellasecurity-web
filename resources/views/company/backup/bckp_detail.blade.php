@@ -50,7 +50,8 @@
             </div>
 
             <!-- Buttons -->
-            <div class="jobButtons"> @if(Auth::check() && Auth::user()->isFavouriteCompany($company->slug)) <a
+            <div class="jobButtons">
+                 @if(Auth::check() && Auth::user()->isFavouriteCompany($company->slug)) <a
                     href="{{route('remove.from.favourite.company', $company->slug)}}" class="btn"><i
                         class="fa fa-floppy-o" aria-hidden="true"></i> {{__('Favourite Company')}} </a> @else <a
                     href="{{route('add.to.favourite.company', $company->slug)}}" class="btn"><i class="fa fa-floppy-o"

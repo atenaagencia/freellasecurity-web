@@ -27,27 +27,27 @@
                                 <a class="nav-link"><i class="fas fa-map-marker text-primary mr-3"></i><?php echo e($company->location); ?></a>
                             </div>
                         </div>
-
                         <div class="container">
                             <div class="row justify-content-between py-2">
                                 <div class="col p-1">
-                                    <a href="" class="btn btn-block btn-dark"><i
-                                            class="fa fa-star text-warning mr-2"></i>Add to Favourite</a>
+                                    <?php if(Auth::check() && Auth::user()->isFavouriteCompany($company->slug)): ?>
+                                    <a href="<?php echo e(route('remove.from.favourite.company', $company->slug)); ?>" class="btn btn-block btn-dark"><i class="fa fa-star text-warning mr-2"></i>Favourite Company</a>
+                                    <?php else: ?>
+                                    <a href="<?php echo e(route('add.to.favourite.company', $company->slug)); ?>" class="btn btn-block btn-dark"><i class="fa fa-star text-warning mr-2"></i>Add to Favourite</a>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="col p-1">
-                                    <a href="" class="btn btn-block btn-danger"><i
-                                            class="fas fa-exclamation-circle text-light mr-2"></i>Report Abuse</a>
+                                    <a href="<?php echo e(route('report.abuse.company', $company->slug)); ?>" class="btn btn-block btn-danger"><i class="fas fa-exclamation-circle text-light mr-2"></i>Report Abuse</a>
                                 </div>
                                 <div class="col p-1">
-                                    <a href="" class="btn btn-block btn-light font-weight-bold"><i
-                                            class="fa fa-envelope text-dark mr-2"></i>Send a message</a>
+                                    <a href="javascript:;"                                 onclick="send_message()" class="btn btn-block btn-outline-dark font-weight-bold"><i class="fa fa-envelope mr-2"></i>Send a message</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-body p-4">
-                        <h4 class="py-3">About Company</h4>
-                        <p class="lead">
+                        <h4 class="py-2">About Company</h4>
+                        <p class="text-justify">
                            <?php echo $company->description; ?>
 
                         </p>
@@ -118,28 +118,28 @@
                     <?php $__currentLoopData = $company->jobs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $companyJob): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <!--unique card: every job have one card-->
                 <div class="card border-0 bg-white mb-5">
-                    <div class="card-header text-light bg-dark">
-                        <div class="card-title font-weight-bold h3"><a class="text-white" href="<?php echo e(route('job.detail', [$companyJob->slug])); ?>" title="<?php echo e($companyJob->title); ?>"><?php echo e($companyJob->title); ?></a></div>
+                    <div class="card-header text-dark pb-0 border-bottom-0">
+                        <div class="card-title font-weight-bold h4 pb-0"><a class="text-dark pb-0" href="<?php echo e(route('job.detail', [$companyJob->slug])); ?>" title="<?php echo e($companyJob->title); ?>"><?php echo e($companyJob->title); ?></a></div>
                     </div>
                     <div class="card-body">
-                        <p class="lead"><?php echo e(str_limit(strip_tags($companyJob->description), 150, '...')); ?></p>
-                        <div class="portfolio-caption-subheading text-left text-muted">
+                        <p class="text-justify"><?php echo e(str_limit(strip_tags($companyJob->description), 150, '...')); ?></p>
+                        <!-- <div class="portfolio-caption-subheading text-left text-muted">
                             <a class="text-dark" href="<?php echo e(route('company.detail', $company->slug)); ?>" title="<?php echo e($company->name); ?>"><?php echo e($company->name); ?></a>
-                        </div>
+                        </div> -->
                         <div class="portfolio-caption-subheading text-left text-muted">
-                            <div class="badge p-2 mt-3 badge-success"><label class="fulltime" title="<?php echo e($companyJob->getJobType('job_type')); ?>"><?php echo e($companyJob->getJobType('job_type')); ?></label></div>
+                            <div class="badge pt-2 pb-0 badge-secondary"><label class="fulltime" title="<?php echo e($companyJob->getJobType('job_type')); ?>"><?php echo e($companyJob->getJobType('job_type')); ?></label></div>
                         </div>
                     </div>
-                    <div class="card-footer bg-transparent">
+                    <div class="card-footer pb-1 bg-transparent">
                         <div class="row justify-content-between">
                             <div class="col">
-                                <p class="lead text-secondary font-weight-bold pt-1">
+                                <p class="text-dark font-weight-bold pt-1">
                                     <?php echo e($companyJob->created_at->format('M-d-Y')); ?>
 
                                 </p>
                             </div>
                             <div class="col">
-                                <a href="<?php echo e(route('job.detail', [$companyJob->slug])); ?>" class="btn btn-dark py-2 float-right">View details</a>
+                                <a href="<?php echo e(route('job.detail', [$companyJob->slug])); ?>" class="btn btn-success py-2 float-right">View details</a>
                             </div>
                         </div>
                     </div>

@@ -26,6 +26,16 @@ if (!isset($seo)) {
   
         <link href="<?php echo e(asset('css/sb-admin-2.css')); ?>" rel="stylesheet" type="text/css">
 
+    <style>
+        ul#footer li a {
+            color: black !important;
+            font-weight: 500;
+        }
+        ul#footer li{
+            list-style: none !important;
+        }
+    </style>
+
     </head>
 
     <body id="page-top">
@@ -38,11 +48,11 @@ if (!isset($seo)) {
 
                 <!-- Sidebar - Brand -->
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
-                    <!-- <div class="sidebar-brand-icon rotate-n-15">
-                        <i class="fas fa-laugh-wink"></i>
-                    </div> -->
-                    <div class="sidebar-brand-text mx-3">
-                        <img src="<?php echo e(asset('img/logos/logo_two.png')); ?>" alt="" width="auto" height="30">
+                    <div class="sidebar-brand-icon mr-2">
+                        <img src="<?php echo e(asset('img/logos/f1.png')); ?>" alt="" width="auto" height="28">
+                    </div>
+                    <div class="sidebar-brand-text" style="font-size: 0.95rem !important">
+                        WF<span style="color: #3693fe !important">security</span>
                     </div>
                 </a>
 
@@ -70,9 +80,6 @@ if (!isset($seo)) {
                     </div>
                     <div class="clearfix"></div>
                 </div> -->
-
-                <!-- Divider -->
-                <hr class="sidebar-divider my-0">
 
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item active">
@@ -137,7 +144,7 @@ if (!isset($seo)) {
                 <!-- Sidebar Toggler (Sidebar) -->
                 <div class="text-center d-none d-md-inline">
                     <button class="rounded-circle border-0" id="sidebarToggle">
-                        <i class="fa fa-arrow-left text-light"></i>
+                        <i class="fas fa-chevron-left text-light"></i>
                     </button>
                 </div>
 
@@ -315,14 +322,113 @@ if (!isset($seo)) {
                 </div>
                 <!-- End of Main Content -->
 
+                <div class="py-4 border-top p-4"> 
+                    <div class="container-fluid">
+                        <div class="row"> 
+                
+                            <!--Quick Links-->
+                            <div class="col-md-3 col-sm-6 pr-4">
+                                <h5 class="pl-0 pr-0 pb-3">Quick Links</h5>
+                                <!--Quick Links menu Start-->
+                                <ul class="p-0" id="footer">
+                                    <li><a href="<?php echo e(route('index')); ?>"><?php echo e(__('Home')); ?></a></li>
+                                    <li><a href="<?php echo e(route('contact.us')); ?>"><?php echo e(__('Contact Us')); ?></a></li>
+                                    <li class="postad"><a href="<?php echo e(route('post.job')); ?>"><?php echo e(__('Post a Job')); ?></a></li>
+                                    <!-- <li><a href="<?php echo e(route('faq')); ?>"><?php echo e(__('FAQs')); ?></a></li> -->
+                                    <?php $__currentLoopData = $show_in_footer_menu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $footer_menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php
+                                    $cmsContent = App\CmsContent::getContentBySlug($footer_menu->page_slug);
+                                    ?>
+                                    
+                                    <li class="<?php echo e(Request::url() == route('cms', $footer_menu->page_slug) ? 'active' : ''); ?>"><a
+                                            href="<?php echo e(route('cms', $footer_menu->page_slug)); ?>"><?php echo e(isset($cmsContent->page_title) ? $cmsContent->page_title : ''); ?></a></li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </ul>
+                            </div>
+                            <!--Quick Links menu end-->
+                
+                            <div class="col-md-3 col-sm-6 pr-4">
+                                <h5 class="pl-0 pr-0 pb-3">Jobs By Functional Area</h5>
+                                <!--Quick Links menu Start-->
+                                <ul class="p-0" id="footer">
+                                    <?php
+                                    $functionalAreas = App\FunctionalArea::getUsingFunctionalAreas(5);
+                                    ?>
+                                    <?php $__currentLoopData = $functionalAreas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $functionalArea): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <li><a href="<?php echo e(route('job.list', ['functional_area_id[]'=>$functionalArea->functional_area_id])); ?>"><?php echo e($functionalArea->functional_area); ?></a></li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </ul>
+                            </div>
+                
+                            <!--Jobs By Industry-->
+                            <div class="col-md-3 col-sm-6 pr-4">
+                                <h5 class="pl-0 pr-0 pb-3">Jobs By Industry</h5>
+                                <!--Industry menu Start-->
+                                <ul class="p-0" id="footer">
+                                    <?php
+                                    $industries = App\Industry::getUsingIndustries(5);
+                                    ?>
+                                    <?php $__currentLoopData = $industries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $industry): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <li><a href="<?php echo e(route('job.list', ['industry_id[]'=>$industry->industry_id])); ?>"><?php echo e($industry->industry); ?></a></li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </ul>
+                                <!--Industry menu End-->
+                                <div class="clear"></div>
+                            </div>
+                
+                            <!--About Us-->
+                            <div class="col-md-3 col-sm-12">
+                                <h5 class="pl-0 pr-0 pb-3">Contact Us</h5>
+                                <p class="font-weight-bold text-dark"><i class="fa fa-map mr-2"></i><?php echo e($siteSetting->site_street_address); ?></p>
+                                <div class="font-weight-bold">
+                                    <a href="mailto:<?php echo e($siteSetting->mail_to_address); ?>" class="text-dark font-weight-bold"><i class="fa fa-envelope mr-2"></i><?php echo e($siteSetting->mail_to_address); ?></a>
+                                </div>
+                                <div class="font-weight-bold">
+                                    <a href="tel:<?php echo e($siteSetting->site_phone_primary); ?>" class="text-dark font-weight-bold"><i class="fa fa-phone mr-2"></i><?php echo e($siteSetting->site_phone_primary); ?>7</a>
+                                </div>
+                                <!-- Social Icons -->
+                                <div class="py-3">
+                                    <a href="<?php echo e($siteSetting->facebook_address); ?>" target="_blank"><i class="fab fa-2x text-dark m-1 fa-facebook-square" aria-hidden="true"></i></a>
+                                    <a href="<?php echo e($siteSetting->google_plus_address); ?>" target="_blank"><i class="fab fa-2x text-dark m-1 fa-google-plus-square" aria-hidden="true"></i></a>
+                                    <a href="<?php echo e($siteSetting->twitter_address); ?>" target="_blank"><i class="fab fa-2x text-dark m-1 fa-twitter-square" aria-hidden="true"></i></a>
+                                    <a href="<?php echo e($siteSetting->instagram_address); ?>" target="_blank"><i class="fab fa-2x text-dark m-1 fa-instagram" aria-hidden="true"></i></a>
+                                    <a href="<?php echo e($siteSetting->linkedin_address); ?>" target="_blank"><i class="fab fa-2x text-dark m-1 fa-linkedin" aria-hidden="true"></i></a>
+                                    <a href="<?php echo e($siteSetting->youtube_address); ?>" target="_blank"><i class="fab fa-2x text-dark m-1 fa-youtube-square" aria-hidden="true"></i></a>
+                                </div>
+                                <!-- Social Icons end --> 
+                
+                            </div>
+                            <!--About us End--> 
+                
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <!-- Footer-->
+                <footer class="footer bg-light-custom py-4 border-top">
+                    <div class="container">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-lg-8 text-lg-left"><?php echo e(__('Copyright')); ?> &copy; <?php echo e(date('Y')); ?> <?php echo e($siteSetting->site_name); ?>. <?php echo e(__('All Rights Reserved')); ?>.
+                            <?php echo e(__('Design by')); ?>: <a class="text-dark text-bold" href="<?php echo e(url('/')); ?>http://atenaagencia.com/"
+                                target="_blank">Atena Agência - Full Service</a>
+                            </div>
+                            <div class="col-lg-4 text-lg-right">
+                                <a class="mr-3 text-dark" href="#!">Privacy Policy</a>
+                                <a href="cms/terms-of-use" class="text-dark">Terms of Use</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
                 <!-- Footer -->
-                <footer class="sticky-footer bg-white">
+                <!-- <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
                             <span>Copyright &copy; Your Website 2020</span>
                         </div>
                     </div>
-                </footer>
+                </footer> -->
                 <!-- End of Footer -->
 
             </div>

@@ -45,8 +45,8 @@ img#teste{
                             <?php echo e($company->location); ?>
 
                         </div>
-                        <div class="portfolio-caption-subheading text-left text-muted" style="position: absolute; top:0; bottom: 10;">
-                            <div class="badge p-2 mt-3 badge-info"><?php echo e(__('Current jobs')); ?> : <?php echo e($company->countNumJobs('company_id',$company->id)); ?></div>
+                        <div class="portfolio-caption-subheading text-left text-muted">
+                            <div class="badge p-2 mt-3 badge-primary"><?php echo e(__('Current jobs')); ?> : <?php echo e($company->countNumJobs('company_id',$company->id)); ?></div>
                         </div>
                     </div>
                 </div>
