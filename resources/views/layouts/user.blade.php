@@ -51,7 +51,7 @@ if (!isset($seo)) {
                         <img src="{{asset('img/logos/f1.png')}}" alt="" width="auto" height="28">
                     </div>
                     <div class="sidebar-brand-text" style="font-size: 0.95rem !important">
-                        Freelas<span style="color: #3693fe !important">security</span>
+                        WF<span style="color: #3693fe !important">security</span>
                     </div>
                 </a>
 
