@@ -24,7 +24,7 @@
                             <div class="form-group col-lg-4 col-md-6 col-sm-12">
                                 <label for="inputCity">Search for</label>
                                 <input type="text" class="form-control" id="inputCity"
-                                    placeholder="Skills or Job Title" value="{{Request::get('search', '')}}">
+                                    placeholder="Skills or Job Title" value="{{Request::get('search', '')}}" name="search">
                             </div>
                             <div class="form-group col-lg-4 col-md-6 col-sm-12">
                                 <label for="inputState">Functional Area</label>

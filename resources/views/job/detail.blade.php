@@ -92,6 +92,16 @@ $company = $job->getCompany();
                                 </div>
                             </div>
                         </div>
+                        @else
+                        <div class="container mt-3 p-0">
+                            <h5 class="py-3 text-dark">Actions</h5>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <a href="{{route('apply.job', $job->slug)}}" class="m-1 btn btn-block p-2 btn-success"><i
+                                            class="fa fa-location-arrow mr-1"></i>Apply Now</a>
+                                </div>
+                            </div>
+                        </div>
                         @endif
                     </div>
                 </div>
