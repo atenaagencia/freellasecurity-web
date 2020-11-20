@@ -1,13 +1,14 @@
 <?php $__env->startSection('custom-css'); ?>
 <style>
-img{
-    max-width: 100%;
-    width: 50%;
-}
-img#teste{
-    width:auto !important;
-    height:36;
-}
+    img {
+        max-width: 100%;
+        width: 50%;
+    }
+
+    img#teste {
+        width: auto !important;
+        height: 36;
+    }
 </style>
 <?php $__env->stopSection(); ?>
 
@@ -18,7 +19,8 @@ img#teste{
 $company = $job->getCompany();
 ?>
 
-<header class="p-5" style="background: url('https://images.pexels.com/photos/4064840/pexels-photo-4064840.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); background-repeat: no-repeat;background-attachment: scroll;background-position: center center;background-size: cover; padding-top: 15rem !important;">
+<header class="p-5"
+    style="background: url('https://images.pexels.com/photos/4064840/pexels-photo-4064840.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); background-repeat: no-repeat;background-attachment: scroll;background-position: center center;background-size: cover; padding-top: 15rem !important;">
     <div class="container mx-auto">
         <h1 class="text-light py-2">Job Detail</h1>
     </div>
@@ -36,38 +38,61 @@ $company = $job->getCompany();
                             <div class="row justify-content-between pb-0">
                                 <a class="nav-link">Date Posted: <?php echo e(date('d-m-Y', strtotime($job->created_at))); ?></a>
                                 <a class="nav-link h5 pb-0"><?php if(!(bool)$job->hide_salary): ?>
-                                <div class="salary"><?php echo e(__('Project Cost')); ?>: <strong><?php echo e($job->salary_from.' '.$job->salary_currency); ?></strong></div>
-                                <?php endif; ?></a>
+                                    <div class="salary"><?php echo e(__('Project Cost')); ?>:
+                                        <strong><?php echo e($job->salary_from.' '.$job->salary_currency); ?></strong></div>
+                                    <?php endif; ?></a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body p-4">
                         <h5 class="py-3 text-dark">Job description</h5>
                         <p class="lead">
-                         <?php echo $job->description; ?>
+                            <?php echo $job->description; ?>
 
                         </p>
                         <hr>
                         <h5 class="py-3 text-dark">Skills Required</h5>
                         <ul class="nav d-flex d-inline-block">
-                        <?php echo $job->getJobSkillsList(); ?>
+                            <?php echo $job->getJobSkillsList(); ?>
 
                         </ul>
                         <hr>
+                        <?php if(Auth::user()): ?>
+
                         <div class="container mt-3 p-0">
                             <h5 class="py-3 text-dark">Actions</h5>
                             <div class="row">
                                 <div class="col-lg-4 col-md-6 col-sm-12">
-                                    <a href="#" class="m-1 btn btn-block p-2 btn-success"><i class="fa fa-location-arrow mr-1"></i>Apply Now</a>
+                                    <?php if(Auth::check() && Auth::user()->isAppliedOnJob($job->id)): ?>
+                                    <a href="javascript:;" class="btn apply"><i class="fa fa-paper-plane"
+                                            aria-hidden="true"></i>
+                                        <?php echo e(__('Already Applied')); ?></a>
+                                    <a href="" class="btn apply"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                        <?php echo e(__('Submit Your Work')); ?></a>
+                                    <?php else: ?>
+                                    <a href="<?php echo e(route('apply.job', $job->slug)); ?>"
+                                        class="m-1 btn btn-block p-2 btn-success"><i
+                                            class="fa fa-location-arrow mr-1"></i>Apply Now</a>
+                                    <?php endif; ?>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <?php if(Auth::check() && Auth::user()->isFavouriteJob($job->slug)): ?>
+                                    <a href="<?php echo e(route('remove.from.favourite', $job->slug)); ?>"" class=" m-1 btn btn-block
+                                        p-2 btn-outline-dark"><i class="fa fa-star mr-1"></i>Remove to Favourite</a>
+                                    <?php else: ?>
+
+                                    <a href="<?php echo e(route('add.to.favourite', $job->slug)); ?>"" class=" m-1 btn btn-block p-2
+                                        btn-outline-dark"><i class="fa fa-star mr-1"></i>Add to Favourite</a>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-sm-12">
-                                    <a href="#" class="m-1 btn btn-block p-2 btn-outline-dark"><i class="fa fa-star mr-1"></i>Add to Favourite</a>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-12">
-                                    <a href="#" class="m-1 btn btn-block p-2 btn-outline-danger"><i class="fa fa-exclamation-triangle mr-1"></i>Reporte Abuse</a>
+                                    <a href="<?php echo e(route('report.abuse', $job->slug)); ?>" class="m-1 btn btn-block p-2 btn-outline-danger"><i
+                                            class="fa fa-exclamation-triangle mr-1"></i>Reporte Abuse</a>
                                 </div>
                             </div>
                         </div>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <!--end of card-->
@@ -87,9 +112,10 @@ $company = $job->getCompany();
                         </div>
                     </div>
                     <h4 class="pt-1 pb-0 text-center text-dark"><?php echo e($company->name); ?></h4>
-                    <p class="text-center"><?php echo e($company->getLocation()); ?></p><hr>
+                    <p class="text-center"><?php echo e($company->getLocation()); ?></p>
+                    <hr>
                     <a href="<?php echo e(route('company.detail',$company->slug)); ?>" class="card-title pb-3 text-center text-dark">
-                      <?php echo e(App\Company::countNumJobs('company_id', $company->id)); ?> <?php echo e(__('Current Jobs Openings')); ?>
+                        <?php echo e(App\Company::countNumJobs('company_id', $company->id)); ?> <?php echo e(__('Current Jobs Openings')); ?>
 
                     </a>
                 </div>
@@ -103,13 +129,14 @@ $company = $job->getCompany();
                             <li class="row justify-content-between">
                                 <div class="col">Location</div>
                                 <div class="col">
-                                 <span><?php echo e(str_replace( ', ', '', $job->getLocation() )); ?></span>
+                                    <span><?php echo e(str_replace( ', ', '', $job->getLocation() )); ?></span>
                                 </div>
                             </li>
                             <li class="row">
                                 <div class="col">Company</div>
                                 <div class="col">
-                                  <a class="text-dark" href="<?php echo e(route('company.detail', $company->slug)); ?>"><?php echo e($company->name); ?></a>
+                                    <a class="text-dark"
+                                        href="<?php echo e(route('company.detail', $company->slug)); ?>"><?php echo e($company->name); ?></a>
                                 </div>
                             </li>
                             <li class="row">

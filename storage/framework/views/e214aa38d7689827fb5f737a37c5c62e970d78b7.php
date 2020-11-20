@@ -10,7 +10,7 @@
 <!-- Services-->
 <section class="page-section bg-white">
     <div class="container">
-        <div class="masthead-heading display-5 text-left py-4">Browse jobs acording to your necessities</div>
+        <div class="masthead-heading text-center py-5">Browse jobs acording to your necessities</div>
     </div>
     <div class="container">
         <div class="row">
@@ -19,12 +19,12 @@
                     <?php echo $__env->make('flash::message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                     <form action="<?php echo e(route('job.list')); ?>" method="get">
                         <div class="form-row">
-                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group col-lg-4 col-md-6 col-sm-12">
                                 <label for="inputCity">Search for</label>
                                 <input type="text" class="form-control" id="inputCity"
                                     placeholder="Skills or Job Title" value="<?php echo e(Request::get('search', '')); ?>">
                             </div>
-                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group col-lg-4 col-md-6 col-sm-12">
                                 <label for="inputState">Functional Area</label>
                                 <?php echo Form::select('functional_area_id[]', ['' => __('Select Functional Area')]+$functionalAreas,
                                 Request::get('functional_area_id', null), array('class'=>'form-control', 'id'=>'functional_area_id')); ?>
@@ -36,28 +36,16 @@
                             array('id'=>'country_id')); ?>
 
                             <?php else: ?>
-                            <div class="form-group col-lg-3 col-md-12 col-sm-12">
+                            <div class="form-group col-lg-4 col-md-12 col-sm-12">
                                 <label for="inputState">Country</label>
                              <?php echo Form::select('country_id[]', ['' => __('Select Country')]+$countries, Request::get('country_id',
                             $siteSetting->default_country_id), array('class'=>'form-control', 'id'=>'country_id')); ?>
 
                             </div>
                             <?php endif; ?>
-                            <div class="form-group col-lg-3 col-md-12 col-sm-12">
-                                <label for="inputState">State</label>
-                                <?php echo Form::select('state_id[]', ['' => __('Select State')], Request::get('state_id', null),
-                                array('class'=>'form-control', 'id'=>'state_id')); ?>
-
                             
-                            </div>
-                            <div class="form-group col-lg-3 col-md-12 col-sm-12">
-                                <label for="inputState">City</label>
-                            <?php echo Form::select('city_id[]', ['' => __('Select City')], Request::get('city_id', null), array('class'=>'form-control',
-                                'id'=>'city_id')); ?>
-
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <button type="submit" class="btn btn-block btn-dark" style="margin-top: 2rem !important;">Search</button>
+                            <div class="col-lg-4 col-md-12 col-sm-12 mx-auto">
+                                <button type="submit" class="btn btn-block btn-dark py-3" style="margin-top: 2rem !important;">Search</button>
                             </div>
                         </div>
                     </form>

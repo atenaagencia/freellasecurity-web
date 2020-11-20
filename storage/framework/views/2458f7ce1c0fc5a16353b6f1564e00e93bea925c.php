@@ -27,17 +27,20 @@
                                 <a class="nav-link"><i class="fas fa-map-marker text-primary mr-3"></i><?php echo e($company->location); ?></a>
                             </div>
                         </div>
-
                         <div class="container">
                             <div class="row justify-content-between py-2">
                                 <div class="col p-1">
-                                    <a href="" class="btn btn-block btn-dark"><i class="fa fa-star text-warning mr-2"></i>Add to Favourite</a>
+                                    <?php if(Auth::check() && Auth::user()->isFavouriteCompany($company->slug)): ?>
+                                    <a href="<?php echo e(route('remove.from.favourite.company', $company->slug)); ?>" class="btn btn-block btn-dark"><i class="fa fa-star text-warning mr-2"></i>Favourite Company</a>
+                                    <?php else: ?>
+                                    <a href="<?php echo e(route('add.to.favourite.company', $company->slug)); ?>" class="btn btn-block btn-dark"><i class="fa fa-star text-warning mr-2"></i>Add to Favourite</a>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="col p-1">
-                                    <a href="" class="btn btn-block btn-danger"><i class="fas fa-exclamation-circle text-light mr-2"></i>Report Abuse</a>
+                                    <a href="<?php echo e(route('report.abuse.company', $company->slug)); ?>" class="btn btn-block btn-danger"><i class="fas fa-exclamation-circle text-light mr-2"></i>Report Abuse</a>
                                 </div>
                                 <div class="col p-1">
-                                    <a href="" class="btn btn-block btn-outline-dark font-weight-bold"><i class="fa fa-envelope mr-2"></i>Send a message</a>
+                                    <a href="javascript:;"                                 onclick="send_message()" class="btn btn-block btn-outline-dark font-weight-bold"><i class="fa fa-envelope mr-2"></i>Send a message</a>
                                 </div>
                             </div>
                         </div>
