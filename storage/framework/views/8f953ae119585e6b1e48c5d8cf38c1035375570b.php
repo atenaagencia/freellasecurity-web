@@ -76,8 +76,8 @@ ul{
 <header class="masthead">
     <div class="container">
         <div class="masthead-heading display-5 mx-auto col-10">Find the perfect freelance security services for your bussiness.</div>
-        <form action="<?php echo e(route('job.seeker.list')); ?>" method="get">
-        <input type="text" class="main-input form-control col-7 mx-auto bg-transparent py-4">
+        <form action="<?php echo e(route('job.list')); ?>" method="get">
+        <input type="text" class="main-input form-control col-7 mx-auto bg-transparent py-4" name="search">
         <button class="btn btn-primary btn-xl text-uppercase mt-5" href="#services">SEARCH JOB</button>
         </form>
     </div>
@@ -206,12 +206,11 @@ ul{
                                 </div>
                             </div>
                             <div class="card-body bg-white portfolio-caption text-justify">
-                                <div class="portfolio-caption-subheading">
-                                    <b>Skills required:</b>
-                                    <ul class="nav d-flex d-inline-block">
-                                        <li class=""><a class="text-dark mr-1" href="http://localhost:8000/jobs?job_skill_id%5B%5D=5">#Communication Skills</a></li>
-                                        <li class=""><a class="text-dark mr-1" href="http://localhost:8000/jobs?job_skill_id%5B%5D=12">#Marketing</a></li>
-                                        <li class=""><a class="text-dark mr-1" href="http://localhost:8000/jobs?job_skill_id%5B%5D=17">#Sales</a></li>
+                                <span class="pl-2 font-weight-bold">Skills required:</span>
+                                <div class="portfolio-caption-subheading p-0">
+                                    <ul class="nav d-flex d-inline-block text-capitalize" style="padding: 0px !important">
+                                       <?php echo $featuredJob->getJobSkillsList(); ?>
+
                                     </ul>
                                 </div>
                                 <div class="portfolio-caption-subheading text-dark text-muted pt-3">

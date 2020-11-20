@@ -207,9 +207,9 @@ ul{
                                 </div>
                             </div>
                             <div class="card-body bg-white portfolio-caption text-justify">
-                                <div class="portfolio-caption-subheading">
-                                    <b>Skills required:</b>
-                                    <ul class="nav d-flex d-inline-block">
+                                <span class="pl-2 font-weight-bold">Skills required:</span>
+                                <div class="portfolio-caption-subheading p-0">
+                                    <ul class="nav d-flex d-inline-block text-capitalize" style="padding: 0px !important">
                                        {!!$featuredJob->getJobSkillsList()!!}
                                     </ul>
                                 </div>
