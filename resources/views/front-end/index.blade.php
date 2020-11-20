@@ -272,7 +272,7 @@ ul{
                     <div class="card-body p-lg-0 p-md-1 p-sm-2">
                         <h3 class="font-weight-bold text-left text-dark py-3">Create An Account.</h3>
                         <p class="lead p-lg-0 p-md-1 p-sm-2">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            Create a free account to be enable for available jobs.
                         </p>
                     </div>
                 </div>
@@ -282,7 +282,7 @@ ul{
                     <div class="card-body p-lg-0 p-md-1 p-sm-2">
                         <h3 class="font-weight-bold text-left text-dark py-3">Search Desired Job.</h3>
                         <p class="lead p-lg-0 p-md-1 p-sm-2">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            You can search for a job by area, city and country of your choice.
                         </p>
                     </div>
                 </div>
@@ -292,7 +292,7 @@ ul{
                     <div class="card-body p-lg-0 p-md-1 p-sm-2">
                         <h3 class="font-weight-bold text-left text-dark py-3">Send Your Resume.</h3>
                         <p class="lead p-lg-0 p-md-1 p-sm-2">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            Send your resume so that employers can get to know you better.
                         </p>
                     </div>
                 </div>
