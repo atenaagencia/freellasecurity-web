@@ -37,6 +37,22 @@ ul{
     color: white !important;
 }
 
+ul li.nav-item a.btn.btn-outline-dark{
+    text-transform: capitalize !important;
+    margin-bottom: 0.5rem;
+    font-family: "Montserrat";
+    font-weight: 500;
+    line-height: 1.2;
+    padding: 0.5rem;
+    border:0;
+    background: #ececec;
+}
+
+ul li.nav-item a.btn.btn-outline-dark:hover{
+    background: #343a40;
+    color: white;
+}
+
 @media  screen and (max-width: 600px){
     .slider {
         width: 90% !important;
@@ -227,28 +243,6 @@ ul{
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="card h-100 portfolio-item border shadow-sm">
-                    <a class="card-header portfolio-link p-0" href="<?php echo e(route('job.detail', [$featuredJob->slug])); ?>" title="<?php echo e($featuredJob->title); ?>">
-                        <img class="img-fluid" src="<?php echo e(asset('company_logos/'.$company->logo)); ?>" alt="" />
-                    </a>
-                    <div class="card-body bg-white portfolio-caption">
-                        <div class="portfolio-caption-heading py-1 text-left text-dark">
-                            <?php echo e($featuredJob->title); ?>
-
-                        </div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted">
-                            <a class="text-dark text-muted" href="<?php echo e(route('company.detail', $company->slug)); ?>" title="<?php echo e($company->name); ?>"><?php echo e($company->name); ?></a>
-                        </div>
-                        <div class="portfolio-caption-subheading text-left text-dark text-muted" style="position: absolute; top:0; bottom: 10;">
-                            <div class="badge p-2 mt-3 mb-3 fulltime badge-primary" title="<?php echo e($featuredJob->getJobType('job_type')); ?>">
-                              <?php echo e($featuredJob->getJobType('job_type')); ?>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <?php endif; ?>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <?php endif; ?>
