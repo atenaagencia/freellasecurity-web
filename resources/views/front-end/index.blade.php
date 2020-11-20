@@ -112,7 +112,7 @@ ul{
     </div>
 </div>
 
-<section class="page-section bg-secondary-custom" id="services">
+<section class="page-section bg-light-custom" id="services">
     <div class="container">
         <div class="text-center">
             <div class="masthead-heading display-5 text-left text-dark py-4">Browse jobs acording to your necessities</div>
@@ -186,7 +186,7 @@ ul{
 </section>
 
 <!-- Feature Jobs-->
-<section class="page-section bg-white" id="services">
+<section class="page-section bg-secondary-custom" id="services">
     <div class="container mb-5">
         <div class="text-left py-3">
             <div class="masthead-heading display-5 text-left text-dark">Feature Jobs</div>
@@ -198,23 +198,25 @@ ul{
             <?php $company = $featuredJob->getCompany(); ?>
             @if(null !== $company)
             <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-                <div class="card portfolio-item rounded-0 shadow-sm">
+                <div class="card portfolio-item rounded-0 border-0 bg-white shadow-sm">
                     <div class="row justify-content-left">
                         <div class="col-12">
-                            <div class="card-header border-0 rounded-0" style="border-top: 3px solid #3693fe !important">
-                                <div class="portfolio-caption-heading py-1">
+                            <div class="card-header border-0 rounded-0">
+                                <div class="portfolio-caption-heading">
                                     <a href="{{route('job.detail', [$featuredJob->slug])}}" title="{{$featuredJob->title}}" class="text-left text-dark">{{$featuredJob->title}}</a>
                                 </div>
                             </div>
                             <div class="card-body bg-white portfolio-caption text-justify">
-                                <span class="pl-2 font-weight-bold">Skills required:</span>
+                                <!-- <span class="pl-2 font-weight-bold">Skills required:</span> -->
+                                <h6 class="pl-2 text-dark">Skills Required</h6>
                                 <div class="portfolio-caption-subheading p-0">
-                                    <ul class="nav d-flex d-inline-block text-capitalize" style="padding: 0px !important">
+                                    <ul class="nav d-flex d-inline-block text-capitalize">
                                        {!!$featuredJob->getJobSkillsList()!!}
                                     </ul>
                                 </div>
-                                <div class="portfolio-caption-subheading text-dark text-muted pt-3">
-                                    <span class="mr-2">Client:</span><a class="text-dark text-muted" href="{{route('company.detail', $company->slug)}}" title="{{$company->name}}">{{$company->name}}</a>
+                                <hr>
+                                <div class="portfolio-caption-subheading text-dark text-muted">
+                                    <span class="mr-2 h6">Client:</span><a class="text-dark text-muted" href="{{route('company.detail', $company->slug)}}" title="{{$company->name}}">{{$company->name}}</a>
                                     <div class="badge p-2 fulltime badge-secondary float-right" title="{{$featuredJob->getJobType('job_type')}}">
                                     {{$featuredJob->getJobType('job_type')}}
                                     </div>
@@ -250,7 +252,7 @@ ul{
         </div>
         <div class="container mt-5 py-3 border-top">
             <div class="row">
-                <h4 class="text-secondary">Would you like to see more job openings?</h4>
+                <h4 class="text-dark">Would you like to see more job openings?</h4>
                 <a class="btn btn-primary btn-xl text-uppercase ml-auto" id="see_more" href="{{route('job.list', ['is_featured'=>1])}}">See  More</a><br><br>
             </div>
         </div>
