@@ -10,10 +10,10 @@
 </header>
 
 <!-- Services-->
-<section class="page-section bg-white">
-    <div class="container">
-        <div class="masthead-heading text-center py-5">Browse jobs acording to your necessities</div>
-    </div>
+<section class="page-section p-5 bg-white">
+    <!-- <div class="container">
+        <h3 class="masthead-heading text-center py-2">Browse jobs acording to your necessities</h3>
+    </div> -->
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -22,12 +22,12 @@
                     <form action="{{route('job.list')}}" method="get">
                         <div class="form-row">
                             <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                                <label for="inputCity">Search for</label>
+                                <label for="inputCity" class="h5 py-2">Search for</label>
                                 <input type="text" class="form-control" id="inputCity"
                                     placeholder="Skills or Job Title" value="{{Request::get('search', '')}}" name="search">
                             </div>
-                            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                                <label for="inputState">Functional Area</label>
+                            <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                                <label for="inputState" class="h5 py-2">Functional Area</label>
                                 {!! Form::select('functional_area_id[]', ['' => __('Select Functional Area')]+$functionalAreas,
                                 Request::get('functional_area_id', null), array('class'=>'form-control', 'id'=>'functional_area_id')) !!}
                                 {{-- <select id="inputState" class="form-control">
@@ -39,24 +39,24 @@
                             {!! Form::hidden('country_id[]', Request::get('country_id[]', $siteSetting->default_country_id),
                             array('id'=>'country_id')) !!}
                             @else
-                            <div class="form-group col-lg-4 col-md-12 col-sm-12">
-                                <label for="inputState">Country</label>
+                            <div class="form-group col-lg-3 col-md-12 col-sm-12">
+                                <label for="inputState" class="h5 py-2">Country</label>
                              {!! Form::select('country_id[]', ['' => __('Select Country')]+$countries, Request::get('country_id',
                             $siteSetting->default_country_id), array('class'=>'form-control', 'id'=>'country_id')) !!}
                             </div>
                             @endif
-                            {{--<div class="form-group col-lg-3 col-md-12 col-sm-12">
+                            <!-- {{--<div class="form-group col-lg-3 col-md-12 col-sm-12">
                                 <label for="inputState">State</label>
                                 {!! Form::select('state_id[]', ['' => __('Select State')], Request::get('state_id', null),
                                 array('class'=>'form-control', 'id'=>'state_id')) !!}
                             </div>
-                            <div class="form-group col-lg-4 col-md-12 col-sm-12">
+                            <div class="form-group col-lg-3 col-md-12 col-sm-12">
                                 <label for="inputState">City</label>
                             {!! Form::select('city_id[]', ['' => __('Select City')], Request::get('city_id', null), array('class'=>'form-control',
                                 'id'=>'city_id')) !!}
-                            </div>--}}
-                            <div class="col-lg-4 col-md-12 col-sm-12 mx-auto">
-                                <button type="submit" class="btn btn-block btn-dark py-3" style="margin-top: 2rem !important;">Search</button>
+                            </div>--}} -->
+                            <div class="col mx-auto py-3">
+                                <button type="submit" class="btn btn-block btn-dark" style="margin-top: 2rem !important;">Search</button>
                             </div>
                         </div>
                     </form>
@@ -68,7 +68,7 @@
 
 
 <!-- Services-->
-<section class="page-section bg-secondary-custom">
+<section class="page-section pt-5 bg-secondary-custom">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 py-2">

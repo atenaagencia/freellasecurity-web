@@ -1,6 +1,5 @@
-@extends('layouts.custom')
-<link rel="stylesheet" type="text/css" href="{{asset('css/slick.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('css/slick-theme.css')}}">
+<link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/slick.css')); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/slick-theme.css')); ?>">
 
 <style>
 .slider {
@@ -59,7 +58,7 @@ ul li.nav-item a.btn.btn-outline-dark:hover{
     color: white;
 }
 
-@media screen and (max-width: 600px){
+@media  screen and (max-width: 600px){
     .slider {
         width: 90% !important;
     }
@@ -94,11 +93,11 @@ ul li.nav-item a.btn.btn-outline-dark:hover{
 }
 
 </style>
-@section('content')
+<?php $__env->startSection('content'); ?>
 <header class="masthead">
     <div class="container">
         <div class="masthead-heading display-5 mx-auto col-10">Find the perfect freelance security services for your bussiness.</div>
-        <form action="{{route('job.list')}}" method="get">
+        <form action="<?php echo e(route('job.list')); ?>" method="get">
         <input type="text" class="main-input form-control col-7 mx-auto bg-transparent py-4" name="search">
         <button class="btn btn-primary btn-xl text-uppercase mt-5" href="#services">SEARCH JOB</button>
         </form>
@@ -108,28 +107,28 @@ ul li.nav-item a.btn.btn-outline-dark:hover{
 <!-- Clients-->
 <div class="container center slider">
     <div>
-        <img class="img-fluid d-block mx-auto" src="{{asset('company_logos/new/1.png')}}" alt="" />
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/1.png')); ?>" alt="" />
     </div>
     <div>
-        <img class="img-fluid d-block mx-auto" src="{{asset('company_logos/new/2.png')}}" alt="" />
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/2.png')); ?>" alt="" />
     </div>
     <div>
-        <img class="img-fluid d-block mx-auto" src="{{asset('company_logos/new/3.png')}}" alt="" />
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/3.png')); ?>" alt="" />
     </div>
     <div>
-        <img class="img-fluid d-block mx-auto" src="{{asset('company_logos/new/4.png')}}" alt="" />
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/4.png')); ?>" alt="" />
     </div>
     <div>
-        <img class="img-fluid d-block mx-auto" src="{{asset('company_logos/new/1.png')}}" alt="" />
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/1.png')); ?>" alt="" />
     </div>
     <div>
-        <img class="img-fluid d-block mx-auto" src="{{asset('company_logos/new/2.png')}}" alt="" />
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/2.png')); ?>" alt="" />
     </div>
     <div>
-        <img class="img-fluid d-block mx-auto" src="{{asset('company_logos/new/3.png')}}" alt="" />
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/3.png')); ?>" alt="" />
     </div>
     <div>
-        <img class="img-fluid d-block mx-auto" src="{{asset('company_logos/new/4.png')}}" alt="" />
+        <img class="img-fluid d-block mx-auto" src="<?php echo e(asset('company_logos/new/4.png')); ?>" alt="" />
     </div>
 </div>
 
@@ -153,54 +152,54 @@ ul li.nav-item a.btn.btn-outline-dark:hover{
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active p-3 bg-white border-0" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                     <ul class="row teste">
-                        {{-- <li class="col-md-4 col-sm-6"><a href="#">Software & Web Development</a></li> --}}
-                        @if(isset($topFunctionalAreaIds) && count($topFunctionalAreaIds)) @foreach($topFunctionalAreaIds as
-                        $functional_area_id_num_jobs)
+                        
+                        <?php if(isset($topFunctionalAreaIds) && count($topFunctionalAreaIds)): ?> <?php $__currentLoopData = $topFunctionalAreaIds; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $functional_area_id_num_jobs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php
                         $functionalArea = App\ FunctionalArea::where('functional_area_id', '=', $functional_area_id_num_jobs->functional_area_id)->lang()->active()->first();
-                        ?> @if(null !== $functionalArea)
+                        ?> <?php if(null !== $functionalArea): ?>
                         
                         <li class="col-md-4 col-sm-6">
                             <a
-                            href="{{route('job.list', ['functional_area_id[]'=>$functionalArea->functional_area_id])}}"
-                            title="{{$functionalArea->functional_area}}">{{$functionalArea->functional_area}}
-                            <span>({{$functional_area_id_num_jobs->num_jobs}})</span>
+                            href="<?php echo e(route('job.list', ['functional_area_id[]'=>$functionalArea->functional_area_id])); ?>"
+                            title="<?php echo e($functionalArea->functional_area); ?>"><?php echo e($functionalArea->functional_area); ?>
+
+                            <span>(<?php echo e($functional_area_id_num_jobs->num_jobs); ?>)</span>
                             </a>
                         </li>
                         
-                        @endif @endforeach @endif
+                        <?php endif; ?> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> <?php endif; ?>
                     </ul>
                 </div>
                 <div class="tab-pane p-3 fade bg-white border-0" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                     <ul class="row teste">
-                        {{-- <li class="col-md-4 col-sm-6"><a href="#">Barrington (2)</a></li> --}}
-                        @if(isset($topCityIds) && count($topCityIds))
-                        @foreach($topCityIds as $city_id_num_jobs)
+                        
+                        <?php if(isset($topCityIds) && count($topCityIds)): ?>
+                        <?php $__currentLoopData = $topCityIds; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $city_id_num_jobs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php
                         $city = App\ City::getCityById($city_id_num_jobs->city_id);
-                        ?> @if(null !== $city)
+                        ?> <?php if(null !== $city): ?>
                         
-                        <li class="col-md-4 col-sm-6 col-xs-6"><a href="{{route('job.list', ['city_id[]'=>$city->city_id])}}"
-                                title="{{$city->city}}">{{$city->city}} <span>({{$city_id_num_jobs->num_jobs}})</span></a>
+                        <li class="col-md-4 col-sm-6 col-xs-6"><a href="<?php echo e(route('job.list', ['city_id[]'=>$city->city_id])); ?>"
+                                title="<?php echo e($city->city); ?>"><?php echo e($city->city); ?> <span>(<?php echo e($city_id_num_jobs->num_jobs); ?>)</span></a>
                         </li>
                         
-                        @endif @endforeach @endif
+                        <?php endif; ?> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> <?php endif; ?>
 
                     </ul>
                 </div>
                 <div class="tab-pane p-3 fade bg-white border-0" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                     <ul class="row teste">
-                        {{-- <li class="col-md-4 col-sm-6"><a href="#">Construction/Cement/Metals (15)</li> --}}
-                            @if(isset($topIndustryIds) && count($topIndustryIds)) @foreach($topIndustryIds as $industry_id => $num_jobs)
+                        
+                            <?php if(isset($topIndustryIds) && count($topIndustryIds)): ?> <?php $__currentLoopData = $topIndustryIds; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $industry_id => $num_jobs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <?php
                             $industry = App\ Industry::where('industry_id', '=', $industry_id)->lang()->active()->first();
-                            ?> @if(null !== $industry)
-                            <li class="col-md-4 col-sm-6"><a href="{{route('job.list', ['industry_id[]'=>$industry->industry_id])}}"
-                                    title="{{$industry->industry}}">{{$industry->industry}} <span>({{$num_jobs}})</span></a>
+                            ?> <?php if(null !== $industry): ?>
+                            <li class="col-md-4 col-sm-6"><a href="<?php echo e(route('job.list', ['industry_id[]'=>$industry->industry_id])); ?>"
+                                    title="<?php echo e($industry->industry); ?>"><?php echo e($industry->industry); ?> <span>(<?php echo e($num_jobs); ?>)</span></a>
                             </li>
-                            @endif
-                        @endforeach
-                        @endif
+                            <?php endif; ?>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
@@ -216,17 +215,17 @@ ul li.nav-item a.btn.btn-outline-dark:hover{
             <!-- <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3> -->
         </div>
         <div class="row">
-            @if(isset($featuredJobs) && count($featuredJobs))
-            @foreach($featuredJobs as $featuredJob)
+            <?php if(isset($featuredJobs) && count($featuredJobs)): ?>
+            <?php $__currentLoopData = $featuredJobs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $featuredJob): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <?php $company = $featuredJob->getCompany(); ?>
-            @if(null !== $company)
+            <?php if(null !== $company): ?>
             <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
                 <div class="card portfolio-item rounded-0 border-0 bg-white shadow-sm">
                     <div class="row justify-content-left">
                         <div class="col-12">
                             <div class="card-header border-0 rounded-0">
                                 <div class="portfolio-caption-heading">
-                                    <a href="{{route('job.detail', [$featuredJob->slug])}}" title="{{$featuredJob->title}}" class="text-left text-dark">{{$featuredJob->title}}</a>
+                                    <a href="<?php echo e(route('job.detail', [$featuredJob->slug])); ?>" title="<?php echo e($featuredJob->title); ?>" class="text-left text-dark"><?php echo e($featuredJob->title); ?></a>
                                 </div>
                             </div>
                             <div class="card-body bg-white portfolio-caption text-justify">
@@ -234,14 +233,16 @@ ul li.nav-item a.btn.btn-outline-dark:hover{
                                 <h6 class="pl-2 text-dark">Skills Required</h6>
                                 <div class="portfolio-caption-subheading p-0">
                                     <ul class="nav d-flex d-inline-block text-capitalize">
-                                       {!!$featuredJob->getJobSkillsList()!!}
+                                       <?php echo $featuredJob->getJobSkillsList(); ?>
+
                                     </ul>
                                 </div>
                                 <hr>
                                 <div class="portfolio-caption-subheading text-dark text-muted">
-                                    <span class="mr-2 h6">Client:</span><a class="text-dark text-muted" href="{{route('company.detail', $company->slug)}}" title="{{$company->name}}">{{$company->name}}</a>
-                                    <div class="badge p-2 fulltime badge-secondary float-right" title="{{$featuredJob->getJobType('job_type')}}">
-                                    {{$featuredJob->getJobType('job_type')}}
+                                    <span class="mr-2 h6">Client:</span><a class="text-dark text-muted" href="<?php echo e(route('company.detail', $company->slug)); ?>" title="<?php echo e($company->name); ?>"><?php echo e($company->name); ?></a>
+                                    <div class="badge p-2 fulltime badge-secondary float-right" title="<?php echo e($featuredJob->getJobType('job_type')); ?>">
+                                    <?php echo e($featuredJob->getJobType('job_type')); ?>
+
                                     </div>
                                 </div>
                             </div>
@@ -249,14 +250,14 @@ ul li.nav-item a.btn.btn-outline-dark:hover{
                     </div>
                 </div>
             </div>
-            @endif
-            @endforeach
-            @endif
+            <?php endif; ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php endif; ?>
         </div>
         <div class="container mt-5 py-3 border-top">
             <div class="row">
                 <h4 class="text-dark">Would you like to see more job openings?</h4>
-                <a class="btn btn-primary btn-xl text-uppercase ml-auto" id="see_more" href="{{route('job.list', ['is_featured'=>1])}}">See  More</a><br><br>
+                <a class="btn btn-primary btn-xl text-uppercase ml-auto" id="see_more" href="<?php echo e(route('job.list', ['is_featured'=>1])); ?>">See  More</a><br><br>
             </div>
         </div>
     </div>
@@ -306,7 +307,7 @@ ul li.nav-item a.btn.btn-outline-dark:hover{
 
 
 <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-<script src="{{asset('js/slick.js')}}" type="text/javascript" charset="utf-8"></script>
+<script src="<?php echo e(asset('js/slick.js')); ?>" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
     
 $('.center').slick({
@@ -348,5 +349,6 @@ $('.center').slick({
 });
 	
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
     
+<?php echo $__env->make('layouts.custom', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
