@@ -14,26 +14,13 @@
  
 /* -- custom routes ----------*/
 
+Route::get('/teste/my-profile', function() {
+  return view('front-end.dashboard.user.my_profile');
+});
 
-// Route::get('/teste/jobs', function() {
-//   return view('front-end.job.jobs');
-// });
-
-// Route::get('/teste/job', function() {
-//   return view('front-end.job.job');
-// });
-
-// Route::get('/teste/companies', function() {
-//   return view('front-end.companies.companies');
-// });
-
-// Route::get('/teste/company', function() {
-//   return view('front-end.companies.company');
-// });
-
-// Route::get('/teste/contact', function() {
-//   return view('front-end.contact.index');
-// });
+Route::get('/teste/public-profile', function() {
+  return view('front-end.dashboard.user.public_profile');
+});
 
 /* -- end of custom routes ----------*/
 
