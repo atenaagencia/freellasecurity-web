@@ -29,6 +29,24 @@
                     <div class="card-body bg-white">
 
                         
+                            
+                            <div class="row py-3">
+                                <div class="col-md-9">
+                                    <div class="formrow">  </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="formrow">
+                                        <div id="thumbnail"></div>
+                                        <label class="btn btn-primary btn-block"> <?php echo e(__('Select Profile Image')); ?>
+
+                                            <input type="file" name="image" id="image" style="display: none;">
+                                        </label>
+                                        <?php echo APFrmErrHelp::showErrors($errors, 'image'); ?>
+
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <div class="<?php echo APFrmErrHelp::hasError($errors, 'first_name'); ?>">
@@ -229,7 +247,7 @@
                                 </div><!--end-form-group-->
 
                             </div><!--form-group ROW-->
-                            <button type="submit" class="btn btn-primary font-weight-bold text-uppercase mt-4 col-md-5 py-2">Update Profile and Save</button>
+                            <button type="submit" class="btn btn-primary font-weight-bold text-uppercase mt-4 col-md-3 py-2">Update Profile and Save</button>
                         <?php echo Form::close(); ?>
 
                     </div><!--card-body-->
@@ -243,6 +261,28 @@
                     <!-- Card Body -->
                     <div class="card-body bg-white">
 
+                        <!-- Herbet, voce pode usar este include ao invés de escrever o form aqui, só precisa chamar a variable
+                        para esta blade. -->
+
+                        
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form class="form" id="add_edit_profile_summary" method="POST" action="">
+                                    <?php echo e(csrf_field()); ?>
+
+                                    <div class="form-body">
+                                        <div id="success_msg"></div>
+                                        <div class="formrow ">
+                                            <textarea name="summary" class="form-control" id="summary" placeholder="<?php echo e(__('Profile Summary')); ?>"></textarea>
+                                            <span class="help-block summary-error"></span>
+                                        </div>
+                                        <button type="button" class="btn btn-primary font-weight-bold text-uppercase mt-4 col-md-3 py-2" onClick="submitProfileSummaryForm();"><?php echo e(__('Update Summary')); ?> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+            
                     </div>
                 </div>
 
@@ -253,7 +293,10 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body bg-white">
-
+                        
+                        
+                        
+                        
                     </div>
                 </div>
 

@@ -31,6 +31,22 @@
                     <div class="card-body bg-white">
 
                         {{-- !! Form::model($user, array('method' => 'put', 'route' => array('my.profile'), 'class' => 'form', 'files'=>true)) !! --}}
+                            
+                            <div class="row py-3">
+                                <div class="col-md-9">
+                                    <div class="formrow"> {{-- ImgUploader::print_image("user_images/$user->image", 100, 100) --}} </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="formrow">
+                                        <div id="thumbnail"></div>
+                                        <label class="btn btn-primary btn-block"> {{__('Select Profile Image')}}
+                                            <input type="file" name="image" id="image" style="display: none;">
+                                        </label>
+                                        {!! APFrmErrHelp::showErrors($errors, 'image') !!}
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <div class="{!! APFrmErrHelp::hasError($errors, 'first_name') !!}">
@@ -213,7 +229,7 @@
                                 </div><!--end-form-group-->
 
                             </div><!--form-group ROW-->
-                            <button type="submit" class="btn btn-primary font-weight-bold text-uppercase mt-4 col-md-5 py-2">Update Profile and Save</button>
+                            <button type="submit" class="btn btn-primary font-weight-bold text-uppercase mt-4 col-md-3 py-2">Update Profile and Save</button>
                         {!! Form::close() !!}
                     </div><!--card-body-->
                 </div><!--tab-pane-->
@@ -226,6 +242,27 @@
                     <!-- Card Body -->
                     <div class="card-body bg-white">
 
+                        <!-- Herbet, voce pode usar este include ao invés de escrever o form aqui, só precisa chamar a variable
+                        para esta blade. -->
+
+                        {{-- @include('user.inc.summary') --}}
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form class="form" id="add_edit_profile_summary" method="POST" action="{{-- route('update.front.profile.summary', [$user->id]) --}}">
+                                    {{ csrf_field() }}
+                                    <div class="form-body">
+                                        <div id="success_msg"></div>
+                                        <div class="formrow {{-- !! APFrmErrHelp::hasError($errors, 'summary') !! --}}">
+                                            <textarea name="summary" class="form-control" id="summary" placeholder="{{__('Profile Summary')}}">{{-- old('summary', $user->getProfileSummary('summary')) --}}</textarea>
+                                            <span class="help-block summary-error"></span>
+                                        </div>
+                                        <button type="button" class="btn btn-primary font-weight-bold text-uppercase mt-4 col-md-3 py-2" onClick="submitProfileSummaryForm();">{{__('Update Summary')}} <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+            
                     </div>
                 </div>
 
@@ -236,7 +273,10 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body bg-white">
-
+                        {{-- @include('user.project.projects') --}}
+                        {{-- @include('user.experience.experience') --}}
+                        {{-- @include('user.education.education') --}}
+                        {{-- @include('user.language.languages') --}}
                     </div>
                 </div>
 
