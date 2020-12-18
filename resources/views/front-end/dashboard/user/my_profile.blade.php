@@ -277,6 +277,7 @@
                         {{-- @include('user.experience.experience') --}}
                         {{-- @include('user.education.education') --}}
                         {{-- @include('user.language.languages') --}}
+                        {{-- @include('user.skill.skills') --}}
                     </div>
                 </div>
 
