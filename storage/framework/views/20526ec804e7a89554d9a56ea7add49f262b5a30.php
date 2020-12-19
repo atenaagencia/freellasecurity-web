@@ -27,7 +27,8 @@
             <!-- Card Body -->
             <div class="card-body bg-white">
                 <p>Edit your personal information like summary, projects, experience, skills and others.</p>
-                <a href="<?php echo e(route('my.profile')); ?>" class="btn btn-primary">Edit</a>
+                <!-- <a href="<?php echo e(route('my.profile')); ?>" class="btn btn-primary">Edit</a> -->
+                <a href="<?php echo e(asset('teste/my-profile')); ?>" class="btn btn-primary">Edit</a>
             </div>
         </div>
     </div>
@@ -40,7 +41,8 @@
             <!-- Card Body -->
             <div class="card-body bg-white">
                 <p>Edit your personal information like summary, projects, experience, skills and others.</p>
-                <a href="<?php echo e(route('view.public.profile', Auth::user()->id)); ?>" class="btn btn-primary">View</a>
+                <!-- <a href="<?php echo e(route('view.public.profile', Auth::user()->id)); ?>" class="btn btn-primary">View</a> -->
+                <a href="<?php echo e(asset('teste/public-profile')); ?>" class="btn btn-primary">View</a>
             </div>
         </div>
     </div>
