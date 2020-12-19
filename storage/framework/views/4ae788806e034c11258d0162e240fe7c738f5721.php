@@ -247,7 +247,7 @@
                                 </div><!--end-form-group-->
 
                             </div><!--form-group ROW-->
-                            <button type="submit" class="btn btn-primary font-weight-bold text-uppercase mt-4 col-md-3 py-2">Update Profile and Save</button>
+                            <button type="submit" class="btn btn-primary font-weight-bold text-uppercase mt-4 py-2">Update Profile and Save</button>
                         <?php echo Form::close(); ?>
 
                     </div><!--card-body-->
@@ -293,6 +293,7 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body bg-white">
+                        
                         
                         
                         

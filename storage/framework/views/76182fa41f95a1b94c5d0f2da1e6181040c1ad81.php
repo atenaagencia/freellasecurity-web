@@ -1,15 +1,13 @@
-@extends('layouts.custom')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!-- Masthead-->
 <header class="p-5" style="background: url('https://images.pexels.com/photos/238118/pexels-photo-238118.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'); background-repeat: no-repeat;background-attachment: scroll;background-position: center center;background-size: cover; padding-top: 8rem !important;">
     <div class="container mx-auto row justify-content-between">
         <div>
-            <h2 class="text-dark">{{Auth::user()->name}}</h2>
+            <h2 class="text-dark"><?php echo e(Auth::user()->name); ?></h2>
             <p class="text-muted">Immediate Available For Work</p>
         </div>
         <div>
-            <img src="{{asset('admin_assets/no-image.png')}}" alt="" width="120px">
+            <img src="<?php echo e(asset('admin_assets/no-image.png')); ?>" alt="" width="120px">
         </div>
     </div>
 </header>
@@ -23,7 +21,7 @@
                     <div class="card-header text-dark bg-transparent border-0">
                         <!-- company's name -->
                         <div class="card-title font-weight-bold py-4 row mx-auto justify-content-between">
-                            <h3>{{Auth::user()->name}}</h3>
+                            <h3><?php echo e(Auth::user()->name); ?></h3>
                             <a class="float-right h5 text-success">Immediate Available for Work</a>
                         </div>
 
@@ -151,4 +149,5 @@
     </div>
     
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.custom', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
