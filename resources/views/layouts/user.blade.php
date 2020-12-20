@@ -122,7 +122,7 @@ if (!isset($seo)) {
 
                 <!-- Nav Item - Tables -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('my.payment_management') }}">
+                    <a class="nav-link" href="/teste/payment-management">
                         <i class="fab fa-paypal"></i>
                         <span>Payment Management</span>
                     </a>
@@ -130,7 +130,7 @@ if (!isset($seo)) {
 
                 <!-- Nav Item - Tables -->
                 <li class="nav-item">
-                    <a class="nav-link" href="tables.html">
+                    <a class="nav-link" href="/teste/my-chats">
                         <i class="fas fa-fw fa-comments"></i>
                         <span>My Chats</span>
                     </a>
@@ -279,13 +279,13 @@ if (!isset($seo)) {
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Lorem Ipsum</span>
+                                    <span class="mr-3 d-none d-lg-inline text-dark font-weight-bold">{{auth::user()->name}}</span>
                                     <img class="img-profile rounded-circle" src="https://via.placeholder.com/150x150">
                                 </a>
                                 <!-- Dropdown - User Information -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                     aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="/teste/my-profile">
                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Profile
                                     </a>

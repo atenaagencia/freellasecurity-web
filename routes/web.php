@@ -33,6 +33,14 @@ Route::get('/teste/my-favourite-jobs', function() {
 Route::get('/teste/my-job-applications', function() {
   return view('front-end.dashboard.user.my_job_applications');
 });
+
+Route::get('/teste/payment-management', function() {
+  return view('front-end.dashboard.user.payment_management');
+});
+
+Route::get('/teste/my-chats', function() {
+  return view('front-end.dashboard.user.my_chats');
+});
 /* -- end of custom routes ----------*/
 
 
