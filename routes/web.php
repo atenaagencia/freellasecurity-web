@@ -22,6 +22,17 @@ Route::get('/teste/public-profile', function() {
   return view('front-end.dashboard.user.public_profile');
 });
 
+Route::get('/teste/development-status', function() {
+  return view('front-end.dashboard.user.development_status');
+});
+
+Route::get('/teste/my-favourite-jobs', function() {
+  return view('front-end.dashboard.user.my_favourite_jobs');
+});
+
+Route::get('/teste/my-job-applications', function() {
+  return view('front-end.dashboard.user.my_job_applications');
+});
 /* -- end of custom routes ----------*/
 
 

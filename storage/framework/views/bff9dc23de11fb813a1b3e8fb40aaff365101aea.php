@@ -99,8 +99,7 @@ if (!isset($seo)) {
 
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="<?php echo e(route('my.job.applications')); ?>" data-toggle="collapse" data-target="#collapsePages"
-                        aria-expanded="true" aria-controls="collapsePages">
+                    <a class="nav-link collapsed" href="/teste/my-job-applications">
                         <i class="fas fa-fw fa-briefcase"></i>
                         <span>My Job Applications</span>
                     </a>
@@ -108,7 +107,7 @@ if (!isset($seo)) {
 
                 <!-- Nav Item - Charts -->
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo e(route('my.favourite.jobs')); ?>">
+                    <a class="nav-link" href="/teste/my-favourite-jobs">
                         <i class="fas fa-fw fa-heart"></i>
                         <span>My Favourite Jobs</span>
                     </a>
@@ -116,7 +115,7 @@ if (!isset($seo)) {
 
                 <!-- Nav Item - Charts -->
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo e(route('jobs.developmentstatus')); ?>">
+                    <a class="nav-link" href="/teste/development-status">
                         <i class="fas fa-fw fa-cog"></i>
                         <span>Development Status</span>
                     </a>

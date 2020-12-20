@@ -1,19 +1,17 @@
-@extends('layouts.user')
-
-@section('title-page')
+<?php $__env->startSection('title-page'); ?>
 <!-- Page Heading -->
 <div class="container row justify-content-left py-3">
     <h1 class="h3 font-weight-bold text-dark">Development Status</h1>
 </div>
-@endsection  
+<?php $__env->stopSection(); ?>  
                   
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="py-4">
     <div class="col-md-10">
         <div class="card h-100 shadow rounded-0">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-dark">{{__('Lorem Ipsum')}}</h6>
+                <h6 class="m-0 font-weight-bold text-dark"><?php echo e(__('Lorem Ipsum')); ?></h6>
             </div>
             <div class="card-body bg-white">
                 <p class="text-muted">
@@ -23,8 +21,9 @@
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('scripts')
-    @include('includes.immediate_available_btn')
-@endpush
+<?php $__env->startPush('scripts'); ?>
+    <?php echo $__env->make('includes.immediate_available_btn', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make('layouts.user', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
