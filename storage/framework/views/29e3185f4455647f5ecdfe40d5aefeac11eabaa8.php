@@ -50,7 +50,8 @@ ul li.nav-item a.btn.btn-outline-dark{
     line-height: 1.2;
     padding: 0.5rem;
     border:0;
-    background: #ececec;
+    background: #343a40;
+    color: white;
 }
 
 ul li.nav-item a.btn.btn-outline-dark:hover{
@@ -226,12 +227,20 @@ ul li.nav-item a.btn.btn-outline-dark:hover{
                             <div class="card-header border-0 rounded-0">
                                 <div class="portfolio-caption-heading">
                                     <a href="<?php echo e(route('job.detail', [$featuredJob->slug])); ?>" title="<?php echo e($featuredJob->title); ?>" class="text-left text-dark"><?php echo e($featuredJob->title); ?></a>
+                                    <a href="<?php echo e(route('job.detail', [$featuredJob->slug])); ?>" title="<?php echo e($featuredJob->title); ?>" class="btn btn-primary float-right"><i class="fas fa-angle-double-right"></i></a>
                                 </div>
                             </div>
                             <div class="card-body bg-white portfolio-caption text-justify">
                                 <!-- <span class="pl-2 font-weight-bold">Skills required:</span> -->
-                                <h6 class="pl-2 text-dark">Skills Required</h6>
+                                
                                 <div class="portfolio-caption-subheading p-0">
+                                    <p class="ml-2 mb-3 h6">Short Description:</p>
+                                    <div class="">
+                                        <p class="p-2 ">Lorem ipsum dolor sit amet consectetur adipisicing elit repellendus nobis exercitationem doloremque nihil?</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-caption-subheading p-0">
+                                    <p class="ml-2 h6">Skills Required:</p>
                                     <ul class="nav d-flex d-inline-block text-capitalize">
                                        <?php echo $featuredJob->getJobSkillsList(); ?>
 
@@ -239,8 +248,9 @@ ul li.nav-item a.btn.btn-outline-dark:hover{
                                 </div>
                                 <hr>
                                 <div class="portfolio-caption-subheading text-dark text-muted">
-                                    <span class="mr-2 h6">Client:</span><a class="text-dark text-muted" href="<?php echo e(route('company.detail', $company->slug)); ?>" title="<?php echo e($company->name); ?>"><?php echo e($company->name); ?></a>
-                                    <div class="badge p-2 fulltime badge-secondary float-right" title="<?php echo e($featuredJob->getJobType('job_type')); ?>">
+                                    <!-- <span class="mr-2 h6">Client:</span> -->
+                                    <a class="text-dark h6 text-muted" href="<?php echo e(route('company.detail', $company->slug)); ?>" title="<?php echo e($company->name); ?>"><i class="fa ml-2 mr-2 fa-building"></i> <?php echo e($company->name); ?></a>
+                                    <div class="badge text-dark p-2 fulltime h5 font-weight-bold float-right" title="<?php echo e($featuredJob->getJobType('job_type')); ?>">
                                     <?php echo e($featuredJob->getJobType('job_type')); ?>
 
                                     </div>
