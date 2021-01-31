@@ -41,7 +41,9 @@
                                 <p><?php echo str_limit(strip_tags($job->description), 250, '...'); ?></p>
                                 <a href="<?php echo e(route('job.detail', [$job->slug])); ?>" class="btn btn-primary">See more</a>
                             </div>
-                            <h4 class="pb-0 pt-3 pl-3 pr-3 font-weight-bold text-dark">Actions</h4>
+                            <div class="col-md-12">
+                                <h4 class="font-weight-bold text-dark">Actions</h4>
+                            </div>
                             <div class="col-md-12 row pt-0">
                                 <a class="nav-link btn btn-light m-1 font-weight-bold" href="<?php echo e(route('list.favourite.applied.users', [$job->id])); ?>"><?php echo e(__('Hired Freelancer')); ?></a>
                                 <a class="nav-link btn btn-light m-1 font-weight-bold" href="<?php echo e(route('list.applied.users', [$job->id])); ?>"><?php echo e(__('List Candidates')); ?></a>

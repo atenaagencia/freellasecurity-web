@@ -1,63 +1,58 @@
 <?php $__env->startSection('content'); ?>
-<!-- Header start -->
-<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-<!-- Header end --> 
-<!-- Inner Page Title start -->
-<?php echo $__env->make('includes.inner_page_title', ['page_title'=>__('Timesheets')], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-<!-- Inner Page Title end -->
+<!-- <?php echo $__env->make('includes.inner_page_title', ['page_title'=>__('Company Posted Jobs')], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> -->
+<?php $__env->startSection('title-page'); ?>
+<h1 class="h3 py-4 font-weight-bold text-dark"><?php echo e(__('Company Posted Jobs')); ?></h1>
+<?php $__env->stopSection(); ?>
 
-<div class="listpgWraper">
-    <div class="container">  <?php echo $__env->make('flash::message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-        <div class="row">
-            <?php echo $__env->make('includes.company_dashboard_menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<div class="row mx-auto mb-5">
+    <div class="col-md-12">
+        <div class="card shadow">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header bg-white rounded-0 py-3">
+                <h6 class="m-0 font-weight-bold text-dark"><?php echo e(__('Company Posted Jobs')); ?></h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body bg-white rounded-0">
+                <ul class="searchList p-0">
+                    <?php if(isset($job_applications) && count($job_applications)): ?>
+                    <?php $__currentLoopData = $job_applications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $job): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li class="nav-link">
+                        <div class="row justify-content-between">
+                            <div class="col-md-6">
+                                <a href="javascript:void(0)" class="h4 font-weight-bold text-primary nav-link p-0" title="Milestone number"><?php echo e($job->title); ?></a>
+                                <div class="text-justify">
+                                    <?php echo str_limit(strip_tags($job->description), 100, '...'); ?>
 
-            <div class="col-md-9 col-sm-8"> 
-                <div class="myads">
-                    <div class="row">
-                        <div class="col-md-12">
-                                <h3>Development Status Details</h3>
-                        </div>
-                    </div>
-                    <ul class="searchList">
-                        <?php if(isset($job_applications) && count($job_applications)): ?>
-                        <?php $__currentLoopData = $job_applications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $job): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <li>
-                            <div class="row">
-                                <div class="col-md-8 col-sm-8">
-                                    <div class="jobinfo">
-                                        <h3><a href="javascript:void(0)" title="Milestone number"><?php echo e($job->title); ?></a></h3>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="jobdescription"><?php echo $job->description; ?></div>
                                 </div>
-                                <div class="col-md-4 col-sm-4 text-right">
-                                
-                                <div class="listbtn"><a href="<?php echo e(route('milestones.list', [$job->id])); ?>"><?php echo e(__('View Details')); ?></a></div>
-                                <div class="listbtn">
-                                    <button type="button" class="btn btn-info btn-block">
+                            </div>
+                            <div class="col-md-4 ml-auto float-right">
+                                <div class="col-md-12 p-0">
+                                    <h4 class="font-weight-bold text-dark">Actions</h4>
+                                </div>
+                                <div class="row">
+                                    <a href="<?php echo e(route('milestones.list', [$job->id])); ?>" class="btn btn-outline-dark m-1">
+                                        <?php echo e(__('View Details')); ?>
+
+                                    </a>
+                                    <button type="button" class="btn btn-info m-1">
                                         <?php echo e($job->developmentstatus); ?>
 
                                     </button>
                                 </div>
-
-                                <div class="clearfix"></div>
-                                </div>
                             </div>
-                           
-                        </li>
-                        <!-- job end --> 
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        <?php endif; ?>
-                    </ul>
+                        </div>
+                    </li>
+                    <hr>
+                    <!-- job end -->
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <?php endif; ?>
+                </ul>
 
-                    <?php echo e($job_applications->links()); ?>
+                <a class="nav-link text-dark"><?php echo e($job_applications->links()); ?></a>
 
-                </div>
             </div>
         </div>
     </div>
 </div>
-<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <?php $__env->stopSection(); ?>
-
-<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.company', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -43,7 +43,9 @@
                                 <p>{!! str_limit(strip_tags($job->description), 250, '...') !!}</p>
                                 <a href="{{route('job.detail', [$job->slug])}}" class="btn btn-primary">See more</a>
                             </div>
-                            <h4 class="pb-0 pt-3 pl-3 pr-3 font-weight-bold text-dark">Actions</h4>
+                            <div class="col-md-12">
+                                <h4 class="font-weight-bold text-dark">Actions</h4>
+                            </div>
                             <div class="col-md-12 row pt-0">
                                 <a class="nav-link btn btn-light m-1 font-weight-bold" href="{{route('list.favourite.applied.users', [$job->id])}}">{{__('Hired Freelancer')}}</a>
                                 <a class="nav-link btn btn-light m-1 font-weight-bold" href="{{route('list.applied.users', [$job->id])}}">{{__('List Candidates')}}</a>

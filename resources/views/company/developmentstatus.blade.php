@@ -1,60 +1,56 @@
-@extends('layouts.app')
+@extends('layouts.company')
+
 @section('content')
-<!-- Header start -->
-@include('includes.header')
-<!-- Header end --> 
-<!-- Inner Page Title start -->
-@include('includes.inner_page_title', ['page_title'=>__('Timesheets')])
-<!-- Inner Page Title end -->
+<!-- @include('includes.inner_page_title', ['page_title'=>__('Company Posted Jobs')]) -->
+@section('title-page')
+<h1 class="h3 py-4 font-weight-bold text-dark">{{__('Company Posted Jobs')}}</h1>
+@endsection
 
-<div class="listpgWraper">
-    <div class="container">  @include('flash::message')
-        <div class="row">
-            @include('includes.company_dashboard_menu')
-
-            <div class="col-md-9 col-sm-8"> 
-                <div class="myads">
-                    <div class="row">
-                        <div class="col-md-12">
-                                <h3>Development Status Details</h3>
-                        </div>
-                    </div>
-                    <ul class="searchList">
-                        @if(isset($job_applications) && count($job_applications))
-                        @foreach($job_applications as $job)
-                        <li>
-                            <div class="row">
-                                <div class="col-md-8 col-sm-8">
-                                    <div class="jobinfo">
-                                        <h3><a href="javascript:void(0)" title="Milestone number">{{$job->title}}</a></h3>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="jobdescription">{!! $job->description !!}</div>
+<div class="row mx-auto mb-5">
+    <div class="col-md-12">
+        <div class="card shadow">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header bg-white rounded-0 py-3">
+                <h6 class="m-0 font-weight-bold text-dark">{{__('Company Posted Jobs')}}</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body bg-white rounded-0">
+                <ul class="searchList p-0">
+                    @if(isset($job_applications) && count($job_applications))
+                    @foreach($job_applications as $job)
+                    <li class="nav-link">
+                        <div class="row justify-content-between">
+                            <div class="col-md-6">
+                                <a href="javascript:void(0)" class="h4 font-weight-bold text-primary nav-link p-0" title="Milestone number">{{$job->title}}</a>
+                                <div class="text-justify">
+                                    {!! str_limit(strip_tags($job->description), 100, '...') !!}
                                 </div>
-                                <div class="col-md-4 col-sm-4 text-right">
-                                
-                                <div class="listbtn"><a href="{{route('milestones.list', [$job->id])}}">{{__('View Details')}}</a></div>
-                                <div class="listbtn">
-                                    <button type="button" class="btn btn-info btn-block">
+                            </div>
+                            <div class="col-md-4 ml-auto float-right">
+                                <div class="col-md-12 p-0">
+                                    <h4 class="font-weight-bold text-dark">Actions</h4>
+                                </div>
+                                <div class="row">
+                                    <a href="{{route('milestones.list', [$job->id])}}" class="btn btn-outline-dark m-1">
+                                        {{__('View Details')}}
+                                    </a>
+                                    <button type="button" class="btn btn-info m-1">
                                         {{ $job->developmentstatus }}
                                     </button>
                                 </div>
-
-                                <div class="clearfix"></div>
-                                </div>
                             </div>
-                           
-                        </li>
-                        <!-- job end --> 
-                        @endforeach
-                        @endif
-                    </ul>
+                        </div>
+                    </li>
+                    <hr>
+                    <!-- job end -->
+                    @endforeach
+                    @endif
+                </ul>
 
-                    {{ $job_applications->links() }}
-                </div>
+                <a class="nav-link text-dark">{{ $job_applications->links() }}</a>
+
             </div>
         </div>
     </div>
 </div>
-@include('includes.footer')
 @endsection
