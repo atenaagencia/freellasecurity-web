@@ -29,8 +29,8 @@
             <!-- Card Body -->
             <div class="card-body bg-white">
                 <p>Edit your personal information like summary, projects, experience, skills and others.</p>
-                <!-- <a href="{{ route('my.profile') }}" class="btn btn-primary">Edit</a> -->
-                <a href="{{ asset('teste/my-profile') }}" class="btn btn-primary">Edit</a>
+                <a href="{{ route('my.profile') }}" class="btn btn-primary">Edit</a> 
+                {{-- <a href="{{ asset('teste/my-profile') }}" class="btn btn-primary">Edit</a> --}}
             </div>
         </div>
     </div>

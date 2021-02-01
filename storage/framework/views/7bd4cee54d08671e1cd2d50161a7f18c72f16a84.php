@@ -1,13 +1,11 @@
-@extends('layouts.user')
-
-@section('title-page')
+<?php $__env->startSection('title-page'); ?>
 <!-- Page Heading -->
 <div class="container row justify-content-left py-3">
     <h1 class="h3 font-weight-bold text-dark">My Profile</h1>
 </div>
-@endsection  
+<?php $__env->stopSection(); ?>  
                   
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="py-4">
     <div class="col-12">
@@ -25,64 +23,75 @@
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-dark">{{__('Personal Information')}}</h6>
+                        <h6 class="m-0 font-weight-bold text-dark"><?php echo e(__('Personal Information')); ?></h6>
                     </div>
                     <!-- Card Body -->
                     <div class="card-body bg-white">
 
-                        {{ Form::model($user, array('method' => 'put', 'route' => array('my.profile'), 'class' => 'form', 'files'=>true))}}
+                        <?php echo e(Form::model($user, array('method' => 'put', 'route' => array('my.profile'), 'class' => 'form', 'files'=>true))); ?>
+
                             
                             <div class="row py-3">
                                 <div class="col-md-9">
-                                    <div class="formrow"> {{-- ImgUploader::print_image("user_images/$user->image", 100, 100) --}} </div>
+                                    <div class="formrow">  </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="formrow">
                                         <div id="thumbnail"></div>
-                                        <label class="btn btn-primary btn-block"> {{__('Select Profile Image')}}
+                                        <label class="btn btn-primary btn-block"> <?php echo e(__('Select Profile Image')); ?>
+
                                             <input type="file" name="image" id="image" style="display: none;">
                                         </label>
-                                        {!! APFrmErrHelp::showErrors($errors, 'image') !!}
+                                        <?php echo APFrmErrHelp::showErrors($errors, 'image'); ?>
+
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-3">
-                                    <div class="{!! APFrmErrHelp::hasError($errors, 'first_name') !!}">
+                                    <div class="<?php echo APFrmErrHelp::hasError($errors, 'first_name'); ?>">
                                         <label class="font-weight-bold text-dark">First Name</label>
-                                        {!! Form::text('first_name', null, array('class'=>'form-control', 'id'=>'first_name', 'placeholder'=>__('First Name'))) !!}
-                                        {!! APFrmErrHelp::showErrors($errors, 'first_name') !!}
+                                        <?php echo Form::text('first_name', null, array('class'=>'form-control', 'id'=>'first_name', 'placeholder'=>__('First Name'))); ?>
+
+                                        <?php echo APFrmErrHelp::showErrors($errors, 'first_name'); ?>
+
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <div class="{!! APFrmErrHelp::hasError($errors, 'middle_name') !!}">
+                                    <div class="<?php echo APFrmErrHelp::hasError($errors, 'middle_name'); ?>">
                                         <label class="font-weight-bold text-dark">Middle Name</label>
-                                        {!! Form::text('middle_name', null, array('class'=>'form-control', 'id'=>'middle_name', 'placeholder'=>__('Middle Name'))) !!}
-                                        {!! APFrmErrHelp::showErrors($errors, 'middle_name') !!}
+                                        <?php echo Form::text('middle_name', null, array('class'=>'form-control', 'id'=>'middle_name', 'placeholder'=>__('Middle Name'))); ?>
+
+                                        <?php echo APFrmErrHelp::showErrors($errors, 'middle_name'); ?>
+
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <div class="{!! APFrmErrHelp::hasError($errors, 'last_name') !!}">
+                                    <div class="<?php echo APFrmErrHelp::hasError($errors, 'last_name'); ?>">
                                         <label class="font-weight-bold text-dark">Last Name</label>
-                                        {!! Form::text('last_name', null, array('class'=>'form-control', 'id'=>'last_name', 'placeholder'=>__('Last Name'))) !!}
-                                        {!! APFrmErrHelp::showErrors($errors, 'last_name') !!}
+                                        <?php echo Form::text('last_name', null, array('class'=>'form-control', 'id'=>'last_name', 'placeholder'=>__('Last Name'))); ?>
+
+                                        <?php echo APFrmErrHelp::showErrors($errors, 'last_name'); ?>
+
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <div class="{!! APFrmErrHelp::hasError($errors, 'father_name') !!}">
+                                    <div class="<?php echo APFrmErrHelp::hasError($errors, 'father_name'); ?>">
                                         <label class="font-weight-bold text-dark">Father Name</label>
-                                        {!! Form::text('father_name', null, array('class'=>'form-control', 'id'=>'father_name', 'placeholder'=>__('Father Name'))) !!}
-                                        {!! APFrmErrHelp::showErrors($errors, 'father_name') !!}
+                                        <?php echo Form::text('father_name', null, array('class'=>'form-control', 'id'=>'father_name', 'placeholder'=>__('Father Name'))); ?>
+
+                                        <?php echo APFrmErrHelp::showErrors($errors, 'father_name'); ?>
+
                                     </div>
                                 </div>
                             </div><!--end-form-group-->
 
                             <div class="form-row">
                                 <div class="form-group col-md-3">
-                                    <div class="{!! APFrmErrHelp::hasError($errors, 'gender_id') !!}">
-                                        {{-- !! Form::select('gender_id', [''=>__('Select Gender')]+$genders, null, array('class'=>'form-control', 'id'=>'gender_id')) !!--}}
-                                        {{-- !! APFrmErrHelp::showErrors($errors, 'gender_id') !! --}}
+                                    <div class="<?php echo APFrmErrHelp::hasError($errors, 'gender_id'); ?>">
+                                        
+                                        
 
                                         <label class="font-weight-bold text-dark">Gender</label>
                                         <select id="inputState" class="form-control">
@@ -93,10 +102,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <div class="{!! APFrmErrHelp::hasError($errors, 'country_id') !!}">
+                                    <div class="<?php echo APFrmErrHelp::hasError($errors, 'country_id'); ?>">
                                         <?php $country_id = old('country_id', (isset($user) && (int) $user->country_id > 0) ? $user->country_id : $siteSetting->default_country_id); ?>
-                                        {{-- !! Form::select('country_id', [''=>__('Select Country')]+$countries, $country_id, array('class'=>'form-control', 'id'=>'country_id')) !! --}}
-                                        {{-- !! APFrmErrHelp::showErrors($errors, 'country_id') !! --}}
+                                        
+                                        
 
                                         <label class="font-weight-bold text-dark">Country</label>
                                         <select id="inputState" class="form-control">
@@ -107,30 +116,34 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <div class="{!! APFrmErrHelp::hasError($errors, 'state_id') !!}">
+                                    <div class="<?php echo APFrmErrHelp::hasError($errors, 'state_id'); ?>">
                                         <label class="font-weight-bold text-dark">State</label>
                                         <span id="state_dd">
-                                            {!! Form::select('state_id', [''=>__('Select State')], null, array('class'=>'form-control', 'id'=>'state_id')) !!}
+                                            <?php echo Form::select('state_id', [''=>__('Select State')], null, array('class'=>'form-control', 'id'=>'state_id')); ?>
+
                                         </span>
-                                        {!! APFrmErrHelp::showErrors($errors, 'state_id') !!}
+                                        <?php echo APFrmErrHelp::showErrors($errors, 'state_id'); ?>
+
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <div class="{!! APFrmErrHelp::hasError($errors, 'city_id') !!}">
+                                    <div class="<?php echo APFrmErrHelp::hasError($errors, 'city_id'); ?>">
                                         <label class="font-weight-bold text-dark">City</label>
                                         <span id="city_dd">
-                                            {!! Form::select('city_id', [''=>__('Select City')], null, array('class'=>'form-control', 'id'=>'city_id')) !!}
+                                            <?php echo Form::select('city_id', [''=>__('Select City')], null, array('class'=>'form-control', 'id'=>'city_id')); ?>
+
                                         </span>
-                                        {!! APFrmErrHelp::showErrors($errors, 'city_id') !!}
+                                        <?php echo APFrmErrHelp::showErrors($errors, 'city_id'); ?>
+
                                     </div>
                                 </div>
                             </div><!--end-form-group-->
 
                             <div class="form-row">
                                 <div class="form-group col-md-3">
-                                    <div class="{!! APFrmErrHelp::hasError($errors, 'nationality_id') !!}">
-                                        {{-- !! Form::select('nationality_id', [''=>__('Select Nationality')]+$nationalities, null, array('class'=>'form-control', 'id'=>'nationality_id')) !!--}}
-                                        {{-- !! APFrmErrHelp::showErrors($errors, 'nationality_id') !! --}}
+                                    <div class="<?php echo APFrmErrHelp::hasError($errors, 'nationality_id'); ?>">
+                                        
+                                        
 
                                         <label class="font-weight-bold text-dark">Nationality</label>
                                         <select id="inputState" class="form-control">
@@ -141,33 +154,38 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <div class="{!! APFrmErrHelp::hasError($errors, 'date_of_birth') !!}">
+                                    <div class="<?php echo APFrmErrHelp::hasError($errors, 'date_of_birth'); ?>">
                                         <label class="font-weight-bold text-dark">Date of Birth</label>
-                                        {!! Form::text('date_of_birth', null, array('class'=>'form-control datepicker', 'id'=>'date_of_birth', 'placeholder'=>__('Date of Birth'), 'autocomplete'=>'off')) !!}
-                                        {!! APFrmErrHelp::showErrors($errors, 'date_of_birth') !!}
+                                        <?php echo Form::text('date_of_birth', null, array('class'=>'form-control datepicker', 'id'=>'date_of_birth', 'placeholder'=>__('Date of Birth'), 'autocomplete'=>'off')); ?>
+
+                                        <?php echo APFrmErrHelp::showErrors($errors, 'date_of_birth'); ?>
+
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <div class="{!! APFrmErrHelp::hasError($errors, 'phone') !!}"> 
+                                    <div class="<?php echo APFrmErrHelp::hasError($errors, 'phone'); ?>"> 
                                     <label class="font-weight-bold text-dark">Phone</label>
-                                        {!! Form::text('phone', null, array('class'=>'form-control', 'id'=>'phone', 'placeholder'=>__('Phone'))) !!}
-                                        {!! APFrmErrHelp::showErrors($errors, 'phone') !!} 
+                                        <?php echo Form::text('phone', null, array('class'=>'form-control', 'id'=>'phone', 'placeholder'=>__('Phone'))); ?>
+
+                                        <?php echo APFrmErrHelp::showErrors($errors, 'phone'); ?> 
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <div class="{!! APFrmErrHelp::hasError($errors, 'mobile_num') !!}">
+                                    <div class="<?php echo APFrmErrHelp::hasError($errors, 'mobile_num'); ?>">
                                         <label class="font-weight-bold text-dark">Mobile Number</label>
-                                        {!! Form::text('mobile_num', null, array('class'=>'form-control', 'id'=>'mobile_num', 'placeholder'=>__('Mobile Number'))) !!}
-                                        {!! APFrmErrHelp::showErrors($errors, 'mobile_num') !!}
+                                        <?php echo Form::text('mobile_num', null, array('class'=>'form-control', 'id'=>'mobile_num', 'placeholder'=>__('Mobile Number'))); ?>
+
+                                        <?php echo APFrmErrHelp::showErrors($errors, 'mobile_num'); ?>
+
                                     </div>
                                 </div>
                             </div><!--end-form-group-->
 
                             <div class="form-row">
                                 <div class="form-group col-md-3">
-                                    <div class="{!! APFrmErrHelp::hasError($errors, 'job_experience_id') !!}"> 
-                                        {{-- !! Form::select('job_experience_id', [''=>__('Select Experience')]+$jobExperiences, null, array('class'=>'form-control', 'id'=>'job_experience_id')) !! --}}
-                                        {{-- !! APFrmErrHelp::showErrors($errors, 'job_experience_id') !! --}}
+                                    <div class="<?php echo APFrmErrHelp::hasError($errors, 'job_experience_id'); ?>"> 
+                                        
+                                        
 
                                         <label class="font-weight-bold text-dark">Experience</label>
                                         <select id="inputState" class="form-control">
@@ -179,9 +197,9 @@
                                 </div><!--end-form-group-->
 
                                 <div class="form-group col-md-3">
-                                    <div class="{!! APFrmErrHelp::hasError($errors, 'career_level_id') !!}"> 
-                                        {{-- !! Form::select('career_level_id', [''=>__('Select Career Level')]+$careerLevels, null, array('class'=>'form-control', 'id'=>'career_level_id')) !! --}}
-                                        {{-- !! APFrmErrHelp::showErrors($errors, 'career_level_id') !! --}}
+                                    <div class="<?php echo APFrmErrHelp::hasError($errors, 'career_level_id'); ?>"> 
+                                        
+                                        
 
                                         <label class="font-weight-bold text-dark">Career Level</label>
                                         <select id="inputState" class="form-control">
@@ -193,9 +211,9 @@
                                 </div><!--end-form-group-->
 
                                 <div class="form-group col-md-3">
-                                    <div class="{!! APFrmErrHelp::hasError($errors, 'industry_id') !!}"> 
-                                        {{-- !! Form::select('industry_id', [''=>__('Select Industry')]+$industries, null, array('class'=>'form-control', 'id'=>'industry_id')) !! --}}
-                                        {{-- !! APFrmErrHelp::showErrors($errors, 'industry_id') !! --}}
+                                    <div class="<?php echo APFrmErrHelp::hasError($errors, 'industry_id'); ?>"> 
+                                        
+                                        
 
                                         <label class="font-weight-bold text-dark">Industry</label>
                                         <select id="inputState" class="form-control">
@@ -207,9 +225,8 @@
                                 </div><!--end-form-group-->
 
                                 <div class="form-group col-md-3">
-                                    <div class="{!! APFrmErrHelp::hasError($errors, 'functional_area_id') !!}"> 
-                                        {{-- !! Form::select('functional_area_id', [''=>__('Select Functional Area')]+$functionalAreas, null, array('class'=>'form-control', 'id'=>'functional_area_id')) !!}
-                                        {{-- !! APFrmErrHelp::showErrors($errors, 'functional_area_id') !! --}}
+                                    <div class="<?php echo APFrmErrHelp::hasError($errors, 'functional_area_id'); ?>"> 
+                                        
 
                                         <label class="font-weight-bold text-dark">Functional Area</label>
                                         <select id="inputState" class="form-control">
@@ -221,23 +238,26 @@
                                 </div><!--end-form-group-->
 
                                 <div class="form-group col-md-12">
-                                    <div class="{!! APFrmErrHelp::hasError($errors, 'street_address') !!}">
+                                    <div class="<?php echo APFrmErrHelp::hasError($errors, 'street_address'); ?>">
                                         <label class="font-weight-bold text-dark">Street Adress</label>
-                                        {!! Form::textarea('street_address', null, array('class'=>'form-control', 'id'=>'street_address', 'placeholder'=>__('Street Address'))) !!}
-                                        {!! APFrmErrHelp::showErrors($errors, 'street_address') !!}
+                                        <?php echo Form::textarea('street_address', null, array('class'=>'form-control', 'id'=>'street_address', 'placeholder'=>__('Street Address'))); ?>
+
+                                        <?php echo APFrmErrHelp::showErrors($errors, 'street_address'); ?>
+
                                     </div>
                                 </div><!--end-form-group-->
 
                             </div><!--form-group ROW-->
                             <button type="submit" class="btn btn-primary font-weight-bold text-uppercase mt-4 py-2">Update Profile and Save</button>
-                        {!! Form::close() !!}
+                        <?php echo Form::close(); ?>
+
                     </div><!--card-body-->
                 </div><!--tab-pane-->
 
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-dark">{{__('Summary')}}</h6>
+                        <h6 class="m-0 font-weight-bold text-dark"><?php echo e(__('Summary')); ?></h6>
                     </div>
                     <!-- Card Body -->
                     <div class="card-body bg-white">
@@ -245,19 +265,20 @@
                         <!-- Herbet, voce pode usar este include ao invés de escrever o form aqui, só precisa chamar a variable
                         para esta blade. -->
 
-                        {{-- @include('user.inc.summary') --}}
+                        
 
                         <div class="row">
                             <div class="col-md-12">
-                                <form class="form" id="add_edit_profile_summary" method="POST" action="{{-- route('update.front.profile.summary', [$user->id]) --}}">
-                                    {{ csrf_field() }}
+                                <form class="form" id="add_edit_profile_summary" method="POST" action="">
+                                    <?php echo e(csrf_field()); ?>
+
                                     <div class="form-body">
                                         <div id="success_msg"></div>
-                                        <div class="formrow {{-- !! APFrmErrHelp::hasError($errors, 'summary') !! --}}">
-                                            <textarea name="summary" class="form-control" id="summary" placeholder="{{__('Profile Summary')}}">{{-- old('summary', $user->getProfileSummary('summary')) --}}</textarea>
+                                        <div class="formrow ">
+                                            <textarea name="summary" class="form-control" id="summary" placeholder="<?php echo e(__('Profile Summary')); ?>"></textarea>
                                             <span class="help-block summary-error"></span>
                                         </div>
-                                        <button type="button" class="btn btn-primary font-weight-bold text-uppercase mt-4 col-md-3 py-2" onClick="submitProfileSummaryForm();">{{__('Update Summary')}} <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-primary font-weight-bold text-uppercase mt-4 col-md-3 py-2" onClick="submitProfileSummaryForm();"><?php echo e(__('Update Summary')); ?> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -269,15 +290,15 @@
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-dark">{{__('Others')}}</h6>
+                        <h6 class="m-0 font-weight-bold text-dark"><?php echo e(__('Others')); ?></h6>
                     </div>
                     <!-- Card Body -->
                     <div class="card-body bg-white">
-                        {{-- @include('user.project.projects') --}}
-                        {{-- @include('user.experience.experience') --}}
-                        {{-- @include('user.education.education') --}}
-                        {{-- @include('user.language.languages') --}}
-                        {{-- @include('user.skill.skills') --}}
+                        
+                        
+                        
+                        
+                        
                     </div>
                 </div>
 
@@ -285,8 +306,9 @@
         </div><!--card-->
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('scripts')
-    @include('includes.immediate_available_btn')
-@endpush
+<?php $__env->startPush('scripts'); ?>
+    <?php echo $__env->make('includes.immediate_available_btn', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make('layouts.user', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
