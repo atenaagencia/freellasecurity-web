@@ -27,7 +27,7 @@
                         <div class="badge badge-dark">Phill@email.com</div>
                     </div>
                   </div>
-                <hr>
+                  <hr>
                 </li>
                 
 

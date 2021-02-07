@@ -130,7 +130,7 @@
                     <div class="col-md-12 py-3">
                         <div class="formrow">
                             <?php if(isset($job)): ?>
-                            <button type="submit" class="btn btn-wf"><?php echo e(__('Update Job')); ?></button>
+                            <button type="submit" class="btn btn-primary"><?php echo e(__('Update Job')); ?></button>
                             <?php else: ?>
                             <button type="submit" class="btn btn-primary"><?php echo e(__('Create Job')); ?></button>
                             <?php endif; ?>

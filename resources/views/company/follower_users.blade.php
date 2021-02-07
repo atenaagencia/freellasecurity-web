@@ -1,47 +1,51 @@
-@extends('layouts.app')
-@section('content') 
-<!-- Header start --> 
-@include('includes.header') 
-<!-- Header end --> 
-<!-- Inner Page Title start --> 
-@include('includes.inner_page_title', ['page_title'=>__('Company Followers')]) 
-<!-- Inner Page Title end -->
-<div class="listpgWraper">
-    <div class="container">
-        <div class="row">
-            @include('includes.company_dashboard_menu')
+@extends('layouts.company')
 
-            <div class="col-md-9 col-sm-8"> 
-                <div class="myads">
-                    <h3>{{__('Company Followers')}}</h3>
-                    <ul class="searchList">
-                        <!-- job start --> 
-                        @if(isset($users) && count($users))
-                        @foreach($users as $user)
-                        <li>
-                            <div class="row">
-                                <div class="col-md-9 col-sm-9">
-                                    <div class="jobimg">{{$user->printUserImage(100, 100)}}</div>
-                                    <div class="jobinfo">
-                                        <h3><a href="{{route('user.profile', $user->id)}}">{{$user->getName()}}</a></h3>
-                                        <div class="location"> {{$user->getLocation()}}</div>
-                                    </div>
-                                    <div class="clearfix"></div>
+@section('content')
+<!-- @include('includes.inner_page_title', ['page_title'=>__('Company Posted Jobs')]) -->
+@section('title-page')
+<h1 class="h3 py-4 font-weight-bold text-dark">{{__('Company Followers')}}</h1>
+@endsection
+
+<div class="row mx-auto mb-5">
+    <div class="col-md-12">
+        <div class="card shadow">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header bg-white rounded-0 py-3">
+                <h6 class="m-0 font-weight-bold text-dark">{{__('Company Followers')}}</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body bg-white rounded-0">
+
+                <ul class="searchList p-0">
+                    
+                    <li class="nav-link pb-3">
+                        <div class="row">
+                            <div class="col">
+                                <div class="container p-0">
+                                    <img src="http://localhost:8000/admin_assets/no-image.png" style="width: 200px" alt="user_photo"  title="user_photo">
                                 </div>
-                                <div class="col-md-3 col-sm-3">
-                                    <div class="listbtn"><a href="{{route('user.profile', $user->id)}}">{{__('View Profile')}}</a></div>
+                                <div class="jobinfo">
+                                    <div class="userName">
+                                        <a href="#" alt="user_name"  title="user_name" class="badge badge-primary">UserName</a>
+                                    </div>
+                                    <div class="location">
+                                        <label class="fulltime" alt="user_location"  title="user_location">Location</label>
+                                    </div>
                                 </div>
                             </div>
-                            <p>{{str_limit($user->getProfileSummary('summary'),150,'...')}}</p>
-                        </li>
-                        <!-- job end --> 
-                        @endforeach
-                        @endif
-                    </ul>
-                </div>
+                            <div class="col-md-9">
+                                <h4 class="pb-3 font-weight-bold text-dark">Summary</h4>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda nobis delectus atque inventore, sed id repudiandae commodi. 
+                                Architecto aliquid repudiandae enim molestiae sapiente, dolores facilis nemo reprehenderit corrupti blanditiis. At.</p>
+                                <a href="" class="btn btn-primary">See more</a>
+                            </div>
+                        </div>
+                    </li>
+                    <hr>
+                    <!-- job end -->                   
+                </ul>                
             </div>
         </div>
     </div>
 </div>
-@include('includes.footer')
 @endsection

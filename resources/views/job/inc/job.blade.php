@@ -107,7 +107,7 @@
                     <div class="col-md-12 py-3">
                         <div class="formrow">
                             @if(isset($job))
-                            <button type="submit" class="btn btn-wf">{{__('Update Job')}}</button>
+                            <button type="submit" class="btn btn-primary">{{__('Update Job')}}</button>
                             @else
                             <button type="submit" class="btn btn-primary">{{__('Create Job')}}</button>
                             @endif
