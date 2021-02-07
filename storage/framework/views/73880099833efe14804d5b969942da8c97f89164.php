@@ -78,7 +78,7 @@ if (!isset($seo)) {
 
     <body id="page-top">
 
-        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand mr-0 mr-md-2" href="<?php echo e(asset('/')); ?>">
                     <img id="teste" src="<?php echo e(asset('img/logos/wf_cinza.png')); ?>" alt="" width="auto" height="36">
