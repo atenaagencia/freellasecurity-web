@@ -107,7 +107,7 @@ if (!isset($seo)) {
 
                 <!-- Nav Item - Charts -->
                 <li class="nav-item">
-                    <a class="nav-link" href="/teste/my-favourite-jobs">
+                    <a class="nav-link" href="/my-favourite-jobs">
                         <i class="fas fa-fw fa-heart"></i>
                         <span>My Favourite Jobs</span>
                     </a>
