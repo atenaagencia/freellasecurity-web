@@ -35,17 +35,17 @@ img#teste{
         <div class="row">
             @if($companies)
             @foreach($companies as $company)
-            <div class="col-lg-4 col-sm-6 mb-4">
+            <div class="col-lg-2 col-sm-6 mb-4">
                 <div class="card h-100 portfolio-item border rounded shadow-sm">
                     <a class="card-header portfolio-link p-0 border-0" href="{{route('company.detail',$company->slug)}}">{{$company->printCompanyImage()}}</a>
-                    <div class="card-body portfolio-caption">
+                    <div class="card-body portfolio-caption pb-5" style="position: relative">
                         <div class="portfolio-caption-heading py-1 text-left">
-                            <a class="text-dark" href="{{route('company.detail',$company->slug)}}">{{$company->name}}</a>
+                            <a class="text-dark" href="{{route('company.detail',$company->slug)}}" style="font-size: 14px;">{{$company->name}}</a>
                         </div>
-                        <div class="portfolio-caption-subheading text-left text-muted">
+                        <div class="portfolio-caption-subheading text-left text-muted" style="font-size: 12px;">
                             {{$company->location}}
                         </div>
-                        <div class="portfolio-caption-subheading text-left text-muted">
+                        <div class="portfolio-caption-subheading text-left text-muted" style="position: absolute; bottom: 5px;">
                             <div class="badge p-2 mt-3 badge-primary">{{__('Current jobs')}} : {{$company->countNumJobs('company_id',$company->id)}}</div>
                         </div>
                     </div>

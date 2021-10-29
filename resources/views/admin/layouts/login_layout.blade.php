@@ -39,7 +39,8 @@
         <!-- BEGIN LOGO -->
         <div class="logo">
             <a href="{{ route('admin.login') }}">
-                <img src="{{ asset('/') }}sitesetting_images/mid/{{ $siteSetting->site_logo }}" alt="" /> </a>
+                {{-- <img src="{{ asset('/') }}sitesetting_images/mid/{{ $siteSetting->site_logo }}" alt="" /> </a> --}}
+                <img src="{{asset('img/logos/wf_branco.png')}}" alt="" style="width: 300px;" /> </a>
         </div>
         <!-- END LOGO -->
         @yield('content')

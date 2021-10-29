@@ -297,7 +297,7 @@ font-size: 25px;
     <div class="container" >
         <div class="text-left py-3">
             <div class="masthead-heading display-5 text-center text-white" style="margin-top: -50px;">
-                <h3>Como funciona</h3>
+                <h3>Como funciona?</h3>
                   
             </div>
           

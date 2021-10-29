@@ -34,18 +34,18 @@ img#teste{
         <div class="row">
             <?php if($companies): ?>
             <?php $__currentLoopData = $companies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $company): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <div class="col-lg-4 col-sm-6 mb-4">
+            <div class="col-lg-2 col-sm-6 mb-4">
                 <div class="card h-100 portfolio-item border rounded shadow-sm">
                     <a class="card-header portfolio-link p-0 border-0" href="<?php echo e(route('company.detail',$company->slug)); ?>"><?php echo e($company->printCompanyImage()); ?></a>
-                    <div class="card-body portfolio-caption">
+                    <div class="card-body portfolio-caption pb-5" style="position: relative">
                         <div class="portfolio-caption-heading py-1 text-left">
-                            <a class="text-dark" href="<?php echo e(route('company.detail',$company->slug)); ?>"><?php echo e($company->name); ?></a>
+                            <a class="text-dark" href="<?php echo e(route('company.detail',$company->slug)); ?>" style="font-size: 14px;"><?php echo e($company->name); ?></a>
                         </div>
-                        <div class="portfolio-caption-subheading text-left text-muted">
+                        <div class="portfolio-caption-subheading text-left text-muted" style="font-size: 12px;">
                             <?php echo e($company->location); ?>
 
                         </div>
-                        <div class="portfolio-caption-subheading text-left text-muted">
+                        <div class="portfolio-caption-subheading text-left text-muted" style="position: absolute; bottom: 5px;">
                             <div class="badge p-2 mt-3 badge-primary"><?php echo e(__('Current jobs')); ?> : <?php echo e($company->countNumJobs('company_id',$company->id)); ?></div>
                         </div>
                     </div>

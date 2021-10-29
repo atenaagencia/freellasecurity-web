@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class DatabaseSeeder extends Seeder
+class AdminSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         DB::table('admins')->insert([
             'role_id' => 1,
             'name' => 'Admin',
-            'email' => 'admin@wfsecurity.com.br',
+            'email' => 'admin@wfsecutiry.com.br',
             'password' => Hash::make('admin')
         ]);
     }
