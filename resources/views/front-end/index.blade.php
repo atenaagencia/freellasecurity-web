@@ -108,6 +108,30 @@ font-size: 25px;
     font-size: 12px;
 }
 
+.freelancer{
+    padding: 15px;
+    margin: 0;
+    text-align: center;
+    background-color: #629edb;
+    color: white;
+}
+.freelancer:hover{
+background: linear-gradient(90deg, rgba(24,51,82,1) 0%, rgba(98,158,219,1) 100%);
+}
+.freelancer:hover > a{
+   color: #fff;
+}
+.freelancer a{
+    color: #183352;
+    text-decoration: none;
+    font-weight: bold;
+}
+.freelancer a:hover{
+    color: #183352;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 
 
 </style>
@@ -124,6 +148,9 @@ font-size: 25px;
     </div>
     </div>
 </header>
+<section class="freelancer">
+    Você é um freelancer? Junte-se a nós! <a class="btn-reg" href="/register">Cadastre-se.</a>
+</section>
 
 <!-- Clients-->
 <div class="container center slider">
@@ -297,14 +324,15 @@ font-size: 25px;
         <div class="text-left py-3">
             <div class="masthead-heading display-5 text-center text-white" style="margin-top: -50px;">
                 <h3>Como funciona?</h3>
-                  {{-- <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3> --}}
+                  <h3 class="section-subheading text-white">Anuncie o seu trabalho facilmente, contrate freelancers e pague com segurança.</h3>
             </div>
           
         </div>
         <div class="row">
             <div class="col-lg-4 col-sm-6 mb-4" >
                 <div class="card portfolio-item border-0">
-                    <div class="card-body p-lg-0 p-md-1 p-sm-2" style="background-color: #3693fe">
+                    <div class="card-body p-lg-0 p-md-1 p-sm-2 text-center" style="background-color: #3693fe">
+                        <i class="fa fa-user-plus text-white" style="font-size: 50px;"></i>
                         <h3 class="font-weight-bold text-center text-white py-3" style="font-size: 20px;">Crie a sua conta aqui.</h3>
                         <p class="lead p-lg-0 p-md-1 p-sm-2 text-center text-white " style="font-size: 16px;">
                             Crie uma conta gratuita para habilitar os empregos disponíveis
@@ -314,7 +342,8 @@ font-size: 25px;
             </div>
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="card portfolio-item border-0">
-                    <div class="card-body p-lg-0 p-md-1 p-sm-2" style="background-color: #3693fe">
+                    <div class="card-body p-lg-0 p-md-1 p-sm-2 text-center" style="background-color: #3693fe">
+                        <i class="fa fa-search text-white" style="font-size: 50px;"></i>
                         <h3 class="font-weight-bold text-center text-white py-3" style="font-size: 20px;">Pesquise o trabalho desejado..</h3>
                         <p class="lead p-lg-0 p-md-1 p-sm-2 text-center text-white " style="font-size: 16px;">
                             Você pode procurar um trabalho por área
@@ -324,7 +353,8 @@ font-size: 25px;
             </div>
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="card portfolio-item border-0">
-                    <div class="card-body p-lg-0 p-md-1 p-sm-2" style="background-color: #3693fe">
+                    <div class="card-body p-lg-0 p-md-1 p-sm-2 text-center" style="background-color: #3693fe">
+                        <i class="fa fa-edit text-white" style="font-size: 50px;"></i>
                         <h3 class="font-weight-bold text-center text-white py-3" style="font-size: 20px;">Se candidate a vaga.</h3>
                         <p class="lead p-lg-0 p-md-1 p-sm-2 text-center text-white " style="font-size: 16px;">
                             Envie sua candidatura o para que os empregadores possam conhecê-lo melhor

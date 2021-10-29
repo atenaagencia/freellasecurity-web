@@ -121,7 +121,7 @@
                                     @endif
                                 </div>            
                                 <div class="text-center py-4">
-                                    <button type="submit" class="btn btn-block py-3 col-10 mx-auto btn-primary" value="{{__('Register')}}"><h4>Registar-se</h4></button>
+                                    <button type="submit" class="btn btn-block py-3 col-10 mx-auto btn-primary" value="{{__('Register')}}"><h4>Registrar-se</h4></button>
                                 </div>
                             </div>
                         </form>
@@ -138,10 +138,12 @@
                             <input type="hidden" name="candidate_or_employer" value="employer" />
                             
                             <div class="container bg-transparent border-0 pb-0">
-                                <h3 class="text-center">Employer Area</h3>
+                                {{-- <h3 class="text-center">Employer Area</h3>
+                                 --}}
+                                 <h3 class="text-center">Registre-se</h3>
                                 <hr class="col-6 py-3">
                                 <div class="py-2 formrow{{ $errors->has('name') ? ' has-error' : '' }}">
-                                    <input id="name" type="text" class="form-control col-10 mx-auto" name="name" value="{{ old('name') }}" required autofocus placeholder="{{__('Name')}}">
+                                    <input id="name" type="text" class="form-control col-10 mx-auto" name="name" value="{{ old('name') }}" required autofocus placeholder="{{__('Nome')}}">
                                     @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -149,7 +151,7 @@
                                     @endif
                                 </div>
                                 <div class="py-2 formrow{{ $errors->has('email') ? ' has-error' : '' }}">
-                                    <input id="email" type="email" class="form-control col-10 mx-auto" name="email" value="{{ old('email') }}" required autofocus placeholder="{{__('Email Address')}}">
+                                    <input id="email" type="email" class="form-control col-10 mx-auto" name="email" value="{{ old('email') }}" required autofocus placeholder="{{__('E-mail')}}">
                                     @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -157,7 +159,7 @@
                                     @endif
                                 </div>
                                 <div class="py-2 formrow{{ $errors->has('password') ? ' has-error' : '' }}">
-                                    <input id="password" type="password" class="form-control col-10 mx-auto" name="password" value="" required placeholder="{{__('Password')}}">
+                                    <input id="password" type="password" class="form-control col-10 mx-auto" name="password" value="" required placeholder="{{__('senha')}}">
                                     @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -165,7 +167,7 @@
                                     @endif
                                 </div>
                                 <div class="py-2 formrow{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                                    <input id="password_confirmation" type="password" class="form-control col-10 mx-auto" name="password_confirmation" value="" required placeholder="{{__('Password Confirmation')}}">
+                                    <input id="password_confirmation" type="password" class="form-control col-10 mx-auto" name="password_confirmation" value="" required placeholder="{{__('Confimação de Senha')}}">
                                     @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>
@@ -180,7 +182,7 @@
                                     }
                                     ?>
                                     <input type="checkbox" value="1" name="is_subscribed" {{$is_checked}} />
-                                    {{__('Subscribe to news letter')}}
+                                    {{__('Desejo receber novidades')}}
                                     @if ($errors->has('is_subscribed'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('is_subscribed') }}</strong>
@@ -190,7 +192,7 @@
 
                                 <div class="container pl-lg-5 pl-md-4 pl-sm-5 pl-xs-5 pt-0 pb-0 py-2 formrow{{ $errors->has('terms_of_use') ? ' has-error' : '' }}">
                                     <input type="checkbox" value="1" name="terms_of_use"/>
-                                    <a href="{{url('terms-of-use')}}" class="text-dark font-weight-bold">{{__('I accept Terms of Use')}}</a>
+                                    <a href="{{url('terms-of-use')}}" class="text-dark font-weight-bold">{{__('Aceito o termo de uso')}}</a>
                                     @if ($errors->has('terms_of_use'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('terms_of_use') }}</strong>
@@ -198,7 +200,7 @@
                                     @endif
                                 </div>            
                                 <div class="text-center py-4">
-                                    <button type="submit" class="btn btn-block py-3 col-10 mx-auto btn-primary" value="{{__('Register')}}"><h4>Register</h4></button>
+                                    <button type="submit" class="btn btn-block py-3 col-10 mx-auto btn-primary" value="{{__('Register')}}"><h4>Registrar-se</h4></button>
                                 </div>
                             </div>
                         </form>
