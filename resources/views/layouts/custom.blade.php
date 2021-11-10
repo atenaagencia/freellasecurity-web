@@ -113,7 +113,7 @@ if (!isset($seo)) {
                 <div class="row"> 
         
                     <!--Quick Links-->
-                    <div class="col-md-2 col-sm-6 pr-4">
+                    <div class="col-md-4 col-sm-6 pr-4 text-center">
                         <h5 class="pl-0 pr-0 pb-3">Links Rapidos</h5>
                         <!--Quick Links menu Start-->
                         <ul class="p-0" id="footer">
@@ -139,10 +139,12 @@ if (!isset($seo)) {
                     </div>
                     <!--Quick Links menu end-->
         
-                    <div class="col-md-3 col-sm-6 pr-4">
-                        <h5 class="pl-0 pr-0 pb-3">Trabalhos por área</h5>
+                    <div class="col-md-4 col-sm-6 pr-4 text-center">
+                        <h5 class="pl-0 pr-0 pb-3">Freelancer</h5>
+                        Você é um freelancer? Nós conectamos milhares de profissionais a empresas todos os dias.
+                        <a class="btn btn-sm btn-primary" href="{{route('register')}}"> Cadastre-se</a>
                         <!--Quick Links menu Start-->
-                        <ul class="p-0" id="footer">
+                        {{-- <ul class="p-0" id="footer">
                             @php
                             $functionalAreas = App\FunctionalArea::getUsingFunctionalAreas(10);
                             @endphp
@@ -151,13 +153,13 @@ if (!isset($seo)) {
                                     href="{{ route('job.list', ['functional_area_id[]'=>$functionalArea->functional_area_id]) }}">{{$functionalArea->functional_area}}</a>
                             </li>
                             @endforeach
-                        </ul>
+                        </ul> --}}
                     </div>
         
-                    <!--Jobs By Industry-->
+                    <!--Jobs By Industry
                     <div class="col-md-4 col-sm-6 pr-4">
                         <h5 class="pl-0 pr-0 pb-3">Trabalhos por Empresas</h5>
-                        <!--Industry menu Start-->
+                        Industry menu Start
                         <ul class="p-0" id="footer">
                             {{-- <li><a href="http://vps23865.publiccloud.com.br/jobs?industry_id%5B%5D=28">Electronics</a></li>
                             <li><a href="http://vps23865.publiccloud.com.br/jobs?industry_id%5B%5D=17">Construction/Cement/Metals</a></li>
@@ -169,27 +171,27 @@ if (!isset($seo)) {
                             <li><a href="http://vps23865.publiccloud.com.br/jobs?industry_id%5B%5D=24">Travel/Tourism/Transportation</a></li>
                             <li><a href="http://vps23865.publiccloud.com.br/jobs?industry_id%5B%5D=10">Manufacturing</a></li>
                             <li><a href="http://vps23865.publiccloud.com.br/jobs?industry_id%5B%5D=13">Agriculture/Fertilizer/Pesticide</a></li> --}}
-                            @php
+                            {{-- @php
                             $industries = App\Industry::getUsingIndustries(10);
                             @endphp
                             @foreach($industries as $industry)
                             <li><a href="{{ route('job.list', ['industry_id[]'=>$industry->industry_id]) }}">{{$industry->industry}}</a></li>
-                            @endforeach
+                            @endforeach --}}
                         </ul>
-                        <!--Industry menu End-->
+                        Industry menu End
                         <div class="clear"></div>
-                    </div>
+                    </div>-->
         
                     <!--About Us-->
-                    <div class="col-md-3 col-sm-12">
+                    <div class="col-md-4 col-sm-6 text-center">
                         <h5 class="pl-0 pr-0 pb-3">Contato</h5>
-                        <p class="font-weight-bold"><i class="fa fa-map mr-2"></i>{{ $siteSetting->site_street_address }}</p>
+                        {{-- <p class="font-weight-bold"><i class="fa fa-map mr-2"></i>{{ $siteSetting->site_street_address }}</p> --}}
                         <div class="font-weight-bold">
                             <a href="mailto:{{ $siteSetting->mail_to_address }}" class="text-dark font-weight-bold"><i class="fa fa-envelope mr-2"></i>{{ $siteSetting->mail_to_address }}</a>
                         </div>
-                        <div class="font-weight-bold">
+                        {{-- <div class="font-weight-bold">
                             <a href="tel:{{ $siteSetting->site_phone_primary }}" class="text-dark font-weight-bold"><i class="fa fa-phone mr-2"></i>{{ $siteSetting->site_phone_primary }}7</a>
-                        </div>
+                        </div> --}}
                         <!-- Social Icons -->
                         <div class="py-3">
                             <a href="{{ $siteSetting->facebook_address }}" target="_blank"><i class="fab fa-2x text-dark m-1 fa-facebook-square" aria-hidden="true"></i></a>

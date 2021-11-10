@@ -1,6 +1,4 @@
-@extends('layouts.company')
-
-@section('title-page')
+<?php $__env->startSection('title-page'); ?>
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4 border-bottom">
     <h1 class="h3 font-weight-bold text-dark">My Dashboard</h1>
@@ -15,9 +13,9 @@
         </a>
     </div>
 </div>
-@endsection  
+<?php $__env->stopSection(); ?>  
                   
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="row mx-auto">
     <div class="col-lg-6 col-md-6 col-sm-12">
         <div class="card h-100 shadow">
@@ -28,7 +26,7 @@
             <!-- Card Body -->
             <div class="card-body bg-white rounded-0">
                 <p>Edit your personal information like summary, projects, experience, skills and others.</p>
-                <a href="{{ route('company.profile') }}" class="btn btn-primary">Edit</a>
+                <a href="<?php echo e(route('company.profile')); ?>" class="btn btn-primary">Edit</a>
             </div>
         </div>
     </div>
@@ -41,9 +39,10 @@
             <!-- Card Body -->
             <div class="card-body bg-white rounded-0">
                 <p>Edit your personal information like summary, projects, experience, skills and others.</p>
-                <a href="{{ route('company.detail', Auth::guard('company')->user()->slug) }}" class="btn btn-primary">View</a>
+                <a href="<?php echo e(route('company.detail', Auth::guard('company')->user()->slug)); ?>" class="btn btn-primary">View</a>
             </div>
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.company', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

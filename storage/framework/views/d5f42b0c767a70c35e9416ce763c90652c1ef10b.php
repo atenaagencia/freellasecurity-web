@@ -4,27 +4,28 @@ if (!isset($seo)) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}" class="{{ (session('localeDir', 'ltr'))}}" dir="{{ (session('localeDir', 'ltr'))}}">
+<html lang="<?php echo e(app()->getLocale()); ?>" class="<?php echo e((session('localeDir', 'ltr'))); ?>" dir="<?php echo e((session('localeDir', 'ltr'))); ?>">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>{{__($seo->seo_title) }}</title>
-        <meta name="Description" content="{!! $seo->seo_description !!}">
-        <meta name="Keywords" content="{!! $seo->seo_keywords !!}">
-        {!! $seo->seo_other !!}
+        <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+        <title><?php echo e(__($seo->seo_title)); ?></title>
+        <meta name="Description" content="<?php echo $seo->seo_description; ?>">
+        <meta name="Keywords" content="<?php echo $seo->seo_keywords; ?>">
+        <?php echo $seo->seo_other; ?>
+
         <!-- Fav Icon -->
-        <link rel="shortcut icon" href="{{asset('/favicon.ico')}}">
+        <link rel="shortcut icon" href="<?php echo e(asset('/favicon.ico')); ?>">
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
 
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-        <link href="{{asset('css/font-awesome.css')}}" rel="stylesheet" type="text/css">
+        <link href="<?php echo e(asset('css/font-awesome.css')); ?>" rel="stylesheet" type="text/css">
   
-        <link href="{{asset('css/sb-admin-2.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{asset('css/custom.css')}}" rel="stylesheet" type="text/css">
+        <link href="<?php echo e(asset('css/sb-admin-2.css')); ?>" rel="stylesheet" type="text/css">
+        <link href="<?php echo e(asset('css/custom.css')); ?>" rel="stylesheet" type="text/css">
 
     <style>
         ul#footer li a {
@@ -49,7 +50,7 @@ if (!isset($seo)) {
                 <!-- Sidebar - Brand -->
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
                     <div class="sidebar-brand-icon mr-2">
-                        <img src="{{asset('img/logos/f1.png')}}" alt="" width="auto" height="28">
+                        <img src="<?php echo e(asset('img/logos/f1.png')); ?>" alt="" width="auto" height="28">
                     </div>
                     <div class="sidebar-brand-text" style="font-size: 0.95rem !important">
                         WF<span style="color: #3693fe !important">security</span>
@@ -58,7 +59,7 @@ if (!isset($seo)) {
 
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{route('company.home')}}">
+                    <a class="nav-link" href="<?php echo e(route('company.home')); ?>">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>
@@ -74,7 +75,7 @@ if (!isset($seo)) {
 
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="{{ route('post.job') }}">
+                    <a class="nav-link collapsed" href="<?php echo e(route('post.job')); ?>">
                         <i class="fas fa-fw fa-briefcase"></i>
                         <span>Cadastrar um trabalho</span>
                     </a>
@@ -82,7 +83,7 @@ if (!isset($seo)) {
 
                 <!-- Nav Item - Charts -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('posted.jobs') }}">
+                    <a class="nav-link" href="<?php echo e(route('posted.jobs')); ?>">
                         <i class="fas fa-fw fa-heart"></i>
                         <span>All Jobs</span>
                     </a>
@@ -90,7 +91,7 @@ if (!isset($seo)) {
 
                 <!-- Nav Item - Charts -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('jobs.development.status') }}">
+                    <a class="nav-link" href="<?php echo e(route('jobs.development.status')); ?>">
                         <i class="fas fa-fw fa-cog"></i>
                         <span>Development Status</span>
                     </a>
@@ -98,15 +99,15 @@ if (!isset($seo)) {
 
                 <!-- Nav Item - Tables -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('companychats.messages')}}">
+                    <a class="nav-link" href="<?php echo e(route('companychats.messages')); ?>">
                         <i class="fas fa-fw fa-comments"></i>
-                        <span>{{__('Chat Messages')}}(<span id="my_msgcan_no"></span>)</span>
+                        <span><?php echo e(__('Chat Messages')); ?>(<span id="my_msgcan_no"></span>)</span>
                     </a>
                 </li>
 
                 <!-- Nav Item - Tables -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('company.followers')}}"> <!--/teste/payment-management-->
+                    <a class="nav-link" href="<?php echo e(route('company.followers')); ?>"> <!--/teste/payment-management-->
                         <i class="fab fa-paypal"></i>
                         <span>Company Followers</span>
                     </a>
@@ -142,7 +143,7 @@ if (!isset($seo)) {
 
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item dropdown mx-1">
-                                <a class="nav-link text-dark font-weight-bold" href="{{asset('/')}}" role="button">Home</a>
+                                <a class="nav-link text-dark font-weight-bold" href="<?php echo e(asset('/')); ?>" role="button">Home</a>
                             </li>
                         </ul>
 
@@ -150,7 +151,7 @@ if (!isset($seo)) {
                         <ul class="navbar-nav ml-auto">
 
                             <li class="nav-item dropdown mx-1">
-                                <a class="nav-link bg-wf text-white font-weight-bold" href="{{ route('post.job') }}" role="button">Cadastrar um trabalho</a>
+                                <a class="nav-link bg-wf text-white font-weight-bold" href="<?php echo e(route('post.job')); ?>" role="button">Cadastrar um trabalho</a>
                             </li>
 
                             <!-- Nav Item - Alerts -->
@@ -188,7 +189,7 @@ if (!isset($seo)) {
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-3 d-none d-lg-inline text-dark font-weight-bold">{{Auth::guard('company')->user()->name}}</span>
+                                    <span class="mr-3 d-none d-lg-inline text-dark font-weight-bold"><?php echo e(Auth::guard('company')->user()->name); ?></span>
                                     <img class="img-profile rounded-circle" src="https://via.placeholder.com/150x150">
                                 </a>
                                 <!-- Dropdown - User Information -->
@@ -199,12 +200,14 @@ if (!isset($seo)) {
                                         Profile
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        {{__('Logout')}}
+                                        <?php echo e(__('Logout')); ?>
+
                                     </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
+                                    <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                                        <?php echo e(csrf_field()); ?>
+
                                     </form>
                                 </div>
                             </li>
@@ -217,9 +220,9 @@ if (!isset($seo)) {
                     <!-- Begin Page Content -->
                     <div class="container-fluid">
 
-                        @yield('title-page')
+                        <?php echo $__env->yieldContent('title-page'); ?>
 
-                        @yield('content')
+                        <?php echo $__env->yieldContent('content'); ?>
 
                     </div>
                     <!-- /.container-fluid -->
@@ -233,8 +236,8 @@ if (!isset($seo)) {
                 <footer class="footer bg-light-custom py-4 border-top">
                     <div class="container">
                         <div class="row align-items-center justify-content-between">
-                            <div class="col-lg-8 text-lg-left">{{__('Copyright')}} &copy; {{date('Y')}} {{ $siteSetting->site_name }}. {{__('All Rights Reserved')}}.
-                            {{__('Design by')}}: <a class="text-dark text-bold" href="{{url('/')}}http://atenaagencia.com/"
+                            <div class="col-lg-8 text-lg-left"><?php echo e(__('Copyright')); ?> &copy; <?php echo e(date('Y')); ?> <?php echo e($siteSetting->site_name); ?>. <?php echo e(__('All Rights Reserved')); ?>.
+                            <?php echo e(__('Design by')); ?>: <a class="text-dark text-bold" href="<?php echo e(url('/')); ?>http://atenaagencia.com/"
                                 target="_blank">Atena Agência - Full Service</a>
                             </div>
                             <div class="col-lg-4 text-lg-right">
@@ -259,13 +262,13 @@ if (!isset($seo)) {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
-        <script src="{{asset('js/sb-admin-2.js')}}"></script>
+        <script src="<?php echo e(asset('js/sb-admin-2.js')); ?>"></script>
 
         <!-- Contact form JS-->
-        <script src="{{asset('mail/jqBootstrapValidation.js')}}"></script>
-        <script src="{{asset('mail/contact_me.js')}}"></script>
+        <script src="<?php echo e(asset('mail/jqBootstrapValidation.js')); ?>"></script>
+        <script src="<?php echo e(asset('mail/contact_me.js')); ?>"></script>
         <!-- Core theme JS-->
-        <script src="{{asset('js/custom-scripts.js')}}"></script>
+        <script src="<?php echo e(asset('js/custom-scripts.js')); ?>"></script>
 
     </body>
 </html>
