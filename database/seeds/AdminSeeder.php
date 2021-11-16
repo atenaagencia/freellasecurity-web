@@ -16,7 +16,7 @@ class AdminSeeder extends Seeder
         DB::table('admins')->insert([
             'role_id' => 1,
             'name' => 'Admin',
-            'email' => 'admin@wfsecutiry.com.br',
+            'email' => 'admin@wfsecurity.com.br',
             'password' => Hash::make('admin')
         ]);
     }

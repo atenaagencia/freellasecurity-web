@@ -340,9 +340,9 @@ class JobPublishController extends Controller
         // return \Redirect::route('milestones.list', $job_id);
     }
 
-    public function createFrontJob (){
-        return view('job.create_job');
-    }
+    // public function createFrontJob (){
+    //     return view('job.create_job');
+    // }
 
 
 
