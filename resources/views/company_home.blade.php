@@ -2,6 +2,7 @@
 
 @section('title-page')
 <!-- Page Heading -->
+@include('flash::message')
 <div class="d-sm-flex align-items-center justify-content-between mb-4 border-bottom">
     <h1 class="h3 font-weight-bold text-dark">My Dashboard</h1>
     <div class="row">

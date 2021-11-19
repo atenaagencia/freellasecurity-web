@@ -1,6 +1,7 @@
 <?php $__env->startSection('content'); ?>
 <!-- <?php echo $__env->make('includes.inner_page_title', ['page_title'=>__('Company Posted Jobs')], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> -->
 <?php $__env->startSection('title-page'); ?>
+<?php echo $__env->make('flash::message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <h1 class="h3 py-4 font-weight-bold text-dark"><?php echo e(__('Company Posted Jobs')); ?></h1>
 <?php $__env->stopSection(); ?>
 

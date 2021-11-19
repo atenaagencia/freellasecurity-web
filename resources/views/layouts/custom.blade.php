@@ -95,7 +95,7 @@ if (!isset($seo)) {
                         <li class="nav-item"><a class="nav-link h5 mt-1" href="{{asset('/jobs')}}">Trabalhos</a></li>
                         <li class="nav-item"><a class="nav-link h5 mt-1" href="{{asset('/companies')}}">Empresas</a></li>
                         <li class="nav-item"><a class="nav-link h5 mt-1" href="{{asset('/contact-us')}}">Contato</a></li>
-                        @if(Auth::check())
+                        @if(Auth::check() || Auth::guard('company')->check())
                         <li class="nav-item"><a class="nav-link h5 mt-1 ml-lg-3 pl-lg-3 btn btn-primary text-light font-weight-bold" href="{{asset('/home')}}">Ir para o Painel</a></li>
                         @else
                         <li class="nav-item"><a class="nav-link h5 mt-1 ml-lg-3 pl-lg-3 btn btn-primary text-light font-weight-bold" href="{{asset('/login')}}">Acessar</a></li>

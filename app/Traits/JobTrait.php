@@ -393,7 +393,8 @@ trait JobTrait
             //event(new JobPosted($job));
             DB::commit();
             flash('Job has been added!')->success();
-            return \Redirect::route('edit.front.job', array($job->id));
+            // return \Redirect::route('edit.front.job', array($job->id));
+            return \Redirect::route('posted.jobs', array($job->id));
         } catch (\Exception $exception) {
             DB::rollBack();
             flash('Something went wrong!')->error();

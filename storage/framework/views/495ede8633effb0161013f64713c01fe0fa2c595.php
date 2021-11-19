@@ -96,7 +96,7 @@ if (!isset($seo)) {
                         <li class="nav-item"><a class="nav-link h5 mt-1" href="<?php echo e(asset('/jobs')); ?>">Trabalhos</a></li>
                         <li class="nav-item"><a class="nav-link h5 mt-1" href="<?php echo e(asset('/companies')); ?>">Empresas</a></li>
                         <li class="nav-item"><a class="nav-link h5 mt-1" href="<?php echo e(asset('/contact-us')); ?>">Contato</a></li>
-                        <?php if(Auth::check()): ?>
+                        <?php if(Auth::check() || Auth::guard('company')->check()): ?>
                         <li class="nav-item"><a class="nav-link h5 mt-1 ml-lg-3 pl-lg-3 btn btn-primary text-light font-weight-bold" href="<?php echo e(asset('/home')); ?>">Ir para o Painel</a></li>
                         <?php else: ?>
                         <li class="nav-item"><a class="nav-link h5 mt-1 ml-lg-3 pl-lg-3 btn btn-primary text-light font-weight-bold" href="<?php echo e(asset('/login')); ?>">Acessar</a></li>

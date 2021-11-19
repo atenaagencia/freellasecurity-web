@@ -1,5 +1,6 @@
 <?php $__env->startSection('title-page'); ?>
 <!-- Page Heading -->
+<?php echo $__env->make('flash::message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-4 border-bottom">
     <h1 class="h3 font-weight-bold text-dark">My Dashboard</h1>
     <div class="row">

@@ -6,8 +6,9 @@
     <div class="col-md-12">
         <div class="card shadow">
             <!-- Card Header - Dropdown -->
-            <div class="card-header bg-white rounded-0 py-3">
-                <h6 class="m-0 font-weight-bold text-dark">Post a Job</h6>
+            <div class="card-header bg-white rounded-0 py-3 clearfix">
+                <h6 class="m-0 font-weight-bold text-dark float-left">Post a Job</h6>
+                <a href="<?php echo e(route('posted.jobs')); ?>" class="btn btn-secondary float-sm-right ">Voltar</a>
             </div>
             <!-- Card Body -->
             <div class="card-body bg-white rounded-0">

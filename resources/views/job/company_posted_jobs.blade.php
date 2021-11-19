@@ -3,6 +3,7 @@
 @section('content')
 <!-- @include('includes.inner_page_title', ['page_title'=>__('Company Posted Jobs')]) -->
 @section('title-page')
+@include('flash::message')
 <h1 class="h3 py-4 font-weight-bold text-dark">{{__('Company Posted Jobs')}}</h1>
 @endsection
 
