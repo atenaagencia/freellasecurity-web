@@ -51,8 +51,38 @@
                                 <a class="nav-link btn btn-light m-1 font-weight-bold" href="<?php echo e(route('milestones.list', [$job->id])); ?>"><?php echo e(__('Milestones')); ?></a>
                                 <a class="nav-link btn btn-light m-1 font-weight-bold" href="<?php echo e(route('timesheet.details', [$job->id])); ?>"><?php echo e(__('Timesheets')); ?></a>
                                 <a class="nav-link btn btn-light m-1 font-weight-bold" href="<?php echo e(route('edit.front.job', [$job->id])); ?>"><?php echo e(__('Edit')); ?></a>
-                                <a class="nav-link btn btn-outline-danger m-1 font-weight-bold" href="javascript:;" onclick="deleteJob(<?php echo e($job->id); ?>)"><?php echo e(__('Delete')); ?></a>
+                                <a class="nav-link btn btn-outline-danger m-1 font-weight-bold" href="javascript:;"   data-toggle="modal" data-target="#job-<?php echo e($job->id); ?>"><?php echo e(__('Delete')); ?></a>
+                                
                             </div>
+                            <div class="modal fade" id="job-<?php echo e($job->id); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-sm" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <p>
+                                            Delete work: <?php echo e($job->description); ?> </p>
+                                         <form action="<?php echo e(route('delete.front.job')); ?>" method="post">
+                                            <?php echo method_field('DELETE'); ?>
+                                            <?php echo csrf_field(); ?> 
+                                            <input type="hidden" name="id" value="<?php echo e($job->id); ?>">
+
+                                             <button type="submit" class="btn btn-success btn-block">Yes!</button>
+                                        </form> 
+                                      
+                                       
+                                    </div>
+                                    <div class="modal-footer">
+                                      
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                         </div>
                     </li>
                     <hr>
@@ -68,6 +98,10 @@
         </div>
     </div>
 </div>
+<!-- Button trigger modal -->
+  
+  <!-- Modal -->
+  
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startPush('scripts'); ?>

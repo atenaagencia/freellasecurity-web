@@ -53,8 +53,38 @@
                                 <a class="nav-link btn btn-light m-1 font-weight-bold" href="{{route('milestones.list', [$job->id])}}">{{__('Milestones')}}</a>
                                 <a class="nav-link btn btn-light m-1 font-weight-bold" href="{{route('timesheet.details', [$job->id])}}">{{__('Timesheets')}}</a>
                                 <a class="nav-link btn btn-light m-1 font-weight-bold" href="{{route('edit.front.job', [$job->id])}}">{{__('Edit')}}</a>
-                                <a class="nav-link btn btn-outline-danger m-1 font-weight-bold" href="javascript:;" onclick="deleteJob({{$job->id}})">{{__('Delete')}}</a>
+                                <a class="nav-link btn btn-outline-danger m-1 font-weight-bold" href="javascript:;"   data-toggle="modal" data-target="#job-{{$job->id}}">{{__('Delete')}}</a>
+                                {{-- <a class="nav-link btn btn-outline-danger m-1 font-weight-bold" href="javascript:;"  onclick="deleteJob({{$job->id}})">{{__('Delete')}}</a> --}}
                             </div>
+                            <div class="modal fade" id="job-{{$job->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-sm" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <p>
+                                            Delete work: {{$job->description}} </p>
+                                         <form action="{{route('delete.front.job')}}" method="post">
+                                            @method('DELETE')
+                                            @csrf 
+                                            <input type="hidden" name="id" value="{{$job->id}}">
+
+                                             <button type="submit" class="btn btn-success btn-block">Yes!</button>
+                                        </form> 
+                                      
+                                       
+                                    </div>
+                                    <div class="modal-footer">
+                                      
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                         </div>
                     </li>
                     <hr>
@@ -69,6 +99,10 @@
         </div>
     </div>
 </div>
+<!-- Button trigger modal -->
+  
+  <!-- Modal -->
+  
 @endsection
 
 @push('scripts')

@@ -48,7 +48,8 @@ trait JobTrait
             $job = Job::findOrFail($id);
             JobSkillManager::where('job_id', '=', $id)->delete();
             $job->delete();
-            return 'ok';
+            flash('Job: '.$job->slug.' has been deleted!')->success();
+            return back();
         } catch (ModelNotFoundException $e) {
             return 'notok';
         }
@@ -458,7 +459,8 @@ trait JobTrait
         $this->updateFullTextSearch($job);
         /*         * ************************************ */
         flash('Job has been updated!')->success();
-        return \Redirect::route('edit.front.job', array($job->id));
+        // return \Redirect::route('edit.front.job', array($job->id));
+        return \Redirect::route('posted.jobs', array($job->id));
     }
 
     public static function countNumJobs($field = 'title', $value = '')

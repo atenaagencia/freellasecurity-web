@@ -582,7 +582,7 @@ class CompanyController extends Controller
 
     public function postedJobs(Request $request)
     {
-        $jobs = Auth::guard('company')->user()->jobs()->paginate(5);
+        $jobs = Auth::guard('company')->user()->jobs()->orderBy('id','desc')->paginate(5);
         $comp_id = Auth::guard('company')->user()->id;
 
         $job_applications = Job::where('company_id', $comp_id)->get();

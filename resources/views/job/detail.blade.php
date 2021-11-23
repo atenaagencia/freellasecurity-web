@@ -33,6 +33,7 @@ $company = $job->getCompany();
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 py-2">
+                @include('flash::message')
                 <div class="card h-100 border-0 bg-white">
                     <div class="card-header text-dark bg-transparent border-0">
                         <div class="card-title font-weight-bold h3 py-3">{{$job->title}}</div>

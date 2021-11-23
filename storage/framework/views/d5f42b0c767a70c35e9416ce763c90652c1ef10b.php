@@ -195,7 +195,7 @@ if (!isset($seo)) {
                                 <!-- Dropdown - User Information -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                     aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="/teste/my-profile">
+                                    <a class="dropdown-item" href="<?php echo e(route('company.detail', Auth::guard('company')->user()->slug)); ?>">
                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Profile
                                     </a>
@@ -257,6 +257,8 @@ if (!isset($seo)) {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        <script src="<?php echo e(asset('/js/jquery-2.1.4.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('/js/bootstrap.min.js')); ?>"></script>
         
         <!-- Third party plugin JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
