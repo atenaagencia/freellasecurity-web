@@ -98,7 +98,7 @@ height: 400px;
 margin-bottom: 0px;
 }
 .masthead-heading{
-    top: -150px;
+    top: -100px;
 }
 .masthead-heading p{
 font-size: 25px;
@@ -140,10 +140,8 @@ background: linear-gradient(90deg, rgba(24,51,82,1) 0%, rgba(98,158,219,1) 100%)
         <div class="masthead-heading mx-auto col-10" style="">
            <p> Encontre os serviços de segurança e freelancer perfeitos para o seu negócio</p>
        
-        <form action="<?php echo e(route('job.list')); ?>" method="get">
-        <input type="text" class="main-input form-control col-7 mx-auto bg-transparent py-4" name="search">
-        <button class="btn btn-primary btn-xl text-uppercase mt-3" href="#services">Buscar um trabalho</button>
-        </form>
+        
+        <a class="btn btn-primary btn-xl text-uppercase mt-3" href="<?php echo e(route('login')); ?>">Publicar um trabalho</a>
     </div>
     </div>
 </header>

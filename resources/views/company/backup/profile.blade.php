@@ -8,14 +8,14 @@
     <div class="col-md-6">
         <div class="formrow">
             <div id="thumbnail"></div>
-            <label class="btn btn-primary btn-block"> {{__('Select Logo')}}
+            <label class="btn btn-default"> {{__('Select Logo')}}
                 <input type="file" name="logo" id="logo" style="display: none;">
             </label>
             {!! APFrmErrHelp::showErrors($errors, 'logo') !!} </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-6 mb-2">
+    <div class="col-md-6">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'name') !!}"> {!! Form::text('name', null, array('class'=>'form-control', 'id'=>'name', 'placeholder'=>__('Company Name'))) !!}
             {!! APFrmErrHelp::showErrors($errors, 'name') !!} </div>
     </div>
@@ -27,86 +27,86 @@
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'password') !!}"> {!! Form::password('password', array('class'=>'form-control', 'id'=>'password', 'placeholder'=>__('Password'))) !!}
             {!! APFrmErrHelp::showErrors($errors, 'password') !!} </div>
     </div>
-    <div class="col-md-6 mb-2">
+    <div class="col-md-6">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'ceo') !!}"> {!! Form::text('ceo', null, array('class'=>'form-control', 'id'=>'ceo', 'placeholder'=>__('Company CEO'))) !!}
             {!! APFrmErrHelp::showErrors($errors, 'ceo') !!} </div>
     </div>
-    <div class="col-md-6 mb-2">
+    <div class="col-md-6">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'industry_id') !!}"> {!! Form::select('industry_id', ['' => __('Select Industry')]+$industries, null, array('class'=>'form-control', 'id'=>'industry_id')) !!}
             {!! APFrmErrHelp::showErrors($errors, 'industry_id') !!} </div>
     </div>
-    <div class="col-md-6 mb-2">
+    <div class="col-md-6">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'ownership_type') !!}"> {!! Form::select('ownership_type_id', ['' => __('Select Ownership type')]+$ownershipTypes, null, array('class'=>'form-control', 'id'=>'ownership_type_id')) !!}
             {!! APFrmErrHelp::showErrors($errors, 'ownership_type_id') !!} </div>
     </div>
-    <div class="col-md-12 mb-2">
+    <div class="col-md-12">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'description') !!}"> {!! Form::textarea('description', null, array('class'=>'form-control', 'id'=>'description', 'placeholder'=>__('Company details'))) !!}
             {!! APFrmErrHelp::showErrors($errors, 'description') !!} </div>
     </div>
-    <div class="col-md-12 mb-2">
+    <div class="col-md-12">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'location') !!}"> {!! Form::text('location', null, array('class'=>'form-control', 'id'=>'location', 'placeholder'=>__('Location'))) !!}
             {!! APFrmErrHelp::showErrors($errors, 'location') !!} </div>
     </div>
-    <div class="col-md-4 mb-2">
+    <div class="col-md-4">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'no_of_offices') !!}"> {!! Form::select('no_of_offices', ['' => __('Select num. of offices')]+MiscHelper::getNumOffices(), null, array('class'=>'form-control', 'id'=>'no_of_offices')) !!}
             {!! APFrmErrHelp::showErrors($errors, 'no_of_offices') !!} </div>
     </div>
-    <div class="col-md-4 mb-2">
+    <div class="col-md-4">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'website') !!}"> {!! Form::text('website', null, array('class'=>'form-control', 'id'=>'website', 'placeholder'=>__('Website'))) !!}
             {!! APFrmErrHelp::showErrors($errors, 'website') !!} </div>
     </div>
-    <div class="col-md-4 mb-2">
+    <div class="col-md-4">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'no_of_employees') !!}"> {!! Form::select('no_of_employees', ['' => __('Select num. of employees')]+MiscHelper::getNumEmployees(), null, array('class'=>'form-control', 'id'=>'no_of_employees')) !!}
             {!! APFrmErrHelp::showErrors($errors, 'no_of_employees') !!} </div>
     </div>
-    <div class="col-md-4 mb-2">
+    <div class="col-md-4">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'established_in') !!}"> {!! Form::select('established_in', ['' => __('Select Established In')]+MiscHelper::getEstablishedIn(), null, array('class'=>'form-control', 'id'=>'established_in')) !!}
             {!! APFrmErrHelp::showErrors($errors, 'established_in') !!} </div>
     </div>
-    <div class="col-md-4 mb-2">
+    <div class="col-md-4">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'fax') !!}"> {!! Form::text('fax', null, array('class'=>'form-control', 'id'=>'fax', 'placeholder'=>__('Fax'))) !!}
             {!! APFrmErrHelp::showErrors($errors, 'fax') !!} </div>
     </div>
-    <div class="col-md-4 mb-2">
+    <div class="col-md-4">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'phone') !!}"> {!! Form::text('phone', null, array('class'=>'form-control', 'id'=>'phone', 'placeholder'=>__('Phone'))) !!}
             {!! APFrmErrHelp::showErrors($errors, 'phone') !!} </div>
     </div>
     <div class="clearfix"></div>
-    <div class="col-md-6 mb-2">
+    <div class="col-md-6">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'facebook') !!}"> {!! Form::text('facebook', null, array('class'=>'form-control', 'id'=>'facebook', 'placeholder'=>__('Facebook'))) !!}
             {!! APFrmErrHelp::showErrors($errors, 'facebook') !!} </div>
     </div>
-    <div class="col-md-6 mb-2">
+    <div class="col-md-6">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'twitter') !!}"> {!! Form::text('twitter', null, array('class'=>'form-control', 'id'=>'twitter', 'placeholder'=>__('Twitter'))) !!}
             {!! APFrmErrHelp::showErrors($errors, 'twitter') !!} </div>
     </div>
-    <div class="col-md-4 mb-2">
+    <div class="col-md-4">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'linkedin') !!}"> {!! Form::text('linkedin', null, array('class'=>'form-control', 'id'=>'linkedin', 'placeholder'=>__('Linkedin'))) !!}
             {!! APFrmErrHelp::showErrors($errors, 'linkedin') !!} </div>
     </div>
-    <div class="col-md-4 mb-2">
+    <div class="col-md-4">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'google_plus') !!}"> {!! Form::text('google_plus', null, array('class'=>'form-control', 'id'=>'google_plus', 'placeholder'=>__('Google+'))) !!}
             {!! APFrmErrHelp::showErrors($errors, 'google_plus') !!} </div>
     </div>
-    <div class="col-md-4 mb-2">
+    <div class="col-md-4">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'pinterest') !!}"> {!! Form::text('pinterest', null, array('class'=>'form-control', 'id'=>'pinterest', 'placeholder'=>__('Pinterest'))) !!}
             {!! APFrmErrHelp::showErrors($errors, 'pinterest') !!} </div>
     </div>
-    <div class="col-md-4 mb-2">
+    <div class="col-md-4">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'country_id') !!}"> {!! Form::select('country_id', ['' => __('Select Country')]+$countries, old('country_id', (isset($company))? $company->country_id:$siteSetting->default_country_id), array('class'=>'form-control', 'id'=>'country_id')) !!}
             {!! APFrmErrHelp::showErrors($errors, 'country_id') !!} </div>
     </div>
-    <div class="col-md-4 mb-2">
+    <div class="col-md-4">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'state_id') !!}"> <span id="default_state_dd"> {!! Form::select('state_id', ['' => __('Select State')], null, array('class'=>'form-control', 'id'=>'state_id')) !!} </span> {!! APFrmErrHelp::showErrors($errors, 'state_id') !!} </div>
     </div>
-    <div class="col-md-4 mb-2">
+    <div class="col-md-4">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'city_id') !!}"> <span id="default_city_dd"> {!! Form::select('city_id', ['' => __('Select City')], null, array('class'=>'form-control', 'id'=>'city_id')) !!} </span> {!! APFrmErrHelp::showErrors($errors, 'city_id') !!} </div>
     </div>
-    <div style="display:none;" class="col-md-12 mb-2">
+    <div style="display:none;" class="col-md-12">
         <div class="formrow {!! APFrmErrHelp::hasError($errors, 'map') !!}"> {!! Form::textarea('map', null, array('class'=>'form-control', 'id'=>'map', 'placeholder'=>__('Google Map'))) !!}
             {!! APFrmErrHelp::showErrors($errors, 'map') !!} </div>
     </div>
-    <div style="display:none;" class="col-md-12 mb-2">
+    <div style="display:none;" class="col-md-12">
     <div class="formrow {!! APFrmErrHelp::hasError($errors, 'is_subscribed') !!}">
     <?php
 	$is_checked = 'checked="checked"';	
@@ -119,9 +119,9 @@
       {!! APFrmErrHelp::showErrors($errors, 'is_subscribed') !!}
       </div>
   </div>
-    <div class="col-md-12 mb-2">
+    <div class="col-md-12">
         <div class="formrow">
-            <button type="submit" class="btn btn-primary btn-block">{{__('Update Profile and Save')}} <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+            <button type="submit" class="btn">{{__('Update Profile and Save')}} <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
         </div>
     </div>
 </div>

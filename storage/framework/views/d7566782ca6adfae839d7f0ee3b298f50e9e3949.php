@@ -9,7 +9,7 @@
     <div class="col-md-6">
         <div class="formrow">
             <div id="thumbnail"></div>
-            <label class="btn btn-default"> <?php echo e(__('Select Logo')); ?>
+            <label class="btn btn-primary btn-block"> <?php echo e(__('Select Logo')); ?>
 
                 <input type="file" name="logo" id="logo" style="display: none;">
             </label>
@@ -17,7 +17,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'name'); ?>"> <?php echo Form::text('name', null, array('class'=>'form-control', 'id'=>'name', 'placeholder'=>__('Company Name'))); ?>
 
             <?php echo APFrmErrHelp::showErrors($errors, 'name'); ?> </div>
@@ -32,104 +32,104 @@
 
             <?php echo APFrmErrHelp::showErrors($errors, 'password'); ?> </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'ceo'); ?>"> <?php echo Form::text('ceo', null, array('class'=>'form-control', 'id'=>'ceo', 'placeholder'=>__('Company CEO'))); ?>
 
             <?php echo APFrmErrHelp::showErrors($errors, 'ceo'); ?> </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'industry_id'); ?>"> <?php echo Form::select('industry_id', ['' => __('Select Industry')]+$industries, null, array('class'=>'form-control', 'id'=>'industry_id')); ?>
 
             <?php echo APFrmErrHelp::showErrors($errors, 'industry_id'); ?> </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'ownership_type'); ?>"> <?php echo Form::select('ownership_type_id', ['' => __('Select Ownership type')]+$ownershipTypes, null, array('class'=>'form-control', 'id'=>'ownership_type_id')); ?>
 
             <?php echo APFrmErrHelp::showErrors($errors, 'ownership_type_id'); ?> </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'description'); ?>"> <?php echo Form::textarea('description', null, array('class'=>'form-control', 'id'=>'description', 'placeholder'=>__('Company details'))); ?>
 
             <?php echo APFrmErrHelp::showErrors($errors, 'description'); ?> </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'location'); ?>"> <?php echo Form::text('location', null, array('class'=>'form-control', 'id'=>'location', 'placeholder'=>__('Location'))); ?>
 
             <?php echo APFrmErrHelp::showErrors($errors, 'location'); ?> </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'no_of_offices'); ?>"> <?php echo Form::select('no_of_offices', ['' => __('Select num. of offices')]+MiscHelper::getNumOffices(), null, array('class'=>'form-control', 'id'=>'no_of_offices')); ?>
 
             <?php echo APFrmErrHelp::showErrors($errors, 'no_of_offices'); ?> </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'website'); ?>"> <?php echo Form::text('website', null, array('class'=>'form-control', 'id'=>'website', 'placeholder'=>__('Website'))); ?>
 
             <?php echo APFrmErrHelp::showErrors($errors, 'website'); ?> </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'no_of_employees'); ?>"> <?php echo Form::select('no_of_employees', ['' => __('Select num. of employees')]+MiscHelper::getNumEmployees(), null, array('class'=>'form-control', 'id'=>'no_of_employees')); ?>
 
             <?php echo APFrmErrHelp::showErrors($errors, 'no_of_employees'); ?> </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'established_in'); ?>"> <?php echo Form::select('established_in', ['' => __('Select Established In')]+MiscHelper::getEstablishedIn(), null, array('class'=>'form-control', 'id'=>'established_in')); ?>
 
             <?php echo APFrmErrHelp::showErrors($errors, 'established_in'); ?> </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'fax'); ?>"> <?php echo Form::text('fax', null, array('class'=>'form-control', 'id'=>'fax', 'placeholder'=>__('Fax'))); ?>
 
             <?php echo APFrmErrHelp::showErrors($errors, 'fax'); ?> </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'phone'); ?>"> <?php echo Form::text('phone', null, array('class'=>'form-control', 'id'=>'phone', 'placeholder'=>__('Phone'))); ?>
 
             <?php echo APFrmErrHelp::showErrors($errors, 'phone'); ?> </div>
     </div>
     <div class="clearfix"></div>
-    <div class="col-md-6">
+    <div class="col-md-6 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'facebook'); ?>"> <?php echo Form::text('facebook', null, array('class'=>'form-control', 'id'=>'facebook', 'placeholder'=>__('Facebook'))); ?>
 
             <?php echo APFrmErrHelp::showErrors($errors, 'facebook'); ?> </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'twitter'); ?>"> <?php echo Form::text('twitter', null, array('class'=>'form-control', 'id'=>'twitter', 'placeholder'=>__('Twitter'))); ?>
 
             <?php echo APFrmErrHelp::showErrors($errors, 'twitter'); ?> </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'linkedin'); ?>"> <?php echo Form::text('linkedin', null, array('class'=>'form-control', 'id'=>'linkedin', 'placeholder'=>__('Linkedin'))); ?>
 
             <?php echo APFrmErrHelp::showErrors($errors, 'linkedin'); ?> </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'google_plus'); ?>"> <?php echo Form::text('google_plus', null, array('class'=>'form-control', 'id'=>'google_plus', 'placeholder'=>__('Google+'))); ?>
 
             <?php echo APFrmErrHelp::showErrors($errors, 'google_plus'); ?> </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'pinterest'); ?>"> <?php echo Form::text('pinterest', null, array('class'=>'form-control', 'id'=>'pinterest', 'placeholder'=>__('Pinterest'))); ?>
 
             <?php echo APFrmErrHelp::showErrors($errors, 'pinterest'); ?> </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'country_id'); ?>"> <?php echo Form::select('country_id', ['' => __('Select Country')]+$countries, old('country_id', (isset($company))? $company->country_id:$siteSetting->default_country_id), array('class'=>'form-control', 'id'=>'country_id')); ?>
 
             <?php echo APFrmErrHelp::showErrors($errors, 'country_id'); ?> </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'state_id'); ?>"> <span id="default_state_dd"> <?php echo Form::select('state_id', ['' => __('Select State')], null, array('class'=>'form-control', 'id'=>'state_id')); ?> </span> <?php echo APFrmErrHelp::showErrors($errors, 'state_id'); ?> </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'city_id'); ?>"> <span id="default_city_dd"> <?php echo Form::select('city_id', ['' => __('Select City')], null, array('class'=>'form-control', 'id'=>'city_id')); ?> </span> <?php echo APFrmErrHelp::showErrors($errors, 'city_id'); ?> </div>
     </div>
-    <div style="display:none;" class="col-md-12">
+    <div style="display:none;" class="col-md-12 mb-2">
         <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'map'); ?>"> <?php echo Form::textarea('map', null, array('class'=>'form-control', 'id'=>'map', 'placeholder'=>__('Google Map'))); ?>
 
             <?php echo APFrmErrHelp::showErrors($errors, 'map'); ?> </div>
     </div>
-    <div style="display:none;" class="col-md-12">
+    <div style="display:none;" class="col-md-12 mb-2">
     <div class="formrow <?php echo APFrmErrHelp::hasError($errors, 'is_subscribed'); ?>">
     <?php
 	$is_checked = 'checked="checked"';	
@@ -144,9 +144,9 @@
 
       </div>
   </div>
-    <div class="col-md-12">
+    <div class="col-md-12 mb-2">
         <div class="formrow">
-            <button type="submit" class="btn"><?php echo e(__('Update Profile and Save')); ?> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+            <button type="submit" class="btn btn-primary btn-block"><?php echo e(__('Update Profile and Save')); ?> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
         </div>
     </div>
 </div>

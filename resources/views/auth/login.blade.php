@@ -24,7 +24,9 @@
             <div class="container bg-light">
                 @include('flash::message')
                 <ul class="nav nav-pills mb-3 py-4" id="pills-tab" role="tablist">
-                    <?php $c_or_e = old('candidate_or_employer', 'candidate'); ?>
+                    <?php
+                        $c_or_e = old('candidate_or_employer', 'candidate');
+                        ?>
                     <li class="nav-item col-6 d-block">
                         <a class="nav-link {{($c_or_e == 'candidate')? 'active':''}} text-center h4" id="candidate-tab" data-toggle="pill" href="#candidate" role="tab" aria-controls="candidate" aria-selected="true">Candidato</a>
                     </li>

@@ -3,7 +3,8 @@
 <header class="p-5"
     style="background: url('https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); background-repeat: no-repeat;background-attachment: scroll;background-position: center center;background-size: cover; padding-top: 15rem !important;">
     <div class="container mx-auto">
-        <h1 class="text-light py-2">Company Detail</h1>
+        
+        <h1 class="text-light py-2">Perfil empresa</h1>
     </div>
 </header>
 
@@ -23,7 +24,7 @@
 
                         <div class="container rounded bg-secondary-custom p-2">
                             <div class="row justify-content-between">
-                                <a class="nav-link"><?php echo e(__('Member Since')); ?>, <?php echo e($company->created_at->format('M d, Y')); ?></a>
+                                <a class="nav-link"><?php echo e(__('Membro desde')); ?>, <?php echo e($company->created_at->format('M d, Y')); ?></a>
                                 <a class="nav-link"><i class="fas fa-map-marker text-primary mr-3"></i><?php echo e($company->location); ?></a>
                             </div>
                         </div>
@@ -31,28 +32,32 @@
                             <div class="row justify-content-between py-2">
                                 <div class="col p-1">
                                     <?php if(Auth::check() && Auth::user()->isFavouriteCompany($company->slug)): ?>
-                                    <a href="<?php echo e(route('remove.from.favourite.company', $company->slug)); ?>" class="btn btn-block btn-dark"><i class="fa fa-star text-warning mr-2"></i>Favourite Company</a>
+                                    <a href="<?php echo e(route('remove.from.favourite.company', $company->slug)); ?>" class="btn btn-block btn-dark"><i class="fa fa-star text-warning mr-2"></i>Marcada com favorito</a>
                                     <?php else: ?>
-                                    <a href="<?php echo e(route('add.to.favourite.company', $company->slug)); ?>" class="btn btn-block btn-dark"><i class="fa fa-star text-warning mr-2"></i>Add to Favourite</a>
+                                    <a href="<?php echo e(route('add.to.favourite.company', $company->slug)); ?>" class="btn btn-block btn-dark"><i class="fa fa-star text-warning mr-2"></i>Add como favorito</a>
+                                    
                                     <?php endif; ?>
                                 </div>
                                 <div class="col p-1">
-                                    <a href="<?php echo e(route('report.abuse.company', $company->slug)); ?>" class="btn btn-block btn-danger"><i class="fas fa-exclamation-circle text-light mr-2"></i>Report Abuse</a>
+                                    <a href="<?php echo e(route('report.abuse.company', $company->slug)); ?>" class="btn btn-block btn-danger"><i class="fas fa-exclamation-circle text-light mr-2"></i>Denunciar Abuso</a>
+                                    
                                 </div>
                                 <div class="col p-1">
-                                    <a href="javascript:;"                                 onclick="send_message()" class="btn btn-block btn-outline-dark font-weight-bold"><i class="fa fa-envelope mr-2"></i>Send a message</a>
+                                    <a href="javascript:;"                                 onclick="send_message()" class="btn btn-block btn-outline-dark font-weight-bold"><i class="fa fa-envelope mr-2"></i>Enviar Mensagem</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-body p-4">
-                        <h4 class="py-2">About Company</h4>
+                        
+                        <h4 class="py-2">Sobre a empresa</h4>
                         <p class="text-justify">
                            <?php echo $company->description; ?>
 
                         </p>
                         <hr>
-                        <h4 class="py-3">Work history and feedback</h4>
+                        
+                        <h4 class="py-3">Histórico de trabalho e feedback</h4>
                         <div class="lead">
                            <?php $__currentLoopData = $projectFeedback; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $o): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <?php if($o->jobApply['isCandidateContractStatus'] == "close" && $o->jobApply['isEmployeerContractStatus'] == "close"): ?>
@@ -113,7 +118,7 @@
                 </div>
                 <!--end of card-->
 
-                <div class="card-title font-weight-bold h3 py-4">Jobs Openings</div>
+                <div class="card-title font-weight-bold h3 py-4">Trabalhos Abertos</div>
                 <?php if(isset($company->jobs) && count($company->jobs)): ?>
                     <?php $__currentLoopData = $company->jobs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $companyJob): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <!--unique card: every job have one card-->
@@ -139,7 +144,7 @@
                                 </p>
                             </div>
                             <div class="col">
-                                <a href="<?php echo e(route('job.detail', [$companyJob->slug])); ?>" class="btn btn-success py-2 float-right">View details</a>
+                                <a href="<?php echo e(route('job.detail', [$companyJob->slug])); ?>" class="btn btn-success py-2 float-right">Ver detalhes</a>
                             </div>
                         </div>
                     </div>
@@ -155,29 +160,30 @@
                 <!--card unique-->
                 <div class="card border-0 bg-white p-1 mb-3">
                     <div class="container p-3">
-                        <h4 class="pb-0 pt-1 text-dark">Company Detail</h4>
+                        <h4 class="pb-0 pt-1 text-dark">Detalhes da empresa</h4>
                         <hr>
                         <ul class="p-0 pt-2">
                             <li class="row justify-content-between">
-                                <div class="col"><span>Is Email Verified</span></div>
+                                <div class="col"><span>E-mail verificado?</span></div>
                                 <div class="col">
                                     <?php echo e(((bool)$company->verified)? 'Yes':'No'); ?>
 
                                 </div>
                             </li>
                             <li class="row">
-                                <div class="col"><span>Total Employees</span></div>
+                                <div class="col"><span>Total empregados</span></div>
                                 <div class="col">
                                     <?php echo e($company->no_of_employees); ?>
 
                                 </div>
                             </li>
                             <li class="row">
-                                <div class="col"><span>Established In</span></div>
+                                <div class="col"><span>
+                                    Estabelecida em</span></div>
                                 <div class="col"><span><?php echo e($company->established_in); ?></span></div>
                             </li>
                             <li class="row">
-                                <div class="col"><span>Current jobs</span></div>
+                                <div class="col"><span>Trabalhos atuais</span></div>
                                 <div class="col"><span><?php echo e($company->countNumJobs('company_id',$company->id)); ?></span></div>
                             </li>
                         </ul>

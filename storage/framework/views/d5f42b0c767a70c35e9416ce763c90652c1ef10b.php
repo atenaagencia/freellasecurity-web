@@ -85,7 +85,7 @@ if (!isset($seo)) {
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo e(route('posted.jobs')); ?>">
                         <i class="fas fa-fw fa-heart"></i>
-                        <span>All Jobs</span>
+                        <span>Todos os trabalhos</span>
                     </a>
                 </li>
 
@@ -93,7 +93,7 @@ if (!isset($seo)) {
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo e(route('jobs.development.status')); ?>">
                         <i class="fas fa-fw fa-cog"></i>
-                        <span>Development Status</span>
+                        <span>Status do Desenvolvimento</span>
                     </a>
                 </li>
 
@@ -101,7 +101,7 @@ if (!isset($seo)) {
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo e(route('companychats.messages')); ?>">
                         <i class="fas fa-fw fa-comments"></i>
-                        <span><?php echo e(__('Chat Messages')); ?>(<span id="my_msgcan_no"></span>)</span>
+                        <span><?php echo e(__('Conversas')); ?>(<span id="my_msgcan_no"></span>)</span>
                     </a>
                 </li>
 
@@ -109,7 +109,7 @@ if (!isset($seo)) {
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo e(route('company.followers')); ?>"> <!--/teste/payment-management-->
                         <i class="fab fa-paypal"></i>
-                        <span>Company Followers</span>
+                        <span>Seguidores</span>
                     </a>
                 </li>
                 
@@ -197,12 +197,12 @@ if (!isset($seo)) {
                                     aria-labelledby="userDropdown">
                                     <a class="dropdown-item" href="<?php echo e(route('company.detail', Auth::guard('company')->user()->slug)); ?>">
                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Profile
+                                        Perfil
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        <?php echo e(__('Logout')); ?>
+                                        <?php echo e(__('Sair')); ?>
 
                                     </a>
                                     <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">

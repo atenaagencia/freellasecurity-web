@@ -84,7 +84,7 @@ if (!isset($seo)) {
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('posted.jobs') }}">
                         <i class="fas fa-fw fa-heart"></i>
-                        <span>All Jobs</span>
+                        <span>Todos os trabalhos</span>
                     </a>
                 </li>
 
@@ -92,7 +92,7 @@ if (!isset($seo)) {
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('jobs.development.status') }}">
                         <i class="fas fa-fw fa-cog"></i>
-                        <span>Development Status</span>
+                        <span>Status do Desenvolvimento</span>
                     </a>
                 </li>
 
@@ -100,7 +100,7 @@ if (!isset($seo)) {
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('companychats.messages')}}">
                         <i class="fas fa-fw fa-comments"></i>
-                        <span>{{__('Chat Messages')}}(<span id="my_msgcan_no"></span>)</span>
+                        <span>{{__('Conversas')}}(<span id="my_msgcan_no"></span>)</span>
                     </a>
                 </li>
 
@@ -108,7 +108,7 @@ if (!isset($seo)) {
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('company.followers')}}"> <!--/teste/payment-management-->
                         <i class="fab fa-paypal"></i>
-                        <span>Company Followers</span>
+                        <span>Seguidores</span>
                     </a>
                 </li>
                 
@@ -196,12 +196,12 @@ if (!isset($seo)) {
                                     aria-labelledby="userDropdown">
                                     <a class="dropdown-item" href="{{ route('company.detail', Auth::guard('company')->user()->slug) }}">
                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Profile
+                                        Perfil
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        {{__('Logout')}}
+                                        {{__('Sair')}}
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}

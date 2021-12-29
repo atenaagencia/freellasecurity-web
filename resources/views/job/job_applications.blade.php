@@ -28,14 +28,15 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="container p-0">
-                                            <img src="http://localhost:8000/admin_assets/no-image.png" style="width: 200px" alt="employer" title="employer">
+                                            {{$user->printUserImage(200, 200)}}
+                                            {{-- <img src="http://localhost:8000/admin_assets/no-image.png" style="width: 200px" alt="employer" title="employer"> --}}
                                         </div>
                                         <div class="jobinfo">
                                             <div class="companyName">
-                                                <a href="" title="" class="badge badge-primary">username</a>
+                                                <a href="" title="" class="badge badge-primary">{{$user->getName()}}</a>
                                             </div>
                                             <div class="location">
-                                                <label class="fulltime" title="">job_shift</label> - <span>job_city</span>
+                                                <label class="fulltime" title="">job_shift</label> - <span> {{$user->getLocation()}}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -44,7 +45,7 @@
                                         <p class="font-weight-bold py-3">expected_salary, salary_currency / salary_period</p>
                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                                         Hic saepe repellat odit quisquam aliquam eum voluptatibus veniam cum quae incidunt, a officiis minus ullam earum dolor harum omnis? Porro, sequi.</p>
-                                        <a href="" class="btn btn-primary">View Profile</a>
+                                        <a href="{{route('applicant.profile', $job_application->id)}}" class="btn btn-primary">View Profile</a>
                                     </div>
                                     <div class="col-md-12">
                                         <h4 class="font-weight-bold text-dark">Actions</h4>

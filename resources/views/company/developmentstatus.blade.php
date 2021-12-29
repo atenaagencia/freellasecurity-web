@@ -1,9 +1,9 @@
 @extends('layouts.company')
 
 @section('content')
-<!-- @include('includes.inner_page_title', ['page_title'=>__('Company Posted Jobs')]) -->
+<!-- @include('includes.inner_page_title', ['page_title'=>__('Status de Desenvolvimento')]) -->
 @section('title-page')
-<h1 class="h3 py-4 font-weight-bold text-dark">{{__('Company Posted Jobs')}}</h1>
+<h1 class="h3 py-4 font-weight-bold text-dark">{{__('Status de Desenvolvimento')}}</h1>
 @endsection
 
 <div class="row mx-auto mb-5">
@@ -11,7 +11,7 @@
         <div class="card shadow">
             <!-- Card Header - Dropdown -->
             <div class="card-header bg-white rounded-0 py-3">
-                <h6 class="m-0 font-weight-bold text-dark">{{__('Company Posted Jobs')}}</h6>
+                <h6 class="m-0 font-weight-bold text-dark">{{__('Status de Desenvolvimento')}}</h6>
             </div>
             <!-- Card Body -->
             <div class="card-body bg-white rounded-0">
